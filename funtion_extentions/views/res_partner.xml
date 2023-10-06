@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="inherit_view_res_partner_principal_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="priority" eval="1"/>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
+               <group name="principal_group" >
+                   <group name="group_left" >
+                       <field name="x_cliente_mc"/>
+                       <field name="x_cliente_tdmv"/>
+                       <field name="x_cliente_login"/>
+                       <field name="x_cliente_pass"/>
+                       <field name="x_cliente_uin"/>
+                   </group>
+                   <group name="group_rigth" >
+                       <field name="x_cliente_ein"/>
+                       <field name="x_cliente_usdot"/>
+                       <field name="x_cliente_pin"/>
+                       <field name="x_cliente_user"/>
+                       <field name="x_cliente_pasw"/>
+                    </group>
+                
+               </group>
+            
+           </xpath>
+        </field>
+        
+    </record>
+
+</odoo>
