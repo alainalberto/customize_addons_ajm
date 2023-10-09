@@ -8,8 +8,9 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
            <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
+               <field name="x_cliente_ssn"/>
                <group name="principal_group" >
-                   <field name="x_cliente_ssn"/>
+                   
                    <group name="group_left" >
                        <field name="x_cliente_mc"/>
                        <field name="x_cliente_tdmv"/>
