@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
            <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
                 
-                <field expr="//form[1]/sheet[1]/group[1]/group[2]" name="x_cliente_ssn"/>
+                <field expr="//form[1]/sheet[1]/group[1]/group[2]" position="inside" name="x_cliente_ssn"/>
          
                 <group name="group_left" >
                     <field name="x_cliente_mc"/>
