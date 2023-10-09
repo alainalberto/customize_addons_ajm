@@ -8,26 +8,25 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
            <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
-               <field name="x_cliente_ssn"/>
-               <group name="principal_group" >
-                   
-                   <group name="group_left" >
-                       <field name="x_cliente_mc"/>
-                       <field name="x_cliente_tdmv"/>
-                       <field name="x_cliente_login"/>
-                       <field name="x_cliente_pass"/>
-                       <field name="x_cliente_uin"/>
-                   </group>
-                   <group name="group_rigth" >
-                       <field name="x_cliente_ein"/>
-                       <field name="x_cliente_usdot"/>
-                       <field name="x_cliente_pin"/>
-                       <field name="x_cliente_user"/>
-                       <field name="x_cliente_pasw"/>
-                    </group>
+                <group name="group_ssn">
+                    <field name="x_cliente_ssn"/>
+                </group> 
+                <group name="group_left" >
+                    <field name="x_cliente_mc"/>
+                    <field name="x_cliente_tdmv"/>
+                    <field name="x_cliente_login"/>
+                    <field name="x_cliente_pass"/>
+                    <field name="x_cliente_uin"/>
+                </group>
+                <group name="group_rigth" >
+                    <field name="x_cliente_ein"/>
+                    <field name="x_cliente_usdot"/>
+                    <field name="x_cliente_pin"/>
+                    <field name="x_cliente_user"/>
+                    <field name="x_cliente_pasw"/>
+                    <field name="x_cliente_secut_quest"/>
+                </group>
                 
-               </group>
-            
            </xpath>
         </field>
         
