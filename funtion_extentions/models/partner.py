@@ -7,8 +7,9 @@ class ContractRelated(models.Model):
     _name = 'res.partner.reference'
     _description = 'Contact Reference'
     
-    partner_id = fields.Many2one('res.partner', 'Contact')
-    partner_related_id = fields.Many2one('res.partner', 'Reference to', domain="[('is_company', '=', False)]")
+    partner_id = fields.Many2one('res.partner', required=True, ondelete='restrict', auto_join=True, index=True,
+        string='Related Reference', help='Partner-related data of the Contact')
+    partner_related_id = fields.Many2one('res.partner', 'parent_id', string='Contact Reference', domain="[('is_company', '=', False)]")
 
 
 
@@ -31,7 +32,7 @@ class ResPartner(models.Model):
      x_cliente_parking_address = fields.Char(string="Parking Log Address", tracking=True)
      x_cliente_owner = fields.Char(string="Company Owner", tracking=True)
      #x_cliente_contact = fields.Many2many('res.partner.reference', string='Reference for', tracking=True)
-     x_cliente_agent = fields.Many2many('res.users', string='Agent', domain="[('share', '=', False)]", tracking=True)
+
 
 
 
