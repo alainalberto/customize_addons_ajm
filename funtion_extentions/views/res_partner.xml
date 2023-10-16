@@ -7,12 +7,15 @@
         <field name="priority" eval="1"/>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-           <field name="x_cliente_contact" position="before">
-                <field name="x_cliente_contact" widget="many2many_tags" options="{'no_create_edit': True}"/>
-           </field>
-           <field name="x_cliente_agent" position="before">
-                <field name="x_cliente_agent" widget="many2many_tags" options="{'no_create_edit': True}" domain="[('share', '=', False)]"/>
-           </field>
+           <xpath expr="" position="before">
+                <field name="x_cliente_contact">
+                   <field name="x_cliente_contact" widget="many2many_tags" options="{'no_create_edit': True}"/>
+                </field>
+                <field name="x_cliente_agent">
+                   <field name="x_cliente_agent" widget="many2many_tags" options="{'no_create_edit': True}" domain="[('share', '=', False)]"/>
+                </field>
+           </xpath>
+           
            <xpath expr="//form[1]/sheet[1]/group[1]/group[2]" position="inside">
                 <field name="x_cliente_ssn" placeholder="e.g. xxx-xx-xxxx" attrs="{'invisible': [('is_company', '=', True)]}"/>
                 <field name="x_cliente_owner" placeholder="" attrs="{'invisible': [('is_company', '=', False)]}"/>
