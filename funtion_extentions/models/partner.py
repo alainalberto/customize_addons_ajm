@@ -2,6 +2,18 @@
 from odoo import api, fields, models, _
 
 
+
+class ContractRelated(models.Model):
+    _name = 'res.contact'
+    _description = 'Contact Reference'
+    
+    partner_id = fields.Many2one('res.partner', 'Contact')
+    partner_related_id = fields.Many2one('res.partner', 'Reference to', domain="[('is_company', '=', False)]")
+
+
+
+
+
 class ResPartner(models.Model):
      _inherit = "res.partner"
 
@@ -18,7 +30,10 @@ class ResPartner(models.Model):
      x_cliente_uin = fields.Char(string="UIN", tracking=True)
      x_cliente_parking_address = fields.Char(string="Parking Log Address", tracking=True)
      x_cliente_owner = fields.Char(string="Company Owner", tracking=True)
-     x_ciente_contact = fields.Many2many('res.partner', string='Contact Referent', domain="[('is_company', '=', False)]")
+     x_ciente_contact = fields.Many2many('res.contact', 'partner_id', 'Contact', 'Reference to')
      x_cliente_agent = fields.Many2many('res.users', string='Agent to Working', domain="[('share', '=', False)]")
-     
+
+
+
+
      
