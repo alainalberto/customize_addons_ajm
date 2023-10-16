@@ -38,7 +38,7 @@
         <field name="priority" eval="1"/>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <field name="X_ciente_contact_reference" position="before">
+            <field name="x_ciente_contact" position="before">
                 <field name="x_ciente_contact" widget="many2many_tags" options="{'no_create_edit': True}"/>
             </field>
             <field name="x_cliente_agent" position="before">
