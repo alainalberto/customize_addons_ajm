@@ -32,7 +32,7 @@
         
     </record>
     
-     <record id="view_partner_form_inherit" model="ir.ui.view">
+     <record id="view_partner_form_reference" model="ir.ui.view">
         <field name="name">res.partner.form.inherit</field>
         <field name="model">res.partner</field>
         <field name="priority" eval="1"/>
