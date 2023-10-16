@@ -4,7 +4,7 @@ from odoo import api, fields, models, _
 
 
 class ContractRelated(models.Model):
-    _name = 'res.reference'
+    _name = 'res.partner.reference'
     _description = 'Contact Reference'
     
     partner_id = fields.Many2one('res.partner', 'Contact')
@@ -30,7 +30,7 @@ class ResPartner(models.Model):
      x_cliente_uin = fields.Char(string="UIN", tracking=True)
      x_cliente_parking_address = fields.Char(string="Parking Log Address", tracking=True)
      x_cliente_owner = fields.Char(string="Company Owner", tracking=True)
-     x_cliente_contact = fields.Many2many('res.reference', string='Reference for', tracking=True)
+     x_cliente_contact = fields.Many2many('res.partner.reference', string='Reference for', tracking=True)
      x_cliente_agent = fields.Many2many('res.users', string='Agent', domain="[('share', '=', False)]", tracking=True)
 
 
