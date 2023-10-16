@@ -9,7 +9,7 @@ class ContractRelated(models.Model):
     
     partner_id = fields.Many2one('res.partner', required=True, ondelete='restrict', auto_join=True, index=True,
         string='Related Reference', help='Partner-related data of the Contact')
-    partner_related_id = fields.Many2one('res.partner', 'parent_id', string='Contact Reference', domain="[('is_company', '=', False)]")
+    partner_related_id = fields.Many2one('res.partner', string='Contact Reference', domain="[('is_company', '=', False)]")
 
 
 
