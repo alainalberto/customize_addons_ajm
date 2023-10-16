@@ -30,7 +30,7 @@ class ResPartner(models.Model):
      x_cliente_uin = fields.Char(string="UIN", tracking=True)
      x_cliente_parking_address = fields.Char(string="Parking Log Address", tracking=True)
      x_cliente_owner = fields.Char(string="Company Owner", tracking=True)
-     x_cliente_contact = fields.Many2many('res.contact', 'partner_id', 'Contact', 'Reference to')
+     x_cliente_contact = fields.Many2many('res.contact', 'partner_id', 'Contacts', 'Reference to')
      x_cliente_agent = fields.Many2many('res.users', string='Agent to Working', domain="[('share', '=', False)]")
 
 
