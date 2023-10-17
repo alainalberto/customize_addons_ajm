@@ -187,11 +187,12 @@
                                     type="object" class="oe_edit_only btn-link"
                                     attrs="{'invisible': ['|', '|', ('is_company','=', True), ('company_name', '=', ''), ('company_name', '=', False)]}"/>
                         </div>
+                        <!-- Add Agent-->
                         <div class="o_row">
                             <field name="user_id"
                                 widget="res_partner_many2one"
                                 placeholder="Agent ..."
-                                domain="[('is_employee', '=', True)]" context="{'show_vat': True, 'default_user_id': user_id}"
+                                context="{'show_vat': True, 'default_user_id': user_id}"
                                 attrs="{}"/>
                         </div>
                     </div>
