@@ -32,6 +32,7 @@
     'data': [
         'views/res_partner.xml',
         'views/webclient_templates.xml',
+        'views/res_partner_views.xml',
 
      ],
     'images': [],
