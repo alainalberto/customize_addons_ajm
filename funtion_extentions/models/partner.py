@@ -29,7 +29,7 @@ class ResPartner(models.Model):
      x_cliente_login = fields.Char(string="Login", tracking=True)
      x_cliente_pass = fields.Char(string="Pass", tracking=True)
      x_cliente_uin = fields.Char(string="UIN", tracking=True)
-     x_cliente_parking_address = fields.Char(string="Parking Log Address", tracking=True)
+     x_cliente_parking_address = fields.Char(string="Parking Lot Address", tracking=True)
      x_cliente_owner = fields.Char(string="Company Owner", tracking=True)
      #x_cliente_contact = fields.Many2many('res.partner.reference', string='Reference for', tracking=True)
 
