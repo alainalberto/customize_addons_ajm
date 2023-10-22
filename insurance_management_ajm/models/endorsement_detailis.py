@@ -17,7 +17,7 @@ class EndorsmentDetails(models.Model):
                                  string='Customer', readonly=True)
     policy_id = fields.Many2one(related='insurance_id.policy_id',
                                 string='Policy', readonly=True)
-    employee_id = fields.Many2one('employee.details',
+    employee_id = fields.Many2one('hr.employee',
                                   string='Follow Up Person', required=True, defaul='insurance_id.employee_id' )
     product_id = fields.Many2one(
         comodel_name='product.product',

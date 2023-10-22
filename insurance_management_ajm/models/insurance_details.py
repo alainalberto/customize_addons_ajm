@@ -53,7 +53,7 @@ class InsuranceDetails(models.Model):
     )
 
     employee_id = fields.Many2many(
-        'employee.details', string='Agent', required=True)
+        'hr.employee', string='Agent', required=True)
     commission_rate = fields.Float(string='Commission Percentage')
     policy_id = fields.Many2one(
         'policy.details', string='Policy Type', required=True)
