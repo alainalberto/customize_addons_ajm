@@ -89,7 +89,7 @@ class InsuranceDetails(models.Model):
     premium_sent = fields.Selection(
         [('gross', 'Gross'), ('monthly', 'Monthly'), ('net', 'Net')], 
         required=True, default='new', string='Transaction')
-    binder_invoice = fields.char(string="Carrier Invoice Number" )
+    binder_invoice = fields.Char(string="Carrier Invoice Number" )
     financial_id = fields.Many2one(
         'financial.details', string='Financial')
     net_due = fields.Float(string='Nex Due')
