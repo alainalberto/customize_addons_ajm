@@ -22,7 +22,7 @@ class ClaimDetails(models.Model):
     currency_id = fields.Many2one(
         'res.currency', string='Currency', required=True,
         default=lambda self: self.env.user.company_id.currency_id.id)
-    premium = fields.Monetary(related='insurance_id.premium', string='Premium')
+    premium = fields.Float(string='Premium')
     date_claimed = fields.Date(
         string='Date Applied', default=fields.Date.context_today)
     invoice_id = fields.Many2one('account.move', string='Invoiced',
