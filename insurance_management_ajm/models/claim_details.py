@@ -17,7 +17,7 @@ class ClaimDetails(models.Model):
                                  string='Customer', readonly=True)
     policy_id = fields.Many2one(related='insurance_id.policy_id',
                                 string='Policy', readonly=True)
-    employee_id = fields.Many2one(related='insurance_id.employee_id',
+    employee_id = fields.Many2one('hr.employee',
                                   string='Agent', readonly=True)
     currency_id = fields.Many2one(
         'res.currency', string='Currency', required=True,
