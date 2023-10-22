@@ -21,15 +21,15 @@
 #############################################################################
 
 {
-    'name': 'Insurance Management',
+    'name': 'Comercial Insurance Management',
     'version': '16.0.1.1.1',
     'summary': """Insurance Management & Operations""",
-    'description': """Insurance Management""",
-    'author': 'Cybrosys Techno Solutions',
-    'company': 'Cybrosys Techno Solutions',
+    'description': """Comercial Insurance Management for Agency""",
+    'author': 'Alain Alberto',
+    'company': 'Simply Tech Solution',
     'website': 'https://www.cybrosys.com',
     'category': 'Industries',
-    'depends': ['account', 'base'],
+    'depends': ['account', 'base', 'sale'],
     'license': 'AGPL-3',
     'data': [
         'security/ir.model.access.csv',

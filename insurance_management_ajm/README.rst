@@ -13,33 +13,21 @@ Configuration
 
 Company
 -------
-* `Cybrosys Techno Solutions <https://cybrosys.com/>`__
+* `Simply Tech Solution <https://simplytechsolution.com/>`__
 
 Credits
 -------
-* Developer: Niyas Raphy@cybrosys
-            Sreejith P @cybrosys
-            version 13: Nimisha Murali @cybrosys
-            version 14: Muhammed Nafih @cybrosys
-            version 15: Abhishek E T @cybrosys
-
+* Developer: Alain alainalberto03@gmail.com
+            Based on the Insurance Management Module V16 from Cybrosys Technologies
 Contacts
 --------
-* Mail Contact : odoo@cybrosys.com
-* Website : https://cybrosys.com
+* Mail Contact : alainalberto03@gmail.com
+* Website : https://simplytechsolution.com
 
 Bug Tracker
 -----------
 Bugs are tracked on GitHub Issues. In case of trouble, please check there if your issue has already been reported.
 
-Maintainer
-==========
-.. image:: https://cybrosys.com/images/logo.png
-   :target: https://cybrosys.com
-
-This module is maintained by Cybrosys Technologies.
-
-For support and more information, please visit `Our Website <https://cybrosys.com/>`__
 
 Further information
 ===================

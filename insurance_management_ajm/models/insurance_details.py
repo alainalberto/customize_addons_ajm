@@ -33,28 +33,72 @@ class InsuranceDetails(models.Model):
     partner_id = fields.Many2one('res.partner', string='Customer',
                                  required=True)
     start_date = fields.Date(
-        string='Date Started', default=fields.Date.context_today, required=True)
-    close_date = fields.Date(string='Date Closed', readonly=True)
+        string='Start Date', default=fields.Date.context_today, required=True)
+    efective_date = fields.Date(
+        string='Efective Date')
+    auto_renew = fields.Boolean(copy=False)
+    bind_day = fields.Date(
+        string='Bind Date', default=fields.Date.context_today)
+    exp_date = fields.Date(string='Expiration Date', readonly=True)
     invoice_ids = fields.One2many('account.move', 'insurance_id',
                                   string='Invoices', readonly=True)
-    employee_id = fields.Many2one(
+    endorsement_id = fields.One2many( 
+        'endorsment.details',
+        'insurance_id',
+        string='Policy lines',
+        copy=False,
+        readonly=True,
+        domain=[('transantion_type', 'in', ('positive')), 'product_id', 'premium', 'down_payment','fee', 'employee_id'],
+        states={'draft': [('readonly', False)]},
+    )
+
+    employee_id = fields.Many2many(
         'employee.details', string='Agent', required=True)
     commission_rate = fields.Float(string='Commission Percentage')
     policy_id = fields.Many2one(
-        'policy.details', string='Policy', required=True)
+        'policy.details', string='Policy Type', required=True)
     currency_id = fields.Many2one(
         'res.currency', string='Currency', required=True,
         default=lambda self: self.env.user.company_id.currency_id.id)
-    amount = fields.Monetary(related='policy_id.amount', string='Amount')
+    premium = fields.Float(string='Premium')
+    policy_total = fields.Float(string='Policy Total')
+    down_payment = fields.Float(string='Down Payment')
+    fee = fields.Float(string='Fee')
+    commission_total = fields.Float(string='Commission Total')
     state = fields.Selection(
-        [('draft', 'Draft'), ('confirmed', 'Confirmed'), ('closed', 'Closed')],
+        [('draft', 'Draft'), ('confirmed', 'Confirmed'), ('active', 'Active')],
         required=True, default='draft')
     hide_inv_button = fields.Boolean(copy=False)
     note_field = fields.Html(string='Comment')
-    policy_number = fields.Integer(string="Policy Number", required=True,
+    policy_number = fields.char(string="Policy Number", required=True,
                                    help="Policy number is a unique number that"
                                         "an insurance company uses to identify"
                                         "you as a policyholder")
+    transaction = fields.Selection(
+        [('new', 'New Policy'), ('renew', 'Renew Policy'), ('conciliation', 'Conciliation')], 
+        required=True, default='new', string='Transaction')
+    agency_id = fields.Many2one(
+        'agency.details', string='Agency', required=True) 
+    general_agency_id = fields.Many2one(
+        'general.agency.details', string='General Agency', required=True) 
+    carrier_id = fields.Many2one(
+        'carrier.details', string='Carrier', required=True)
+    mga = fields.Many2one(
+        'mga.details', string='MGA', required=True)
+    binder_id = fields.Char( string='Binder ID', copy=False )
+    premium_sent = fields.Selection(
+        [('gross', 'Gross'), ('monthly', 'Monthly'), ('net', 'Net')], 
+        required=True, default='new', string='Transaction')
+    binder_invoice = fields.char(string="Carrier Invoice Number" )
+    financial_id = fields.Many2one(
+        'financial.details', string='Financial')
+    net_due = fields.Float(string='Nex Due')
+    amount_financed = fields.Float(string='Amount Financed')
+    paid_mga = fields.Float(string='Paid MGA')
+    
+    
+    
+    
 
     @api.constrains('commission_rate')
     def _check_commission_rate(self):
@@ -71,11 +115,19 @@ class InsuranceDetails(models.Model):
                 _('Please add the policy number'))
 
     def action_confirm_insurance(self):
-        if self.amount > 0:
+        if self.premium > 0:
             self.state = 'confirmed'
             self.hide_inv_button = True
+            sale = self.env['insurance.sale'].create({
+            'name': self.name,  # Puedes personalizar cómo se genera el nombre de la venta
+            'client_id': self.client_id.id,
+            'policy_ids': [(4, self.id)],
+            'total_premium': self.premium,
+            # Otros campos relacionados con la venta   
+            })
+            self.sale_id = sale
         else:
-            raise UserError(_("Amount should be greater than zero"))
+            raise UserError(_("Premium should be greater than zero"))
 
     def action_create_invoice(self):
         created_invoice = self.env['account.move'].sudo().create({
@@ -85,9 +137,15 @@ class InsuranceDetails(models.Model):
             'invoice_user_id': self.env.user.id,
             'invoice_origin': self.name,
             'invoice_line_ids': [(0, 0, {
-                'name': 'Invoice For Insurance',
+                'name': 'Invoice For Insurance Agency Fee',
                 'quantity': 1,
-                'price_unit': self.amount,
+                'price_unit': self.fee,
+                'account_id': 41,
+            })],
+            'invoice_line_ids': [(1, 1, {
+                'name': 'Invoice For Insurance Down Payment',
+                'quantity': 1,
+                'price_unit': self.down_payment,
                 'account_id': 41,
             })],
         })
@@ -95,12 +153,12 @@ class InsuranceDetails(models.Model):
         if self.policy_id.payment_type == 'fixed':
             self.hide_inv_button = False
 
-    def action_close_insurance(self):
+    def action_active_insurance(self):
         for records in self.invoice_ids:
             if records.state == 'paid':
                 raise UserError(_("All invoices must be paid"))
-        self.state = 'closed'
-        self.close_date = fields.Date.context_today(self)
+        self.state = 'active'
+        self.efective_date = fields.Date.context_today(self)
         self.hide_inv_button = False
 
     @api.model

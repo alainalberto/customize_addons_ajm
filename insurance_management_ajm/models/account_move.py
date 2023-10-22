@@ -27,4 +27,5 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     insurance_id = fields.Many2one('insurance.details', string='Insurance')
-    claim_id = fields.Many2one('claim.details', string='Insurance')
+    claim_id = fields.Many2one('claim.details', string='Insurance Cancelation')
+    endorsment_id = fields.Many2one('endorsment.details', string='Insurance Endorsment')
