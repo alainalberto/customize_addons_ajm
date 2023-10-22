@@ -25,11 +25,8 @@ class TypeVehicle(models.Model):
 class VehicleDetails(models.Model):
     _name = 'vehicle.details'
     
-    name = fields.Char(
-        string='Name', required=True, copy=False, readonly=True, index=True,
-        default=lambda self: _('New'))
     partner_id = fields.Many2one('res.partner', string='Customer', required=True)
-    diverr_id = fields.Many2one('driver.details', string='Driver')
+    driver_id = fields.Many2one('driver.details', string='Driver')
     type_id = fields.Many2one('vehicle.type', string='Type')
     vin_number = fields.char(string="VIN Number")
     make = fields.char(string="Make")
@@ -40,9 +37,4 @@ class VehicleDetails(models.Model):
     use = fields.Selection(
         [('persolal', 'Personal'), ('comercial', 'Comercial'), ('both', 'Both')], default='comercial', string='Use')  
     
-    @api.model
-    def create(self, vals):
-        if vals.get('name', 'New') == 'New':
-            vals['name'] = self.env['ir.sequence'].next_by_code(
-                'vehicle.details') or 'New'
-        return super(VehicleDetails, self).create(vals)              
+       

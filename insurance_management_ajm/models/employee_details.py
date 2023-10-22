@@ -27,14 +27,10 @@ from odoo.exceptions import UserError, ValidationError
 
 
 class EmployeeDetails(models.Model):
-    _name = 'employee.details'
+    _inherit = "hr.employee"
 
-    name = fields.Char(string='Name', required=True)
-    user_id = fields.Many2one(
-        'res.users', string='Related User', copy=False)
-    sex = fields.Selection(
-        [('male', 'Male'), ('female', 'Female'), ('others', 'Others')])
-    phone = fields.Char(string='Phone Number')
+    
+    
     salary_type = fields.Selection(
         [('fixed', 'Fixed'), ('commission', 'Commission'), ('both', 'Both')],
         default='commission', required=True)
