@@ -371,7 +371,43 @@
                 </form>
             </field>
         </record>
-
+        <record id="inherit_view_res_partner_principal_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="priority" eval="1"/>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//form[1]" position="inside">
+                 <!--<field name="x_cliente_contact" position="before">
+                   <field name="x_cliente_contact" widget="many2many_tags" options="{'no_create_edit': True}"/>
+                </field> -->
+                
+           </xpath>
+           
+           <xpath expr="//form[1]/sheet[1]/group[1]/group[2]" position="inside">
+                <field name="x_cliente_ssn" placeholder="e.g. xxx-xx-xxxx" attrs="{'invisible': [('is_company', '=', True)]}"/>
+                <field name="x_cliente_owner" placeholder="" attrs="{'invisible': [('is_company', '=', False)]}"/>
+           </xpath>
+           <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
+                <group name="group_left" >
+                    <field name="x_cliente_mc"/>
+                    <field name="x_cliente_tdmv"/>
+                    <field name="x_cliente_login"/>
+                    <field name="x_cliente_pass"/>
+                    <field name="x_cliente_uin"/>
+                </group>
+                <group name="group_rigth" >
+                    <field name="x_cliente_ein"/>
+                    <field name="x_cliente_usdot"/>
+                    <field name="x_cliente_pin"/>
+                    <field name="x_cliente_user"/>
+                    <field name="x_cliente_pasw"/>
+                    <field name="x_cliente_parking_address"/>
+                </group>   
+           </xpath>
+        </field>
+        
+    </record>
       <!-- Special restricted view for private address, with limited "named" info that
            can be traced back to the employee -->
         <record id="res_partner_view_form_private" model="ir.ui.view">

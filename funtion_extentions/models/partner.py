@@ -7,7 +7,7 @@ class ContractRelated(models.Model):
     _name = 'res.partner.reference'
     _description = 'Contact Reference'
     
-    partner_id = fields.One2many('res.partner', required=True, ondelete='restrict', auto_join=True, index=True,
+    partner_id = fields.Many2one('res.partner', required=True, ondelete='restrict', auto_join=True, index=True,
         string='Related Reference', help='Partner-related data of the Contact')
     partner_related_id = fields.Many2one('res.partner', string='Contact Reference', domain="[('is_company', '=', False)]")
 
