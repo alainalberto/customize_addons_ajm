@@ -70,7 +70,7 @@ class InsuranceDetails(models.Model):
         required=True, default='draft')
     hide_inv_button = fields.Boolean(copy=False)
     note_field = fields.Html(string='Comment')
-    policy_number = fields.char(string="Policy Number", required=True,
+    policy_number = fields.Char(string="Policy Number", required=True,
                                    help="Policy number is a unique number that"
                                         "an insurance company uses to identify"
                                         "you as a policyholder")
