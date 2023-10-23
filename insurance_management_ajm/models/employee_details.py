@@ -39,8 +39,6 @@ class EmployeeDetails(models.Model):
         default=lambda self: self.env.user.company_id.currency_id.id)
     base_salary = fields.Monetary(string='Base Salary')
     last_salary_date = fields.Date(string='Last Payment On', copy=False)
-    insurance_ids = fields.One2many('insurance.details', 'employee_id',
-                                    string='Last Payment On', readonly=True)
     note_field = fields.Html(string='Comment')
     invoice_id = fields.Many2one(
         'account.move', string='Last payment', copy=False, readonly=True)

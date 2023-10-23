@@ -43,7 +43,7 @@ class InsuranceDetails(models.Model):
     invoice_ids = fields.One2many('account.move', 'insurance_id',
                                   string='Invoices', readonly=True)
     endorsement_id = fields.One2many( 
-        'endorsment.details',
+        'endorsement.details',
         'insurance_id',
         string='Policy lines',
         copy=False,

@@ -3,16 +3,22 @@ from odoo import api, fields, models, _
 
 
 class EndorsmentDetails(models.Model):
-    _name = 'endorsment.details'
+    _name = 'endorsement.details'
 
     name = fields.Char(string='Name', required=True, copy=False,
                        readonly=True, index=True, default=lambda self: _('New'))
     name_2 = fields.Char(
         string='Name 2', required=True, copy=False, readonly=True, index=True,
         default=lambda self: _('New'))
-    insurance_id = fields.Many2one('insurance.details', required=True,
-                                   domain=[('state', '=', 'confirmed')],
-                                   help="Confirmed orders can be selected")
+    insurance_id = fields.Many2one(
+        comodel_name='insurance.details',
+        required=True,
+        readonly=True,
+        index=True,
+        auto_join=True,
+        ondelete="cascade",
+        check_company=True,
+        help="Confirmed orders can be selected")
     partner_id = fields.Many2one(related='insurance_id.partner_id',
                                  string='Customer', readonly=True)
     policy_id = fields.Many2one(related='insurance_id.policy_id',
