@@ -38,7 +38,7 @@
                             <field name="general_agency_id"/>
                             <field name="mga"/>
                             <field name="carrier_id"/>
-                            <field name="binder_id "/>
+                            <field name="binder_id"/>
                             <field name="binder_invoice"/>
                             <field name="financial_id"/>
                             <field name="net_due"/>
