@@ -24,15 +24,14 @@
                             <field name="base_salary"/>
                         </group>
                         <group>
-                            <field name="sex"/>
+                            <field name="gender"/>
                             <field name="last_salary_date"/>
                             <field name="user_id"/>
-                            <field name="invoice_id"/>
                         </group>
                     </group>
                     <notebook>
-                        <page string="Insurance_ids">
-                            <field name="insurance_ids"/>
+                        <page string="Invoices">
+                            <field name="invoice_id"/>
                         </page>
                         <page string="Extra Notes">
                             <field name="note_field"/>
@@ -45,13 +44,13 @@
 
     <record id="employee_details_view_tree" model="ir.ui.view">
         <field name="name">employee.details.view.tree</field>
-        <field name="model">employee.details</field>
+        <field name="model">hr.employee</field>
         <field name="arch" type="xml">
             <tree string="Employee Details Tree">
                 <field name="name"/>
                 <field name="phone"/>
                 <field name="salary_type"/>
-                <field name="sex"/>
+                <field name="gender"/>
                 <field name="last_salary_date"/>
             </tree>
         </field>
@@ -59,7 +58,7 @@
 
     <record id="employee_details_action" model="ir.actions.act_window">
         <field name="name">Employee Management</field>
-        <field name="res_model">employee.details</field>
+        <field name="res_model">hr.employee</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
