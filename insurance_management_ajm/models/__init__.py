@@ -21,7 +21,12 @@
 #############################################################################
 
 from . import account_move
+from . import agency_details
 from . import claim_details
-from . import employee_details
+from . import endorsement_details
+from . import finalcial_details
+from . import hr_employee
 from . import insurance_details
+from . import insurance_sale
 from . import policy_details
+from . import product_product
