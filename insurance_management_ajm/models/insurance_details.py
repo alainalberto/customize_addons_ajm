@@ -42,15 +42,15 @@ class InsuranceDetails(models.Model):
     exp_date = fields.Date(string='Expiration Date', readonly=True)
     invoice_ids = fields.One2many('account.move', 'insurance_id',
                                   string='Invoices', readonly=True)
-    endorsement_id = fields.One2many( 
-        'endorsement.details',
-        'insurance_id',
-        string='Policy lines',
-        copy=False,
-        readonly=True,
-        domain=[('transantion_type', 'in', ('positive')), 'product_id', 'premium', 'down_payment','fee', 'employee_id'],
-        states={'draft': [('readonly', False)]},
-    )
+    #endorsement_id = fields.One2many( 
+    #    'endorsement.details',
+    #    'insurance_id',
+    #    string='Policy lines',
+    #    copy=False,
+    #    readonly=True,
+    #    domain=[('transantion_type', 'in', ('positive')), 'product_id', 'premium', 'down_payment','fee', 'employee_id'],
+    #    states={'draft': [('readonly', False)]},
+    #)
 
     employee_id = fields.Many2many(
         'hr.employee', string='Agent', required=True)
