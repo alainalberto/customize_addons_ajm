@@ -5,9 +5,9 @@ class InsuranceSale(models.Model):
     _description = 'Insurance Sales'
 
     name = fields.Char(string='Sale Reference', required=True)
-    client_id = fields.Many2one('insurance.client', string='Client', required=True)
-    policy_ids = fields.Many2many('insurance.policy', string='Insurance Policies')
-    total_premium = fields.Float(string='Total Premium')
+    client_id = fields.Many2one('res.partner', string='Customer', required=True)
+    policy_ids = fields.Many2many('insurance.details', string='Insurance Policies', required=True)
+    total_premium = fields.Float(string='Total Premium', required=True)
     # Otros campos relacionados con la venta, como fecha, estado, etc.
 
     # Método para confirmar la venta
