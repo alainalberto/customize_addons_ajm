@@ -35,8 +35,8 @@ class PolicyDetails(models.Model):
     currency_id = fields.Many2one(
         'res.currency', string='Currency', required=True,
         default=lambda self: self.env.user.company_id.currency_id.id)
-    amount = fields.Monetary(string='Amount', required=True)
-    policy_duration = fields.Integer(string='Duration in Days', required=True)
+    amount = fields.Monetary(string='Amount')
+    policy_duration = fields.Integer(string='Duration in Days')
     note_field = fields.Html(string='Comment')
 
 
