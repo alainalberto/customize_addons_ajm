@@ -3,7 +3,7 @@
 
     <record id="employee_details_view_form" model="ir.ui.view">
         <field name="name">employee.details.view.form</field>
-        <field name="model">employee.details</field>
+        <field name="model">hr.employee</field>
         <field name="arch" type="xml">
             <form string="Employee Details Form">
                 <header>
