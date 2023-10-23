@@ -28,4 +28,4 @@ class AccountMove(models.Model):
 
     insurance_id = fields.Many2one('insurance.details', string='Insurance')
     claim_id = fields.Many2one('claim.details', string='Insurance Cancelation')
-    endorsment_id = fields.Many2one('endorsment.details', string='Insurance Endorsment')
+    endorsment_id = fields.Many2one('endorsement.details', string='Insurance Endorsment')

@@ -44,7 +44,7 @@ class InsuranceDetails(models.Model):
                                   string='Invoices', readonly=True)
     endorsement_id = fields.One2many( 
         'endorsement.details',
-        #'insurance_id',
+        'insurance_id',
         string='Policy lines',
         copy=False,
         readonly=True,
