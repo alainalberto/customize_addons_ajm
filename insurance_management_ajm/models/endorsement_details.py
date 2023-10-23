@@ -72,12 +72,11 @@ class EndorsmentDetails(models.Model):
     note_field = fields.Html(string='Comment')
     
     
-    @api.depends('insurance_id')
-    def _compute_display_endorsment_type(self):
-        for line in self.filtered(lambda l: not l.display_type):
+    #@api.depends('insurance_id')
+    #def _compute_display_endorsment_type(self):
+    #    for line in self.filtered(lambda l: not l.display_type):
             
-            )
-
+         
 
     @api.model
     def create(self, vals):
