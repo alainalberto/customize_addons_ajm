@@ -120,7 +120,7 @@ class InsuranceDetails(models.Model):
             self.hide_inv_button = True
             sale = self.env['insurance.sale'].create({
             'name': self.name,  # Puedes personalizar cómo se genera el nombre de la venta
-            'client_id': self.client_id.id,
+            'client_id': self.partner_id.id,
             'policy_ids': [(4, self.id)],
             'total_premium': self.premium,
             # Otros campos relacionados con la venta   
