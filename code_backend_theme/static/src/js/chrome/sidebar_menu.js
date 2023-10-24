@@ -16,6 +16,7 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         $(".top_heading").css({'margin-left': '200px','transition':'all .1s linear', 'width':'auto'});
         $(".sidebar_close").css({'display':'none'});
         $(".sidebar_logo").css({'display':'block'});
+        
 
         //add class in navbar
         var navbar = $(".o_main_navbar");
