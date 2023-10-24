@@ -34,6 +34,7 @@ class EmployeeDetails(models.Model):
     salary_type = fields.Selection(
         [('fixed', 'Fixed'), ('commission', 'Commission'), ('both', 'Both')],
         default='commission', required=True)
+    commission_rate = fields.Float(string='Commission Percentage')
     currency_id = fields.Many2one(
         'res.currency', string='Currency', required=True,
         default=lambda self: self.env.user.company_id.currency_id.id)

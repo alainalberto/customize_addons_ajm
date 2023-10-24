@@ -49,9 +49,7 @@
             <tree string="Employee Details Tree">
                 <field name="name"/>
                 <field name="phone"/>
-                <field name="salary_type"/>
-                <field name="gender"/>
-                <field name="last_salary_date"/>
+                <field name="company_id"/>
             </tree>
         </field>
     </record>

@@ -132,10 +132,6 @@
                             <field name="note_field"/>
                         </page>
                     </notebook>
-                    <group name="agent" string="Agents">
-                        <field name="employee_id"/>
-                        <field name="commission_rate"/>
-                    </group>
                 </sheet>
             </form>
         </field>

@@ -54,7 +54,10 @@ class InsuranceDetails(models.Model):
 
     employee_id = fields.Many2many(
         'hr.employee', string='Agent', required=True)
-    commission_rate = fields.Float(string='Commission Percentage')
+    commission_agents_id = fields.Many2many('hr.employee',
+                                            domain=[('insurance_id', '=', 'self.id' ), ('insurance_id', '=', 'self.employee_id' ) ]  
+                                            string='Agent Commission', 
+                                            required=True)
     policy_id = fields.Many2one(
         'policy.details', string='Policy Type', required=True)
     currency_id = fields.Many2one(
@@ -167,3 +170,12 @@ class InsuranceDetails(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code(
                 'insurance.details') or 'New'
         return super(InsuranceDetails, self).create(vals)
+
+
+class CommissionAgentDetails(models.Model):
+    _name = 'commission.agent.details'
+    
+    insurance_id  = fields.Many2many('insurance.details', required=True)
+    employee_id = fields.Many2many('hr.employee', required=True)
+    commission_rate = fields.Float()
+    total_commission = fields.Float()
