@@ -39,7 +39,7 @@ class InsuranceDetails(models.Model):
     auto_renew = fields.Boolean(copy=False)
     bind_day = fields.Date(
         string='Bind Date', default=fields.Date.context_today)
-    exp_date = fields.Date(string='Expiration Date', readonly=True)
+    exp_date = fields.Date(string='Expiration Date')
     invoice_ids = fields.One2many('account.move', 'insurance_id',
                                   string='Invoices', readonly=True)
     #endorsement_id = fields.One2many( 
