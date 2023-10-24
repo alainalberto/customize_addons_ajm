@@ -54,8 +54,7 @@ class InsuranceDetails(models.Model):
 
     employee_id = fields.Many2many(
         'hr.employee', string='Agent', required=True)
-    commission_agents_id = fields.Many2many('hr.employee',
-                                            domain=[('insurance_id', '=', self.id), ('employee_id', '=', self.employee_id)],  
+    commission_agents_id = fields.Many2many('hr.employee',  
                                             string='Agent Commission', 
                                             required=True)
     policy_id = fields.Many2one(
