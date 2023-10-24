@@ -34,9 +34,10 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         top_head.addClass("sidebar_margin");
     });
     $(document).on("click", "#closeSidebar", function(event){
-        $("#sidebar_panel").css({'display':'none'});
-        $(".o_action_manager").css({'margin-left': '0px'});
-        $(".top_heading").css({'margin-left': '0px', 'width':'100%'});
+        $("#sidebar_panel").css({'width': '200px'});
+        $(".o_action_manager").css({'margin-left': '50px'});
+        $(".top_heading").css({'margin-left': '50px', 'width':'auto'});
+        $(".sidebar_close a img").css({'display':'block'});
 
         //remove class in navbar
         var navbar = $(".o_main_navbar");
