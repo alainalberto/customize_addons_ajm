@@ -56,7 +56,7 @@
                     </li>
                     <div class="sidebar_close">
                         <a id="closeSidebar" style="cursor: pointer;">
-                            <img src="/code_backend_theme/static/src/img/icons/close.png"/>
+                            <img src="/code_backend_theme/static/src/img/icons/logo_mini.png"/>
                         </a>
                     </div>
                      <div class="sidebar_logo">
