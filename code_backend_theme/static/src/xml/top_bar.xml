@@ -46,6 +46,14 @@
       </nav>
             <div class="sidebar_panel" id="sidebar_panel">
                 <div class="sidebar">
+                    <li class="dropdown">
+                        <a id="openSidebar" style="display: block; cursor: pointer;">
+                            <i class="fa fa-bars fa-lg"/>
+                        </a>
+                        <a id="closeSidebar" style="display: none; cursor: pointer;">
+                            <i class="fa fa-bars fa-lg"/>
+                        </a>
+                    </li>
                     <div class="sidebar_close">
                         <a id="closeSidebar" style="cursor: pointer;">
                             <img src="/code_backend_theme/static/src/img/icons/close.png"/>
@@ -76,14 +84,14 @@
   </t>
     <t t-inherit="web.NavBar.AppsMenu" t-inherit-mode="extension" owl="1">
         <xpath expr="//Dropdown" position="replace">
-            <li class="dropdown">
+           <!-- <li class="dropdown">
                 <a id="openSidebar" style="display: block; cursor: pointer;">
                     <i class="fa fa-bars fa-lg"/>
                 </a>
                 <a id="closeSidebar" style="display: none; cursor: pointer;">
                     <i class="fa fa-bars fa-lg"/>
                 </a>
-            </li>
+            </li>-->
         </xpath>
     </t>
 
