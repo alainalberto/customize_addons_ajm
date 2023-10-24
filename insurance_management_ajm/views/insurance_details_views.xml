@@ -55,7 +55,7 @@
                         <page id="detalle_line_tab"
                               name="detalle_line_tab"
                               string="Policy Lines Detalles"
-                              attrs="{'invisible': [('move_type', '=', 'entry')]}">
+                              >
                         <!--  
                               <field name="endorsement_id"
                                        widget="section_and_note_one2many"
