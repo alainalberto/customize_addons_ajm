@@ -54,7 +54,7 @@ class InsuranceDetails(models.Model):
 
     employee_id = fields.Many2many(
         'hr.employee', string='Agent', required=True)
-    commission_agents_id = fields.Many2many('hr.employee',  
+    commission_agents_id = fields.Many2many('commission.agent.details',  
                                             string='Agent Commission', 
                                             required=True)
     policy_id = fields.Many2one(

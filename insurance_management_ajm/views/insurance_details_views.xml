@@ -49,6 +49,7 @@
                     </group>
                     <group name="agent" string="Agents">
                         <field name="employee_id"/>
+                        <field name="commission_agents_id"/>
                     </group>
                     <notebook>
                         <page id="detalle_line_tab"
