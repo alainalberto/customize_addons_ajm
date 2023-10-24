@@ -13,3 +13,4 @@ access_financial_details,financial.details,model_financial_details,base.group_us
 access_insurance_sale,insurance.sale,model_insurance_sale,base.group_user,1,1,1,1
 access_hr_employee,hr.employee,model_hr_employee,base.group_user,1,1,1,1
 access_product_product,product.product,model_product_product,base.group_user,1,1,1,1
+access_commission_agent_details,product.commission.agent.details,model_commission_agent_details,base.group_user,1,1,1,1
