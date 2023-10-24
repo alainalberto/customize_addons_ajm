@@ -8,11 +8,11 @@
             <form string="Insurance Details Form">
                 <header>
                     <button name="action_confirm_insurance" string="Confirm" type="object"
-                            states="draft" class="oe_highlight"/>
+                            states="confirmed" class="oe_highlight"/>
                     <button name="action_create_invoice" string="Create Invoice" type="object" class="oe_highlight"
                             attrs="{'invisible': [('hide_inv_button', '!=', True)]}"/>
                     <button name="action_active_insurance" string="Active" type="object"
-                            states="confirmed" class="oe_highlight"/>
+                            states="active" class="oe_highlight"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
