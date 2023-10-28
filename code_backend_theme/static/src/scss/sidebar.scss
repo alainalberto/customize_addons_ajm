@@ -30,15 +30,12 @@
 }
 .sidebar_panel .sidebar_close {
     display: none;
-    position: sticky;
-    height: calc(100% - 0%);
+    white-space: nowrap;
     text-align: center;
-    padding-top: 20px;
-    top: 0;
-    z-index: 1;
+    padding-top: 5px;
 }
 .sidebar_panel .sidebar_close a#closeSidebar {
-    margin-left: 10px;
+    margin-left: 15px;
     color: #ffffff;
     opacity: .3;
 }
@@ -78,7 +75,6 @@
 .sidebar_panel .sidebar .sidebar_menu li a {
     margin: 0;
     border: 0px;
-    text-align: center;
     display: block;
     cursor: pointer;
     overflow: hidden;
