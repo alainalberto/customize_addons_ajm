@@ -47,10 +47,10 @@
             <div class="sidebar_panel" id="sidebar_panel">
                 <div class="sidebar">
                     <li class="dropdown">
-                        <a id="openSidebar" style="display: block; cursor: pointer;">
+                        <a id="openSidebar" style="display: none; cursor: pointer;">
                             <i class="fa fa-bars fa-lg"/>
                         </a>
-                        <a id="closeSidebar" style="display: none; cursor: pointer;">
+                        <a id="closeSidebar" style="display: block; cursor: pointer;">
                             <i class="fa fa-bars fa-lg"/>
                         </a>
                     </li>

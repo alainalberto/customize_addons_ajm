@@ -2,20 +2,21 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
     "use strict";
 
     //sidebar toggle effect
-    $(document).on("click", "#closeSidebar", function(event){
-        $("#closeSidebar").hide();
-        $("#openSidebar").show();
-    });
     $(document).on("click", "#openSidebar", function(event){
         $("#openSidebar").hide();
         $("#closeSidebar").show();
     });
+    $(document).on("click", "#closeSidebar", function(event){
+        $("#closeSidebar").hide();
+        $("#openSidebar").show();
+    });
+    
     $(document).on("click", "#openSidebar", function(event){
         $("#sidebar_panel").css({'width': '200px'});
         $(".sidebar_close").css({'display':'none'});
         $(".sidebar_logo").css({'display':'block'});
         $(".sidebar_head").css({'color':'#6a7187'});
-        $(".sidebar_img").css({'width':'10px'});
+        $(".sidebar_img").css({'width':'20px'});
         $(".sidebar_app_name").css({'display':'block'});
         
 
