@@ -18,6 +18,7 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         $(".sidebar_logo").css({'display':'block'});
         $(".sidebar_head").css({'padding-top':'20px'});
         $(".sidebar_img").css({'width':'20px'});
+        $(".sidebar_img").css({'margin-right':'8px'});
         $(".sidebar_app_name").css({'display':'block'});
         
 
