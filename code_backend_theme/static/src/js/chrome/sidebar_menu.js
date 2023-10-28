@@ -16,8 +16,6 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         $(".sidebar_logo").css({'display':'block'});
         $(".sidebar_head").css({'color':'#6a7187'});
         $(".sidebar_img").css({'width':'20px'});
-        $(".sidebar_img").css({'margin-right':'8px'});
-        $(".sidebar_app_name").css({'display':'block'});
         
 
         //add class in navbar
@@ -27,10 +25,10 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
        // navbar.addClass("small_nav");
 
         //add class in action-manager
-        var action_manager = $(".o_action_manager");
-        var action_manager_id = action_manager.data("id");
-        $("div").addClass(action_manager_id);
-        action_manager.addClass("sidebar_margin");
+        //var action_manager = $(".o_action_manager");
+        //var action_manager_id = action_manager.data("id");
+       // $("div").addClass(action_manager_id);
+       // action_manager.addClass("sidebar_margin");
 
         //add class in top_heading
         var top_head = $(".top_heading");
