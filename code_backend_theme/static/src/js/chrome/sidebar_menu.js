@@ -48,6 +48,7 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         $(".sidebar_logo").css({'display':'none'});
         $(".sidebar_img").css({'width':'50px'});
         $(".sidebar_app_name").css({'display':'none'});
+        
 
         //remove class in navbar
         var navbar = $(".o_main_navbar");
