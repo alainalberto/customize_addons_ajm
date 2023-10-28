@@ -16,6 +16,9 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         $(".top_heading").css({'margin-left': '200px','transition':'all .1s linear', 'width':'auto'});
         $(".sidebar_close").css({'display':'none'});
         $(".sidebar_logo").css({'display':'block'});
+        $(".sidebar_head").css({'padding-top':'20px'});
+        $(".sidebar_img").css({'width':'20px'});
+        $(".sidebar_app_name").css({'display':'block'});
         
 
         //add class in navbar
@@ -42,6 +45,9 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         $(".top_heading").css({'margin-left': '100px', 'width':'auto'});
         $(".sidebar_close").css({'display':'block'});
         $(".sidebar_logo").css({'display':'none'});
+        $(".sidebar_head").css({'padding-top':'30px'});
+        $(".sidebar_img").css({'width':'100px'});
+        $(".sidebar_app_name").css({'display':'none'});
 
         //remove class in navbar
         var navbar = $(".o_main_navbar");
