@@ -16,6 +16,7 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         $(".sidebar_logo").css({'display':'block'});
         $(".sidebar_head").css({'color':'#6a7187'});
         $(".sidebar_img").css({'width':'20px'});
+        $(".sidebar_app_name").css({'display':'block'});
         
 
         //add class in navbar
@@ -31,10 +32,10 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
        // action_manager.addClass("sidebar_margin");
 
         //add class in top_heading
-        var top_head = $(".top_heading");
-        var top_head_id = top_head.data("id");
-        $("div").addClass(top_head_id);
-        top_head.addClass("sidebar_margin");
+       // var top_head = $(".top_heading");
+       // var top_head_id = top_head.data("id");
+       // $("div").addClass(top_head_id);
+       // top_head.addClass("sidebar_margin");
     });
     $(document).on("click", "#closeSidebar", function(event){
         $("#sidebar_panel").css({'width': '100px'});
@@ -50,16 +51,16 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         //navbar.removeClass("small_nav");
 
         //remove class in action-manager
-        var action_manager = $(".o_action_manager");
-        var action_manager_id = action_manager.data("id");
-        $("div").removeClass(action_manager_id);
-        action_manager.removeClass("sidebar_margin");
+       // var action_manager = $(".o_action_manager");
+       // var action_manager_id = action_manager.data("id");
+       // $("div").removeClass(action_manager_id);
+       // action_manager.removeClass("sidebar_margin");
 
         //remove class in top_heading
-        var top_head = $(".top_heading");
-        var top_head_id = top_head.data("id");
-        $("div").removeClass(top_head_id);
-        top_head.removeClass("sidebar_margin");
+       // var top_head = $(".top_heading");
+       // var top_head_id = top_head.data("id");
+       // $("div").removeClass(top_head_id);
+       // top_head.removeClass("sidebar_margin");
     });
 
     $(document).on("click", ".sidebar a", function(event){
