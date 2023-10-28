@@ -11,7 +11,7 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         $("#closeSidebar").show();
     });
     $(document).on("click", "#openSidebar", function(event){
-        $("#sidebar_panel").css({'display':'block', 'width': '200px'});
+        $("#sidebar_panel").css({'width': '200px'});
         $(".sidebar_close").css({'display':'none'});
         $(".sidebar_logo").css({'display':'block'});
         $(".sidebar_head").css({'color':'#6a7187'});
@@ -63,8 +63,8 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
        // top_head.removeClass("sidebar_margin");
     });
 
-    $(document).on("click", ".sidebar a", function(event){
-        var menu = $(".sidebar a");
+   /* $(document).on("click", ".sidebar a", function(event){
+       var menu = $(".sidebar a");
         var $this = $(this);
         var id = $this.data("id");
         $("header").removeClass().addClass(id);
@@ -89,5 +89,5 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         var top_head_id = top_head.data("id");
         $("div").removeClass(top_head_id);
         top_head.removeClass("sidebar_margin");
-    });
+    }); */
 });
