@@ -14,17 +14,17 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         $("#sidebar_panel").css({'display':'block', 'width': '200px'});
         $(".sidebar_close").css({'display':'none'});
         $(".sidebar_logo").css({'display':'block'});
-        $(".sidebar_head").css({'padding-top':'20px'});
+        $(".sidebar_head").css({'color':'#6a7187'});
         $(".sidebar_img").css({'width':'20px'});
         $(".sidebar_img").css({'margin-right':'8px'});
         $(".sidebar_app_name").css({'display':'block'});
         
 
         //add class in navbar
-        var navbar = $(".o_main_navbar");
-        var navbar_id = navbar.data("id");
-        $("nav").addClass(navbar_id);
-        navbar.addClass("small_nav");
+       // var navbar = $(".o_main_navbar");
+      //  var navbar_id = navbar.data("id");
+       // $("nav").addClass(navbar_id);
+       // navbar.addClass("small_nav");
 
         //add class in action-manager
         var action_manager = $(".o_action_manager");
@@ -42,15 +42,14 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         $("#sidebar_panel").css({'width': '100px'});
         $(".sidebar_close").css({'display':'block'});
         $(".sidebar_logo").css({'display':'none'});
-        $(".sidebar_head").css({'padding-top':'30px'});
         $(".sidebar_img").css({'width':'50px'});
         $(".sidebar_app_name").css({'display':'none'});
 
         //remove class in navbar
-        var navbar = $(".o_main_navbar");
-        var navbar_id = navbar.data("id");
-        $("nav").removeClass(navbar_id);
-        navbar.removeClass("small_nav");
+        //var navbar = $(".o_main_navbar");
+        //var navbar_id = navbar.data("id");
+        //$("nav").removeClass(navbar_id);
+        //navbar.removeClass("small_nav");
 
         //remove class in action-manager
         var action_manager = $(".o_action_manager");
