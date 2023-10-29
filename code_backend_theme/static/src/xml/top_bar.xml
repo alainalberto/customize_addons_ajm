@@ -67,17 +67,17 @@
                                     <i class="fa fa-chevron-down sidebar_less" aria-hidden="true" style="display: none; cursor: pointer;"></i>
                                  </a>
                                  <!-- Current App Sections -->
-                                <div class="d-none d-md-block">
+                                <li data-toggle="tooltip" data-placement="right">
                                   <t t-if="currentAppSections.length"
                                      t-call="web.NavBar.SectionsMenu">
                                      <t t-set="sections" t-value="currentAppSections"/>
                                    </t>
-                                </div>
-                                <div class="d-xs-block d-sm-block  d-md-none">
+                                </li>
+                                <!--<div class="d-xs-block d-sm-block  d-md-none">
                                     <t t-call="web.NavBar.SectionsMenu.MoreDropdown">
                                        <t t-set="sections" t-value="currentAppSections"/>
                                     </t>
-                                </div>
+                                </div>-->
                             </li>
                         </t>
                     </ul>
