@@ -22,6 +22,13 @@
                   />
               </div>
         </div>
+        <!-- Current App Sections -->
+                                <div class=" d-md-block">
+                                   <t t-if="currentAppSections.length"
+                                      t-call="web.NavBar.SectionsMenu">
+                                       <t t-set="sections" t-value="currentAppSections"/>
+                                   </t>
+                                </div>
           <!-- Systray -->
           <div class="o_menu_systray d-flex" role="menu">
           <t t-foreach="systrayItems" t-as="item" t-key="item_index">
@@ -62,18 +69,9 @@
                                         <t t-esc="app.name"/>
                                     </span>
                                  </a>
-                                 <!-- Current App Sections -->
-                                <!--<div class=" d-md-block">
-                                   <t t-if="currentAppSections.length"
-                                      t-call="web.NavBar.SectionsMenu">
-                                       <t t-set="sections" t-value="currentAppSections"/>
-                                   </t>
-                                </div>-->
-                                <div class="d-xs-block d-sm-block">
-                                    <t t-call="web.NavBar.SectionsMenu.MoreDropdown">
-                                       <t t-set="sections" t-value="currentAppSections"/>
-                                    </t>
-                                </div>
+                                <t t-call="web.NavBar.SectionsMenu.MoreDropdown">
+                                    <t t-set="sections" t-value="currentAppSections"/>
+                                </t>
                             </li>
                         </t>
                     </ul>
