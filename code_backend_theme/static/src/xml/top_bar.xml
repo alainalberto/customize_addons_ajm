@@ -67,10 +67,10 @@
                                     <i class="fa fa-chevron-down sidebar_less" aria-hidden="true" style="display: none; cursor: pointer;"></i>
                                  </a>
                                  <ul class="submenu">
-                                     <t t-foreach="app.submenus" t-as="submenu" t-key="submenu_index">
+                                     <t t-foreach="app.sections" t-as="section" t-key="section_index">
                                         <li>
-                                           <a role="menuitem" href="{{submenu.url}}">
-                                               {{submenu.name}}
+                                           <a role="menuitem" href="{{section.url}}">
+                                               {{section.name}}
                                            </a>
                                         </li>
                                      </t>
