@@ -23,17 +23,17 @@
               </div>
 
               <!-- Current App Sections -->
-                                <li data-toggle="tooltip" data-placement="right">
-                                  <t t-if="currentAppSections.length"
-                                     t-call="web.NavBar.SectionsMenu">
-                                     <t t-set="sections" t-value="currentAppSections"/>
-                                   </t>
-                                </li>
-                                <div class="d-xs-block d-sm-block  d-md-none">
-                                    <t t-call="web.NavBar.SectionsMenu.MoreDropdown">
-                                       <t t-set="sections" t-value="currentAppSections"/>
-                                    </t>
-                                </div>
+                <div class="d-none d-md-block">
+                  <t t-if="currentAppSections.length"
+                     t-call="web.NavBar.SectionsMenu">
+                    <t t-set="sections" t-value="currentAppSections"/>
+                  </t>
+              </div>
+              <div class="d-xs-block d-sm-block  d-md-none">
+                  <t t-call="web.NavBar.SectionsMenu.MoreDropdown">
+                      <t t-set="sections" t-value="currentAppSections"/>
+                  </t>
+              </div>
         </div>
           <!-- Systray -->
           <div class="o_menu_systray d-flex" role="menu">
@@ -77,6 +77,7 @@
                                     <i class="fa fa-chevron-down sidebar_more" aria-hidden="true" style="display: none; cursor: pointer;"></i>
                                     <i class="fa fa-chevron-down sidebar_less" aria-hidden="true" style="display: none; cursor: pointer;"></i>
                                  </a>
+                                <t t-if="app.sections.length">
                                  <ul class="submenu">
                                      <t t-foreach="app.sections" t-as="section" t-key="section_index">
                                         <li>
@@ -88,7 +89,7 @@
                                         </li>
                                      </t>
                                  </ul>
-                                 
+                                 </t>
                             </li>
                         </t>
                     </ul>
