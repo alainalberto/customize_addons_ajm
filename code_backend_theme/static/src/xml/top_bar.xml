@@ -63,17 +63,26 @@
                                     <span class="sidebar_app_name">
                                         <t t-esc="app.name"/>
                                     </span>
-                                    <i class="fa fa-chevron-down sidebar_more" aria-hidden="true" style="display: block; cursor: pointer;"></i>
+                                    <i class="fa fa-chevron-down sidebar_more" aria-hidden="true" style="display: none; cursor: pointer;"></i>
                                     <i class="fa fa-chevron-down sidebar_less" aria-hidden="true" style="display: none; cursor: pointer;"></i>
                                  </a>
+                                 <ul class="submenu">
+                                     <t t-foreach="app.submenus" t-as="submenu" t-key="submenu_index">
+                                        <li>
+                                           <a role="menuitem" href="{{submenu.url}}">
+                                               {{submenu.name}}
+                                           </a>
+                                        </li>
+                                     </t>
+                                 </ul>
                                  <!-- Current App Sections -->
-                                <li data-toggle="tooltip" data-placement="right">
+                                <!--<li data-toggle="tooltip" data-placement="right">
                                   <t t-if="currentAppSections.length"
                                      t-call="web.NavBar.SectionsMenu">
                                      <t t-set="sections" t-value="currentAppSections"/>
                                    </t>
                                 </li>
-                                <!--<div class="d-xs-block d-sm-block  d-md-none">
+                                <div class="d-xs-block d-sm-block  d-md-none">
                                     <t t-call="web.NavBar.SectionsMenu.MoreDropdown">
                                        <t t-set="sections" t-value="currentAppSections"/>
                                     </t>
