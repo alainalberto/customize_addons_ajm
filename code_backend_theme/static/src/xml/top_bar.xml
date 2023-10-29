@@ -80,8 +80,10 @@
                                  <ul class="submenu">
                                      <t t-foreach="app.sections" t-as="section" t-key="section_index">
                                         <li>
-                                           <a role="menuitem" href="{{section.url}}">
-                                               {{section.name}}
+                                           <a role="menuitem" t-attf-href="#submenu_id={{section.url}}">
+                                               <span class="sidebar_app_name">
+                                                     <t t-esc="section.name"/>
+                                               </span>
                                            </a>
                                         </li>
                                      </t>
