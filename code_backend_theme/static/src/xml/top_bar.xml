@@ -29,7 +29,7 @@
                     <t t-set="sections" t-value="currentAppSections"/>
                   </t>
               </div>
-              <div class="d-xs-block d-sm-block  d-md-none">
+              <div class="d-xs-block d-sm-block">
                   <t t-call="web.NavBar.SectionsMenu.MoreDropdown">
                       <t t-set="sections" t-value="currentAppSections"/>
                   </t>
@@ -77,19 +77,14 @@
                                     <i class="fa fa-chevron-down sidebar_more" aria-hidden="true" style="display: none; cursor: pointer;"></i>
                                     <i class="fa fa-chevron-down sidebar_less" aria-hidden="true" style="display: none; cursor: pointer;"></i>
                                  </a>
-                                <!--<t t-if="app.sections.length">
-                                 <ul class="submenu">
-                                     <t t-foreach="app.sections" t-as="section" t-key="section_index">
-                                        <li>
-                                           <a role="menuitem" t-attf-href="#submenu_id={{section.url}}">
-                                               <span class="sidebar_app_name">
-                                                     <t t-esc="section.name"/>
-                                               </span>
-                                           </a>
-                                        </li>
-                                     </t>
-                                 </ul>
-                                 </t>-->
+                                 <DropdownItem
+                                   t-if="app"
+                                   href="getMenuItemHref(app)"
+                                   t-esc="app.name"
+                                   class="'o_menu_brand d-none d-md-block'"
+                                   dataset="{ menuXmlid: currentApp.xmlid, section: app.id }"
+                                   onSelected="() => this.onNavBarDropdownItemSelection(app)"
+                                />
                             </li>
                         </t>
                     </ul>
