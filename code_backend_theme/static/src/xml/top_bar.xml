@@ -23,7 +23,7 @@
               </div>
 
               <!-- Current App Sections -->
-                <div class="d-none d-md-block">
+                <div class=" d-md-block">
                   <t t-if="currentAppSections.length"
                      t-call="web.NavBar.SectionsMenu">
                     <t t-set="sections" t-value="currentAppSections"/>
