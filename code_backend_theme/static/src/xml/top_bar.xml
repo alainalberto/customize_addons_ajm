@@ -12,14 +12,14 @@
                      <t t-set="apps" t-value="menuService.getApps()"/>
                   </t>
                   <!-- App Brand -->
-                  <DropdownItem
+                 <!-- <DropdownItem
                           t-if="currentApp"
                           href="getMenuItemHref(currentApp)"
                           t-esc="currentApp.name"
                           class="'o_menu_brand d-none d-md-block'"
                           dataset="{ menuXmlid: currentApp.xmlid, section: currentApp.id }"
                           onSelected="() => this.onNavBarDropdownItemSelection(currentApp)"
-                  />
+                  />-->
               </div>
 
               <!-- Current App Sections -->
@@ -74,17 +74,15 @@
                                     <span class="sidebar_app_name">
                                         <t t-esc="app.name"/>
                                     </span>
-                                    <i class="fa fa-chevron-down sidebar_more" aria-hidden="true" style="display: none; cursor: pointer;"></i>
-                                    <i class="fa fa-chevron-down sidebar_less" aria-hidden="true" style="display: none; cursor: pointer;"></i>
                                  </a>
                                  <DropdownItem
-                                   t-if="app"
-                                   href="getMenuItemHref(app)"
-                                   t-esc="app.name"
-                                   class="'o_menu_brand d-none d-md-block'"
-                                   dataset="{ menuXmlid: currentApp.xmlid, section: app.id }"
-                                   onSelected="() => this.onNavBarDropdownItemSelection(app)"
-                                />
+                                    t-if="currentApp"
+                                    href="getMenuItemHref(currentApp)"
+                                    t-esc="currentApp.name"
+                                    class="'o_menu_brand d-none d-md-block'"
+                                    dataset="{ menuXmlid: currentApp.xmlid, section: currentApp.id }"
+                                    onSelected="() => this.onNavBarDropdownItemSelection(currentApp)"
+                                 />
                             </li>
                         </t>
                     </ul>
