@@ -72,7 +72,7 @@ class InsuranceDetails(models.Model):
         required=True, default='draft')
     hide_inv_button = fields.Boolean(copy=False)
     note_field = fields.Html(string='Comment')
-    policy_number = fields.Char(string="Policy Number", required=True,
+    policy_number = fields.Char(string="Policy Number",
                                    help="Policy number is a unique number that"
                                         "an insurance company uses to identify"
                                         "you as a policyholder")
@@ -82,11 +82,11 @@ class InsuranceDetails(models.Model):
     agency_id = fields.Many2one(
         'agency.details', string='Agency', required=True) 
     general_agency_id = fields.Many2one(
-        'general.agency.details', string='General Agency', required=True) 
+        'general.agency.details', string='General Agency') 
     carrier_id = fields.Many2one(
         'carrier.details', string='Carrier', required=True)
     mga = fields.Many2one(
-        'mga.details', string='MGA', required=True)
+        'mga.details', string='MGA')
     binder_id = fields.Char( string='Binder ID', copy=False )
     premium_sent = fields.Selection(
         [('gross', 'Gross'), ('monthly', 'Monthly'), ('net', 'Net')], 

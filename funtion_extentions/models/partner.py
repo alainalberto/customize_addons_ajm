@@ -31,8 +31,7 @@ class ResPartner(models.Model):
      x_cliente_uin = fields.Char(string="UIN", tracking=True)
      x_cliente_parking_address = fields.Char(string="Parking Lot Address", tracking=True)
      x_cliente_owner = fields.Char(string="Company Owner", tracking=True)
-     X_reference = fields.Many2one('res.partner.reference', string='Customer Reference', domain="[('partner_related_id', '=', 'partner_id')]",
-                                 required=True)
+     customer_reference_id = fields.Many2one('res.partner', string='Customer Reference', required=True)
 
 
 

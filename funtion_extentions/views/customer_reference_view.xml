@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_customer_reference_form">
+            <field name="name">customer.reference.form</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="customer_reference_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_customer_reference_form">
+            <field name="name">Contacto de Referencia</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_customer_reference_form"/>
+        </record>
+    </data>
+</odoo>
+
