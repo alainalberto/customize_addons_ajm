@@ -33,6 +33,7 @@
         'views/res_partner.xml',
         'views/webclient_templates.xml',
         'views/res_partner_views.xml',
+        'views/customer_reference_view.xml',
 
      ],
     'images': [],
