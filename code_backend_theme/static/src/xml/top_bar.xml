@@ -68,13 +68,12 @@
                                     <span class="sidebar_app_name">
                                         <t t-esc="app.name"/>
                                     </span>
-                                 </a>
-                                    
-                                <div role="menuitem">
+                                 </a>  
+                                 <div role="menuitem">
                                   <t t-if="currentAppSections.length" t-call="web.NavBar.SectionsMenu.MoreDropdown">
                                     <t t-set="sections" t-value="currentAppSections"/>
                                   </t>
-                                </div>
+                                 </div>
                             </li>
                         </t>
                     </ul>
