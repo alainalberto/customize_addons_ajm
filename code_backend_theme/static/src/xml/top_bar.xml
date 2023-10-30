@@ -3,6 +3,7 @@
     <t t-inherit="web.NavBar" t-inherit-mode="extension" owl="1">
         <xpath expr="//nav[hasclass('o_main_navbar')]" position="replace">
       <nav class="o_main_navbar d-flex justify-content-between"
+           t-on-dropdown-item-selected="onNavBarDropdownItemSelection"
            data-command-category="navbar">
           <div class="d-flex">
               <div class="top_heading">
@@ -27,6 +28,11 @@
                                       t-call="web.NavBar.SectionsMenu">
                                        <t t-set="sections" t-value="currentAppSections"/>
                                    </t>
+                                </div>
+                                <div class="d-xs-block d-sm-block">
+                                    <t t-call="web.NavBar.SectionsMenu.MoreDropdown">
+                                       <t t-set="sections" t-value="currentAppSections"/>
+                                    </t>
                                 </div>
           <!-- Systray -->
           <div class="o_menu_systray d-flex" role="menu">
@@ -62,13 +68,14 @@
                                 <a role="menuitem"
                                    t-attf-href="#menu_id={{app.id}}"
                                    class="nav-link">
-                                    <img class="sidebar_img"
-                                         t-attf-src="data:image/png;base64,{{app.webIconData}}"/>
+                                    <!--<img class="sidebar_img"
+                                         t-attf-src="data:image/png;base64,{{app.webIconData}}"/>-->
                                     <span class="sidebar_app_name">
-                                        <t t-esc="app.name"/>
+                                      <img class="sidebar_img"
+                                         t-attf-src="data:image/png;base64,{{app.webIconData}}"/>
+                                      <t t-esc="app.name"/>
                                     </span>
-                                 </a>  
-                                 </div>
+                                 </a>
                             </li>
                         </t>
                     </ul>
