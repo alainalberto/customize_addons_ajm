@@ -2,41 +2,7 @@
 <templates id="template" xml:space="preserve">
     <t t-inherit="web.NavBar" t-inherit-mode="extension" owl="1">
         <xpath expr="//nav[hasclass('o_main_navbar')]" position="replace">
-      <nav class="o_main_navbar d-flex justify-content-between"
-           data-command-category="navbar">
-          <div class="d-flex">
-              <div class="top_heading">
-                <!-- Apps Menu -->
-                  <t t-call="web.NavBar.AppsMenu">
-                     <t t-set="apps" t-value="menuService.getApps()"/>
-                  </t>
-                  <!-- App Brand -->
-                 <DropdownItem
-                          t-if="currentApp"
-                          href="getMenuItemHref(currentApp)"
-                          t-esc="currentApp.name"
-                          class="'o_menu_brand d-none d-md-block'"
-                          dataset="{ menuXmlid: currentApp.xmlid, section: currentApp.id }"
-                          onSelected="() => this.onNavBarDropdownItemSelection(currentApp)"
-                  />
-              </div>
-        </div>
-        <!-- Current App Sections -->
-                                <div class=" d-md-block">
-                                   <t t-if="currentAppSections.length"
-                                      t-call="web.NavBar.SectionsMenu">
-                                       <t t-set="sections" t-value="currentAppSections"/>
-                                   </t>
-                                </div>
-          <!-- Systray -->
-          <div class="o_menu_systray d-flex" role="menu">
-          <t t-foreach="systrayItems" t-as="item" t-key="item_index">
-            <ErrorHandler onError="error => handleItemError(error, item)">
-                <t t-component="item.Component" t-props="item.props"/>
-            </ErrorHandler>
-          </t>
-        </div>
-      </nav>
+     
             <div class="sidebar_panel" id="sidebar_panel">
                 <div class="sidebar">
                     <li class="dropdown">
@@ -68,11 +34,6 @@
                                         <t t-esc="app.name"/>
                                     </span>
                                  </a>  
-                                 <ul class="o_sidebar_sections">
-                                   <t t-foreach="app.sections" t-as="section" t-key="section_index">
-                                       <li><a t-attf-href="#menu_id={{section.id}}"><t t-esc="section.name"/></a></li>
-                                   </t>
-                                 </ul>
                                  </div>
                             </li>
                         </t>
