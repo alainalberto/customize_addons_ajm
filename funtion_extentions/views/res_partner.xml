@@ -7,17 +7,15 @@
         <field name="priority" eval="1"/>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-           <xpath expr="form[1]/sheet[1]/group[1]" position="inside">
-                 <group>
-                     <field name="customer_reference_id"/>
-                 </group>                
-           </xpath>
            
            <xpath expr="//form[1]/sheet[1]/group[1]/group[2]" position="inside">
                 <field name="x_cliente_ssn" placeholder="e.g. xxx-xx-xxxx" attrs="{'invisible': [('is_company', '=', True)]}"/>
                 <field name="x_cliente_owner" placeholder="" attrs="{'invisible': [('is_company', '=', False)]}"/>
            </xpath>
            <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
+                 
+                 <field name="customer_reference_id"/>
+                
                 <group name="group_left" >
                     <field name="x_cliente_mc"/>
                     <field name="x_cliente_tdmv"/>
