@@ -71,9 +71,11 @@
                                     <!--<img class="sidebar_img"
                                          t-attf-src="data:image/png;base64,{{app.webIconData}}"/>-->
                                     <span class="sidebar_app_name">
-                                      <img class="sidebar_img"
+                                      <img class="sidebar_name_img"
                                          t-attf-src="data:image/png;base64,{{app.webIconData}}"/>
                                       <t t-esc="app.name"/>
+                                      <img class="sidebar_img"
+                                         t-attf-src="data:image/png;base64,{{app.webIconData}}"/>
                                     </span>
                                  </a>
                             </li>

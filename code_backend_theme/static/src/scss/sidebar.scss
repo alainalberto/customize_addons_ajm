@@ -102,7 +102,12 @@
 	opacity: 1;
 }
 
-.sidebar_panel .sidebar .sidebar_menu li a .sidebar_img {
+.sidebar_panel .sidebar .sidebar_menu li a .sidebar_name_img {
     width: 20px;
     margin-right: 8px;
+}
+.sidebar_panel .sidebar .sidebar_menu li a .sidebar_img {
+    width: 50px;
+    margin-right: 8px;
+    display: none;
 }
