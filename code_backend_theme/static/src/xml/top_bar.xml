@@ -69,6 +69,7 @@
                                         <t t-esc="app.name"/>
                                     </span>
                                  </a>
+                                    
                                 <div role="menuitem">
                                   <t t-if="currentAppSections.length" t-call="web.NavBar.SectionsMenu.MoreDropdown">
                                     <t t-set="sections" t-value="currentAppSections"/>
