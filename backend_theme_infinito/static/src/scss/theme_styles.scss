@@ -27,7 +27,7 @@ color: var(--button-bg) !important;
   background-color: #28a745 !important;
 }
 .table-bordered{
-border: 1px solid #e9ecef !important;
+border: 1px solid #5f656b !important;
 }
 .o_MessageList_emptyTitle{
     text-align: center !important;
@@ -239,7 +239,7 @@ background-color:white !important;
 }
 .o_main_navbar {
     // width: 98%;
-    background: #f3efef;
+    background: #63667c;
     // margin: auto;
     background: transparent !important;
     height: 65px;
@@ -507,7 +507,7 @@ background-color:white !important;
         -webkit-box-shadow: 0px 0px 10px 1px rgba(240, 240, 240, 0.98);
         -moz-box-shadow: 0px 0px 10px 1px rgba(240, 240, 240, 0.98);
         box-shadow: 0px 0px 10px 1px rgba(240, 240, 240, 0.98);
-        background-color: white;
+        background-color: rgb(204, 196, 196);
         border-radius: 5px;
         margin-bottom: 20px !important;
         &:hover {
