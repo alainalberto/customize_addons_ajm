@@ -4,7 +4,7 @@ odoo.define('sidebar_app.SidebarMenu', function (require) {
     var session = require('web.session');
      
     function onDocumentReady() {
-        if (window.innerWidth <= 992) {
+        if (window.innerWidth > 992) {
              $("#openSidebar").hide();
              $("#closeSidebar").show();
              $("#sidebar_panel").css({'display':'block'});
