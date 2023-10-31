@@ -9,8 +9,8 @@ a#closeSidebar, a#openSidebar {
 	position: fixed;
 //    background-color: $nav_bar_color;
 //    background-color: #17252A;
-    background-color: #2F3033;
-    box-shadow: 0px 4px 11px 0px #888;
+    background-color: #525355;
+    box-shadow: 0px 4px 11px 0px #d6d0d0;
     display: block;
     width: 200px;
     overflow-y: scroll;
@@ -89,7 +89,7 @@ a#closeSidebar, a#openSidebar {
     cursor: pointer;
     overflow: hidden;
     padding: 8px 10px 8px 25px;
-    color: #514949;
+    color: #ccc6c6;
     font-size: 13px;
     transition:.3s all;
 }
