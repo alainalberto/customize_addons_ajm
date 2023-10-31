@@ -6,7 +6,7 @@ odoo.define('sidebar_app.SidebarMenu', function (require) {
     //sidebar toggle effect
     $(document).on("load", function(event){
         var sidebar = document.querySelector('#sidebar_panel')
-        if (sidebar.style.display == 'block') {
+        if (sidebar.style.display = 'block') {
             $("#openSidebar").hide();
             $("#closeSidebar").show();
             $("#sidebar_panel").css({'display':'block'});
