@@ -3,13 +3,11 @@ odoo.define('sidebar_app.SidebarMenu', function (require) {
 
     var session = require('web.session');
      
-    //sidebar toggle effect
-    $(document).on("load", function(event){
-        var sidebar = document.querySelector('#sidebar_panel')
-        if (sidebar.style.display = 'block') {
-            $("#openSidebar").hide();
-            $("#closeSidebar").show();
-            $("#sidebar_panel").css({'display':'block'});
+    function onDocumentReady() {
+        if (window.innerWidth <= 992) {
+             $("#openSidebar").hide();
+             $("#closeSidebar").show();
+             $("#sidebar_panel").css({'display':'block'});
             let marginLeft = $("#sidebar_panel").css('width');
             let margin_type = session.infinitoRtl ? 'margin-right' : 'margin-left';
             let style = `${margin_type}: calc(${marginLeft} + 25px)`
@@ -23,15 +21,17 @@ odoo.define('sidebar_app.SidebarMenu', function (require) {
             $("div").addClass(action_manager_id);
             action_manager.addClass("sidebar_margin");
 
-            //add class in top_heading
+             //add class in top_heading
             var top_head = $(".top_heading");
             var top_head_id = top_head.data("id");
             $("div").addClass(top_head_id);
             top_head.addClass("sidebar_margin");
-         } 
-         
-    });
+        }
 
+    }
+     
+    //sidebar toggle effect
+    
     $(document).on("click", "#closeSidebar", function(event){
         $("#closeSidebar").hide();
         $("#openSidebar").show();
@@ -110,4 +110,9 @@ odoo.define('sidebar_app.SidebarMenu', function (require) {
         $("div").removeClass(top_head_id);
         top_head.removeClass("sidebar_margin");
     });
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', onDocumentReady);
+    } else {
+        onDocumentReady();
+    }   
 });

@@ -3,6 +3,18 @@ a#closeSidebar, a#openSidebar {
     margin-left: 10px;
     color: white;
 }
+a#openSidebar {
+    display: none;
+}
+a#closeSidebar {
+    display: block;
+}
+.o_action_manager{
+    transition: all .1s linear
+}
+.top_heading{
+    transition: all .1s linear
+}
 #sidebar_panel {
     height: 100%;
 	position: fixed;
@@ -152,6 +164,12 @@ nav.o_main_navbar.small_nav {
     }
     #sidebar_panel {
         display: none;
+    }
+    a#openSidebar {
+        display: none;
+    }
+    a#closeSidebar {
+        display: block;
     }
 }
 @media (max-width:480px) {
