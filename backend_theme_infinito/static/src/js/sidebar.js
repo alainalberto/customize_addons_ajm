@@ -61,7 +61,11 @@ odoo.define('sidebar_app.SidebarMenu', function (require) {
         //sidebar close on menu-item click
         let margin_type = session.infinitoRtl ? 'margin-right' : 'margin-left';
         let style = `${margin_type}: 15px`;
-        $("#sidebar_panel").css({'display':'none'});
+        if (window.innerWidth <= 992) {
+           $("#sidebar_panel").css({'display':'none'});
+        } else {
+            $("#sidebar_panel").css({'display':'block'});
+        }
         $(".o_action_manager").attr('style', style);
         $("#closeSidebar").hide();
         $("#openSidebar").show();
