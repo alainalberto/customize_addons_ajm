@@ -97,18 +97,19 @@ odoo.define('sidebar_app.SidebarMenu', function (require) {
         $(".o_action_manager").attr('style', style);
         $("#closeSidebar").hide();
         $("#openSidebar").show();
+        if (window.innerWidth <= 992) {
+            //remove class in action-manager
+            var action_manager = $(".o_action_manager");
+            var action_manager_id = action_manager.data("id");
+            $("div").removeClass(action_manager_id);
+            action_manager.removeClass("sidebar_margin");
 
-        //remove class in action-manager
-        var action_manager = $(".o_action_manager");
-        var action_manager_id = action_manager.data("id");
-        $("div").removeClass(action_manager_id);
-        action_manager.removeClass("sidebar_margin");
-
-        //remove class in top_heading
-        var top_head = $(".top_heading");
-        var top_head_id = top_head.data("id");
-        $("div").removeClass(top_head_id);
-        top_head.removeClass("sidebar_margin");
+            //remove class in top_heading
+            var top_head = $(".top_heading");
+            var top_head_id = top_head.data("id");
+            $("div").removeClass(top_head_id);
+            top_head.removeClass("sidebar_margin");
+        }
     });
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', onDocumentReady);
