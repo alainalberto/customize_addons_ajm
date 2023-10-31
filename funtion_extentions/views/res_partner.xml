@@ -13,10 +13,7 @@
                 <field name="x_cliente_owner" placeholder="" attrs="{'invisible': [('is_company', '=', False)]}"/>
            </xpath>
            <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
-                 <span class="o_form_label o_td_label" name="address_name">
-                     <b>Reference Contact</b>
-                    <field name="customer_reference_id"/>
-                </span>
+                 
                 <group name="group_left" >
                     <field name="x_cliente_mc"/>
                     <field name="x_cliente_tdmv"/>
@@ -31,7 +28,11 @@
                     <field name="x_cliente_user"/>
                     <field name="x_cliente_pasw"/>
                     <field name="x_cliente_parking_address"/>
-                </group>   
+                </group> 
+                <span class="o_form_label o_td_label" name="reference_contact">
+                    <field name="customer_reference_id"/>
+                    <b>Reference Contact</b>
+                 </span>  
            </xpath>
         </field>
         
