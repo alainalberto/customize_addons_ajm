@@ -9,7 +9,7 @@ a#closeSidebar, a#openSidebar {
 	position: fixed;
 //    background-color: $nav_bar_color;
 //    background-color: #17252A;
-    background-color: #b9bcc2;
+    background-color: #585f6d;
     box-shadow: 0px 4px 11px 0px #d6d0d0;
     display: block;
     width: 200px;
@@ -49,6 +49,7 @@ a#closeSidebar, a#openSidebar {
 }
 .sidebar_panel .sidebar_close a#closeSidebar img {
     width: 15px;
+    color: #4b4848;
 }
 .sidebar_panel .sidebar .sidebar_logo {
     padding-top: 20px;
