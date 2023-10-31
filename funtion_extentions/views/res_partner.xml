@@ -11,6 +11,10 @@
            <xpath expr="//form[1]/sheet[1]/group[1]/group[2]" position="inside">
                 <field name="x_cliente_ssn" placeholder="e.g. xxx-xx-xxxx" attrs="{'invisible': [('is_company', '=', True)]}"/>
                 <field name="x_cliente_owner" placeholder="" attrs="{'invisible': [('is_company', '=', False)]}"/>
+                <span class="o_form_label o_td_label" name="reference_contact">
+                    <field name="customer_reference_id"/>
+                    <b>Reference Contact</b>
+                 </span>  
            </xpath>
            <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
                  
@@ -29,10 +33,6 @@
                     <field name="x_cliente_pasw"/>
                     <field name="x_cliente_parking_address"/>
                 </group> 
-                <span class="o_form_label o_td_label" name="reference_contact">
-                    <field name="customer_reference_id"/>
-                    <b>Reference Contact</b>
-                 </span>  
            </xpath>
         </field>
         
