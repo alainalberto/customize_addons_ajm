@@ -88,9 +88,5 @@ odoo.define('sidebar_app.SidebarMenu', function (require) {
         //remove class in action-manager
         
     });
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', onDocumentReady);
-    } else {
-        onDocumentReady();
-    }   
+      
 });
