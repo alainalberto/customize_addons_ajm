@@ -26,7 +26,7 @@ color: var(--button-bg) !important;
 .o_activity_view .o_activity_summary_cell.planned {
   background-color: #28a745 !important;
 }
-.table-bordered{
+.table-bordered{0
 border: 1px solid #5f656b !important;
 }
 .o_MessageList_emptyTitle{
@@ -39,7 +39,7 @@ color: #212529 !important;
 }
 
 .o_action_manager .o_action .o_content .o_list_renderer table tbody tr td, .o_action_manager .o_view_controller .o_content .o_list_view .table-responsive table tbody tr td{
-border: solid !important;
+    border: none !important;
     padding: 15px 15px !important;
     width: auto !important;
     font-size: 14px !important;
@@ -956,7 +956,7 @@ color: #fff;
 
 // Tabs
 .nav-tabs{
-	border-radius: 5px;
+	border-radius: 10px;
     .nav-item{
         .nav-link{
             Font-size:16px;
