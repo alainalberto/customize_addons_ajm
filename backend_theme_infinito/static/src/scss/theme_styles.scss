@@ -848,7 +848,8 @@ padding:none !important;
 
 .o_required_modifier .o_input,
 .o_required_modifier.o_input {
-     background:var(--border-color2) !important;
+    border-color: var(--red-color) !important;
+    background:var(--border-color2) !important;
 
 }
 select.o_field_widget.o_input  {
