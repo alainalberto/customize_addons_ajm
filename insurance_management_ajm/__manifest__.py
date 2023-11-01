@@ -40,7 +40,7 @@
         'views/policy_details_views.xml',
         'views/insurance_management_menus.xml'
     ],
-    'images': ['static/description/icon.png'],
+    'images': ['static/description/icon.svg'],
     'installable': True,
     'application': True,
     'auto_install': False,
