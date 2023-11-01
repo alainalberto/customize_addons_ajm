@@ -26,8 +26,8 @@ color: var(--button-bg) !important;
 .o_activity_view .o_activity_summary_cell.planned {
   background-color: #28a745 !important;
 }
-.table-bordered{0
-border: 1px solid #5f656b !important;
+.table-bordered{
+border: 1px solid #e9ecef !important;
 }
 .o_MessageList_emptyTitle{
     text-align: center !important;
@@ -39,7 +39,7 @@ color: #212529 !important;
 }
 
 .o_action_manager .o_action .o_content .o_list_renderer table tbody tr td, .o_action_manager .o_view_controller .o_content .o_list_view .table-responsive table tbody tr td{
-    border: none !important;
+border: none !important;
     padding: 15px 15px !important;
     width: auto !important;
     font-size: 14px !important;
@@ -239,7 +239,7 @@ background-color:white !important;
 }
 .o_main_navbar {
     // width: 98%;
-    background: #d19550;
+    background: #f3efef;
     // margin: auto;
     background: transparent !important;
     height: 65px;
@@ -507,7 +507,7 @@ background-color:white !important;
         -webkit-box-shadow: 0px 0px 10px 1px rgba(240, 240, 240, 0.98);
         -moz-box-shadow: 0px 0px 10px 1px rgba(240, 240, 240, 0.98);
         box-shadow: 0px 0px 10px 1px rgba(240, 240, 240, 0.98);
-        background-color: rgb(204, 196, 196);
+        background-color: white;
         border-radius: 5px;
         margin-bottom: 20px !important;
         &:hover {
@@ -725,7 +725,7 @@ background-color:white !important;
 // Badges
 .o_required_modifier .o_input{
 background:white !important;
-
+border:none !important;
 }
 .o_input {
   border-radius: 5px !important;
@@ -754,7 +754,7 @@ border: 0;
 border: none !important;
 }
 .align-middle{
-    border: none !important;
+border: none !important;
     padding: 15px 15px !important;
     font-size: 15px !important;
 }
@@ -838,8 +838,8 @@ padding:none !important;
 }
 
 .o_input {
-    border: 1px solid var(--border-color) !important;
-    border-radius: 2px !important;
+//     border: 1px solid var(--border-color) !important;
+    border-radius: 5px !important;
     color: #1f1f1f;
     background:var(--white-color) !important;
     padding: 10px 4px !important;
@@ -848,8 +848,7 @@ padding:none !important;
 
 .o_required_modifier .o_input,
 .o_required_modifier.o_input {
-    border-color: var(--red-color) !important;
-    background:var(--border-color2) !important;
+   background:var(--border-color2) !important;
 
 }
 select.o_field_widget.o_input  {
@@ -956,7 +955,7 @@ color: #fff;
 
 // Tabs
 .nav-tabs{
-	border-radius: 10px;
+	border-radius: 5px;
     .nav-item{
         .nav-link{
             Font-size:16px;
@@ -973,9 +972,10 @@ color: #fff;
 //Form view
 .o_form_view {
     .o_form_sheet_bg {
-        background: #b0d0fa;
+        background: none;
         padding-top: 0 !important;
         .o_form_sheet {
+            border: none !important;
             -webkit-box-shadow: 0px 0px 10px 1px rgba(240, 240, 240, 0.98);
             -moz-box-shadow: 0px 0px 10px 1px rgba(240, 240, 240, 0.98);
             box-shadow: 0px 0px 10px 1px rgba(240, 240, 240, 0.98);
