@@ -48,6 +48,10 @@ def icons_post_init_hook(cr, registry):
             img_path = get_module_resource(
                 'backend_theme_infinito', 'static', 'src', 'img', 'icons', 'sales.png')
             menu.write({'web_icon_data': base64.b64encode(open(img_path, "rb").read())})
+        if menu.name == 'Insurance':
+            img_path = get_module_resource(
+                'backend_theme_infinito', 'static', 'src', 'img', 'icons', 'insurance.png')
+            menu.write({'web_icon_data': base64.b64encode(open(img_path, "rb").read())})
         if menu.name == 'Invoicing':
             img_path = get_module_resource(
                 'backend_theme_infinito', 'static', 'src', 'img', 'icons', 'invoice.png')
