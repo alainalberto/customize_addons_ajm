@@ -1,10 +1,4 @@
-//Top Bar
-@font-face {
-    font-family: 'Poppins' !important;
-    src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap');
-}
 body {
-    font-family: 'Poppins', sans-serif !important;
     background: var(--color-white) !important;
 }
 thead, tbody, tfoot, tr, td, th {
@@ -731,9 +725,10 @@ background-color:white !important;
 // Badges
 .o_required_modifier .o_input{
 background:white !important;
+border:none !important;
 }
 .o_input {
-  border-radius: 5px !important;
+  border-radius: 0px !important;
   color: #1f1f1f;
   background: var(--white-color) !important;
   padding: 10px 4px !important;
@@ -843,8 +838,8 @@ padding:none !important;
 }
 
 .o_input {
-    border: 1px solid var(--border-color) !important;
-    border-radius: 5px !important;
+//     border: 1px solid var(--border-color) !important;
+    border-radius: 0px !important;
     color: #1f1f1f;
     background:var(--white-color) !important;
     padding: 10px 4px !important;
@@ -853,7 +848,7 @@ padding:none !important;
 
 .o_required_modifier .o_input,
 .o_required_modifier.o_input {
-   background:var(--border-color2) !important;
+//     background:var(--border-color2) !important;
 
 }
 select.o_field_widget.o_input  {
@@ -1009,7 +1004,7 @@ color: #fff;
 .o-dropdown.dropup > .o-dropdown--menu, .o-dropdown.dropdown > .o-dropdown--menu, .o-dropdown.dropleft > .o-dropdown--menu, .o-dropdown.dropright > .o-dropdown--menu {
   left: auto !important;
 }
-.o_list_renderer .o_list_table > thead > tr > :last-child, .o_list_renderer .o_list_table > tbody > tr > :last-child, .o_list_renderer .o_list_table > tfoot > tr > :last-child {
+o_list_renderer .o_list_table > thead > tr > :last-child, .o_list_renderer .o_list_table > tbody > tr > :last-child, .o_list_renderer .o_list_table > tfoot > tr > :last-child {
   padding-right: var(--ListRenderer-table-padding-h);
   width: 32px !important;
   min-width: 32px !important;

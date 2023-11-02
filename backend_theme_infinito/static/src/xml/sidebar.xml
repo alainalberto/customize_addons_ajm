@@ -163,8 +163,8 @@
                                                t-attf-src="data:image/png;base64,{{app.webIconData}}"/>
 <!--                                                <img t-attf-src="data:image/png;base64,{{app.webIconData}}"/>-->
                                             </div>
-                                            <b class="a_app_menu_title"><t t-esc="app.name"/></b>
-<!--                                            <p><t t-esc="app.name"/></p>-->
+<!--                                                  <b class="a_app_menu_title"><t t-esc="app.name"/></b>-->
+                                            <p><t t-esc="app.name"/></p>
                                         </a>
                                     </li>
                                 </t>

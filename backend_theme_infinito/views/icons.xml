@@ -6,8 +6,6 @@
         <menuitem id="base.menu_management" name="Apps"
                   web_icon="backend_theme_infinito,static/src/img/icons/apps.png"/>
         <menuitem id="mail.menu_root_discuss" name="Discuss"
-                  web_icon="backend_theme_infinito,static/src/img/icons/discuss.png"/>  
-        <menuitem id="base.menu_insurance" name="Insurance"
-                  web_icon="backend_theme_infinito,static/src/img/icons/insurance.png"/>        
+                  web_icon="backend_theme_infinito,static/src/img/icons/discuss.png"/>
     </data>
 </odoo>
