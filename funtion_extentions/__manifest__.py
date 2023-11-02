@@ -40,6 +40,7 @@
         'web.assets_backend_prod_only': [
             'funtion_extentions/static/src/js/favicon.js',
         ],
+    }
     'images': [],
 
     
