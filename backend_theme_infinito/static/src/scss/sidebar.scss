@@ -69,7 +69,7 @@ a#closeSidebar, a#openSidebar {
 .sidebar_panel .sidebar .sidebar_head {
     padding-top: 20px;
     padding-left: 15px;
-    color: #4b4848;
+    color: #CCCFDB;
     font-size: 14px;
 }
 .sidebar_panel .sidebar .sidebar_menu {
@@ -90,9 +90,12 @@ a#closeSidebar, a#openSidebar {
     cursor: pointer;
     overflow: hidden;
     padding: 8px 10px 8px 25px;
-    color: #ccc6c6;
+    color: #CCCFDB;
     font-size: 18px;
     transition:.3s all;
+}
+.sidebar_panel .sidebar .sidebar_menu li a img {
+    filter: grayscale(100%);
 }
 .sidebar_panel .sidebar .sidebar_menu li:hover  a {
     font-size: 20px;
