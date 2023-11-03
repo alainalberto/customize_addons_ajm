@@ -17,12 +17,12 @@
     border-radius: 10px;
     box-shadow: 1px 1px 15px 0;
     padding: 15px;
-    background-color: var(--bg_white);
+    background-color: #21618C;
 }
 
 #sidebar_panel {
     margin-left: 0px;
-    background-color: var(--nav_bar_color);
+    background-color: #3A4052;
 }
 
 .o_main_navbar .o_navbar_apps_menu.show .o-dropdown--menu dropdown-menu {
