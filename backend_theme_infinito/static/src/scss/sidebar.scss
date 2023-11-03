@@ -95,7 +95,7 @@ a#closeSidebar, a#openSidebar {
     transition:.3s all;
 }
 .sidebar_panel .sidebar .sidebar_menu li a img {
-    filter: grayscale(100%);
+    filter: grayscale(100%) !important;
 }
 .sidebar_panel .sidebar .sidebar_menu li:hover  a {
     font-size: 20px;
