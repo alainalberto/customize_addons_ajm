@@ -155,7 +155,7 @@ background-color: white !important;
     border-left-width: 12px;
 }
 .o_wrap_field > .o_cell >.o_field_widget > .o_field_tags > .rounded-pill{
-  background-color: var(--tr-button-bg) !important;
+  background-color: var(--t-button-bg) !important;
   font-weight: 500 !important;
   color: var(--button-bg) !important;
   width: 148px !important;
@@ -279,7 +279,7 @@ background-color:white !important;
 }
 .o_MessagingMenu_counter,
 .o_notification_counter {
-    background: var(--button-bg) !important;
+    background: var(--sc-button-bg) !important;
     color: var(--white-color) !important;
 }
 
@@ -790,7 +790,7 @@ font-weight: 400 !important;
   opacity: 25 !important ; /* Firefox */
 }
 .o_ActivityMenuView_counter{
-background-color: var(--button-bg) !important;
+background-color: var(--sc-button-bg) !important;
 color:white !important;
 }
 .o_field_badge {
