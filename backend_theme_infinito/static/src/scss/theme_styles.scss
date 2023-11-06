@@ -5,7 +5,7 @@ thead, tbody, tfoot, tr, td, th {
   border-style: none !important;
   padding:20px;
 }
-btn-fill-odoo:hover, .btn-odoo:hover {
+.btn-fill-odoo:hover, .btn-odoo:hover {
   background-color: #e9ecef !important;
 }
 .btn-light:hover, .o_form_view .o_statusbar_status .o_arrow_button:hover:not(.disabled) {
@@ -255,7 +255,7 @@ background-color:white !important;
 }
 .o_main_navbar {
     // width: 98%;
-    background: #7FB3D5 !important;
+    background: #21618C !important;
     // margin: auto;
     //background: transparent !important;
     height: 65px;
@@ -266,24 +266,24 @@ background-color:white !important;
     border: 1px solid transparent;
     border-bottom-color: #e3e3e3;
     .o_menu_brand {
-        color: var(--brand-1) !important;
+        color: var(--bg_white) !important;
         font-size: 24px !important;
         font-weight: 500;
         &:hover {
-            color: var(--black-color) !important;
+            color: var(--text-color) !important;
         }
     }
     .dropdown-toggle {
-        color: var(--text-color-1) !important;
+        color: var(--bg_white) !important;
         font-size: 15px !important;
     }
     .o_nav_entry {
-        color: var(--text-color-1);
+        color: var(--bg_white);
         font-size: 15px;
     }
     .o_menu_sections {
         .o_nav_entry {
-            color: var(--text-color-1);
+            color: var(--bg_white);
             font-size: 15px;
         }
     }
