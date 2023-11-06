@@ -15,7 +15,6 @@ a#closeSidebar, a#openSidebar {
     width: 200px;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
-    scrollbar-width: none;  /* Hide scrollbar for Firefox */
     z-index: 999;
 }
 
@@ -38,7 +37,7 @@ a#closeSidebar, a#openSidebar {
     height: 35px;
     padding-top: 5px;
     top: 0;
-    background: var(--tr-button-bg);
+    background: #1e2230;
     z-index: 1;
 }
 .sidebar_panel .sidebar_close a#closeSidebar {
@@ -91,7 +90,7 @@ a#closeSidebar, a#openSidebar {
     overflow: hidden;
     padding: 8px 10px 8px 25px;
     color: #CCCFDB;
-    font-size: 18px;
+    font-size: 12px;
     transition:.3s all;
 }
 .sidebar_panel .sidebar .sidebar_menu li a img {
