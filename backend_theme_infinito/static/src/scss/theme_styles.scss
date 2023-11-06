@@ -162,6 +162,12 @@ background-color: white !important;
   text-align: center !important;
   padding: 7px 5px !important;
 }
+
+.rounded-pill.text-bg-success {
+    background-color: var(--t-button-bg) !important;
+    color: var(--button-bg) !important;
+}
+
 .o_tag.o_tag_color_10 {
   background-color: #30C381 !important;
 }
@@ -283,7 +289,7 @@ background-color:white !important;
     color: var(--white-color) !important;
 }
 
-// Main body
+// Main bodyz
 .o_action_manager {
     // margin-top: 25px !important;
     // width: 98% !important;
