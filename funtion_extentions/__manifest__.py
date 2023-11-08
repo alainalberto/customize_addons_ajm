@@ -30,6 +30,7 @@
     'summary': 'Short summary.',
     'depends': ['account','base_setup', 'base', 'contacts'],
     'data': [
+        'security/ir.model.access.csv'
         'views/res_partner.xml',
         'views/webclient_templates.xml',
         'views/res_partner_views.xml',
