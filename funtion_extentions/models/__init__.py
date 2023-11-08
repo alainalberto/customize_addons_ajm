@@ -1,1 +1,1 @@
-from . import partner, vehicle_details, driver_details
+from . import partner
