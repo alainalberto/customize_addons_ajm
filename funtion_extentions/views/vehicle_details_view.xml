@@ -1,36 +1,38 @@
-<record id="view_vehicle_details_form" model="ir.ui.view">
-    <field name="name">vehicle.details.form</field>
-    <field name="model">vehicle.details</field>
-    <field name="arch" type="xml">
-        <form string="Vehicle Details">
-            <sheet>
-                <group>
-                    <field name="type_id"/>
-                    <field name="make"/>
-                    <field name="model"/>
-                    <field name="year"/>
-                    <field name="vin_number"/>
-                    <field name="license_plate"/>
-                    <field name="description"/>
-                    <field name="registration_exp_date"/>
-                    <field name="use"/>
-                    <field name="driver_id"/>
-                </group>
-            </sheet>
-        </form>
-    </field>
-</record>
-<record id="view_vehicle_details_tree" model="ir.ui.view">
-    <field name="name">vehicle.details.tree</field>
-    <field name="model">vehicle.details</field>
-    <field name="arch" type="xml">
-        <tree string="Vehicle Details">
-            <field name="type_id"/>
-            <field name="make"/>
-            <field name="model"/>
-            <field name="year"/>
-            <field name="vin_number"/>
-            <field name="license_plate"/>
-        </tree>
-    </field>
-</record>
+<odoo>
+    <record id="view_vehicle_details_form" model="ir.ui.view">
+        <field name="name">vehicle.details.form</field>
+        <field name="model">vehicle.details</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Details">
+                <sheet>
+                    <group>
+                        <field name="type_id"/>
+                        <field name="make"/>
+                        <field name="model"/>
+                        <field name="year"/>
+                        <field name="vin_number"/>
+                        <field name="license_plate"/>
+                        <field name="description"/>
+                        <field name="registration_exp_date"/>
+                        <field name="use"/>
+                        <field name="driver_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_vehicle_details_tree" model="ir.ui.view">
+        <field name="name">vehicle.details.tree</field>
+        <field name="model">vehicle.details</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicle Details">
+                <field name="type_id"/>
+                <field name="make"/>
+                <field name="model"/>
+                <field name="year"/>
+                <field name="vin_number"/>
+                <field name="license_plate"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
