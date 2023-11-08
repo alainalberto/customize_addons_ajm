@@ -24,22 +24,6 @@ from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 
 
-class InsuranceDetails(models.Model):
-    _name = 'insurance.details'
-
-    name = fields.Char(
-        string='Name', required=True, copy=False, readonly=True, index=True,
-        default=lambda self: _('New'))
-    partner_id = fields.Many2one('res.partner', string='Customer',
-                                 required=True)
-    
-    
-    
-    
-    
-
-    
-
 class FinancialDetails(models.Model):
     _name = 'financial.details'
     
