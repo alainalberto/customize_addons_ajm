@@ -70,7 +70,7 @@ class SaleOrder(models.Model):
     policy_binder_id = fields.Char( string='Binder ID', copy=False )
     policy_premium_sent = fields.Selection(
         [('gross', 'Gross'), ('monthly', 'Monthly'), ('net', 'Net')], 
-        required=True, default='new', string='Transaction')
+        required=True, default='gross', string='Transaction')
     policy_binder_invoice = fields.Char(string="Carrier Invoice Number" )
     policy_financial_id = fields.Many2one(
         'financial.details', string='Financial')
