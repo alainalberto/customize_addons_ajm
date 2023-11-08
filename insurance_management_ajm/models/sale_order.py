@@ -35,7 +35,7 @@ class SaleOrder(models.Model):
         default=lambda self: self.env.user.company_id.currency_id.id,
         store=True, precompute=True, ondelete="restrict")
     # Policy fields
-    policy_hide_inv_button = fields.Boolean(copy=False)
+    is_policy = fields.Boolean(copy=False)
     policy_start_date = fields.Date(
         string='Start Date', default=fields.Date.context_today, required=True)
     policy_efective_date = fields.Date(

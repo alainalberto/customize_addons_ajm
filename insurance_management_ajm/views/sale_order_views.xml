@@ -20,7 +20,7 @@
                     </header>
                     <!-- Control the visibility of other switch-based fields -->
                     <group name="sale_order_policy_group" position="after">
-                        <group attrs="{'invisible': [('policy_hide_inv_button', '=', False)]}">
+                        <group attrs="{'invisible': [('is_policy', '=', False)]}">
                             <group name="general_polycy_info" string="General">
                                 <field name="policy_number"/>
                                 <field name="policy_start_date"/>
