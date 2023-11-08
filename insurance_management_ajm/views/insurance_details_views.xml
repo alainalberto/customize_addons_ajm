@@ -5,15 +5,15 @@
         <field name="name">insurance.details.view.tree</field>
         <field name="model">sale.order</field>
         <field name="arch" type="xml">
-            <tree string="Insurance Details Tree" attrs="{'invisible': [('is_policy', '=', False)]}" >
+            <tree string="Insurance Details Tree">
                 <field name="is_policy" invisible="1"/>
-                <field name="partner_id"/>
-                <field name="policy_number"/>
-                <field name="user_id"/>
+                <field name="partner_id" attrs="{'invisible': [('is_policy', '=', False)]}"/>
+                <field name="policy_number" attrs="{'invisible': [('is_policy', '=', False)]}"/>
+                <field name="user_id" attrs="{'invisible': [('is_policy', '=', False)]}"/>
                 <field name="currency_id" invisible="1"/>
-                <field name="policy_premium"/>
-                <field name="policy_start_date"/>
-                <field name="state"/>
+                <field name="policy_premium" attrs="{'invisible': [('is_policy', '=', False)]}"/>
+                <field name="policy_start_date" attrs="{'invisible': [('is_policy', '=', False)]}"/>
+                <field name="state" attrs="{'invisible': [('is_policy', '=', False)]}"/>
             </tree>
         </field>
     </record>
