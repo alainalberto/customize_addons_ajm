@@ -16,10 +16,7 @@
                 <!-- Add your modifications to the existing view -->
                 <xpath expr="//form/sheet/group" position="before">
                     <div class="oe_button_box" name="policy_button_box">
-                        <button type="button" class="btn btn-primary">
-                            <span class="o_stat_text">Policy </span>
-                            <field name="is_policy" widget="toggle_button" options="{'terminology': 'switch'}" string="Policy"/>
-                        </button>
+                            <field name="is_policy" widget="boolean" options="{'terminology': 'switch'}" string="Policy"/>
                     </div>
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
