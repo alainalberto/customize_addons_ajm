@@ -36,7 +36,7 @@
                     </span> 
             </xpath>
             <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]" position="after">
-                <page string="Drivers and Vehicles" attrs="{'invisible': [('is_company', '=', False]}">
+                <page string="Drivers and Vehicles" attrs="{'invisible': [('is_company', '=', False)]}">
                     <group string="Drivers">
                         <button name="action_create_driver" string="Add Driver" type="object" class="oe_highlight"/>
                         <field name="driver_ids">
