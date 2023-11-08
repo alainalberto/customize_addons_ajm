@@ -1,20 +1,6 @@
 
 from odoo import api, fields, models
 
-
-
-class ContractRelated(models.Model):
-    _name = 'res.partner.reference'
-    _description = 'Contact Reference'
-    
-    partner_id = fields.Many2one('res.partner', required=True, ondelete='restrict', auto_join=True, index=True,
-        string='Related Reference', help='Partner-related data of the Contact')
-    partner_related_id = fields.Many2one('res.partner', string='Contact Reference', domain="[('is_company', '=', False)]")
-
-
-
-
-
 class ResPartner(models.Model):
      _inherit = "res.partner"
 
@@ -31,7 +17,7 @@ class ResPartner(models.Model):
      x_cliente_uin = fields.Char(string="UIN", tracking=True)
      x_cliente_parking_address = fields.Char(string="Parking Lot Address", tracking=True)
      x_cliente_owner = fields.Char(string="Company Owner", tracking=True)
-     customer_reference_id = fields.Many2one('res.partner', string='Customer Reference', required=True)
+     customer_reference_id = fields.Many2one('res.partner', string='Customer Reference', domain="[('is_company', '=', False)]")
      driver_ids = fields.One2many('driver.details', 'partner_id', string='Drivers')
      vehicle_ids = fields.One2many('vehicle.details', 'partner_id', string='Vehicles')
      
