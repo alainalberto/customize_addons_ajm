@@ -35,31 +35,33 @@
                     <field name="customer_reference_id"/>   
                     </span> 
             </xpath>
-            <page string="Drivers and Vehicles">
-                <group string="Drivers">
-                    <button name="action_create_driver" string="Add Driver" type="object" class="oe_highlight"/>
-                    <field name="driver_ids">
-                        <tree editable="bottom">
-                            <field name="name"/>
-                            <field name="phone"/>
-                            <field name="driving_license"/>
-                        </tree>
-                    </field>
-                </group>
-                <group string="Vehicle">
-                    <button name="action_create_vehicle" string="Add Vehicle" type="object" class="oe_highlight"/>
-                    <field name="vehicle_ids">
-                        <tree editable="bottom">
-                            <field name="type_id"/>
-                            <field name="make"/>
-                            <field name="model"/>
-                            <field name="year"/>
-                            <field name="license_plate"/>
-                            <field name="driver_id"/>
-                        </tree>
-                    </field>
-                </group>        
-            </page>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]" position="after">
+                <page string="Drivers and Vehicles" attrs="{'invisible': [('is_company', '=', False]}">
+                    <group string="Drivers">
+                        <button name="action_create_driver" string="Add Driver" type="object" class="oe_highlight"/>
+                        <field name="driver_ids">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="phone"/>
+                                <field name="driving_license"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Vehicle">
+                        <button name="action_create_vehicle" string="Add Vehicle" type="object" class="oe_highlight"/>
+                        <field name="vehicle_ids">
+                            <tree editable="bottom">
+                                <field name="type_id"/>
+                                <field name="make"/>
+                                <field name="model"/>
+                                <field name="year"/>
+                                <field name="license_plate"/>
+                                <field name="driver_id"/>
+                            </tree>
+                        </field>
+                    </group>        
+                </page>
+            </xpath>
         </field>
         
     </record>
