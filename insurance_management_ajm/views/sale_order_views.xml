@@ -16,15 +16,13 @@
                 <!-- Add your modifications to the existing view -->
                 <xpath expr="//form" position="inside">
                     <header position="inside">
-                       <button string="Policy" name="action_name" type="object" class="oe_highlight"/>
-                           <field name="is_policy" widget="toggle_button" options="{'terminology': 'switch'}"/>
-                        </button>
+                        <field name="is_policy" widget="toggle_button" options="{'terminology': 'switch'}" string="Policy"/>
                     </header>
                     
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
                     <!-- Control the visibility of other switch-based fields -->
-                        <group name="general_polycy_info" string="General">
+                        <group name="general_polycy_info" string="General" attrs="{'invisible': [('is_policy', '=', False)]}">
                             <field name="policy_number"/>
                             <field name="policy_start_date"/>
                             <field name="policy_efective_date"/>
@@ -40,7 +38,7 @@
                             <field name="policy_premium_sent"/>
 
                         </group> 
-                        <group name="aditional_polycy_info" string="Additional"> 
+                        <group name="aditional_polycy_info" string="Additional" attrs="{'invisible': [('is_policy', '=', False)]}"> 
                             <field name="policy_agency_id"/>
                             <field name="policy_general_agency_id"/>
                             <field name="policy_carrier_id"/>
@@ -51,11 +49,11 @@
                             <field name="policy_amount_financed"/>
                         </group>
                             
-                        <field name="policy_premium"/>
-                        <field name="policy_total"/>
-                        <field name="policy_down_payment"/>
-                        <field name="policy_fee"/>
-                        <field name="policy_commission_total"/> 
+                        <field name="policy_premium" attrs="{'invisible': [('is_policy', '=', False)]}"/>
+                        <field name="policy_total" attrs="{'invisible': [('is_policy', '=', False)]}"/>
+                        <field name="policy_down_payment" attrs="{'invisible': [('is_policy', '=', False)]}"/>
+                        <field name="policy_fee" attrs="{'invisible': [('is_policy', '=', False)]}"/>
+                        <field name="policy_commission_total" attrs="{'invisible': [('is_policy', '=', False)]}"/> 
                 </xpath>
                 <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
                     <attribute name="invisible">1</attribute> 
