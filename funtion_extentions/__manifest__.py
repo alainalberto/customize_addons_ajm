@@ -34,8 +34,8 @@
         'views/webclient_templates.xml',
         'views/res_partner_views.xml',
         'views/customer_reference_view.xml',
-        'views\vehicle_details_view.xml',
-        'views\driver_details_view.xml',
+        'views/vehicle_details_view.xml',
+        'views/driver_details_view.xml',
 
      ],
     'assets': {
