@@ -1,7 +1,7 @@
 <odoo>
-    <record model="ir.ui.view" id="driver_form_view">
+    <record model="ir.ui.view" id="view_driver_details_form">
         <field name="name">Driver Form View</field>
-        <field name="model">driver</field>
+        <field name="model">driver.details</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
@@ -21,9 +21,9 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="driver_tree_view">
+    <record model="ir.ui.view" id="view_driver_details_tree">
         <field name="name">Driver Tree View</field>
-        <field name="model">driver</field>
+        <field name="model">driver.details</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
