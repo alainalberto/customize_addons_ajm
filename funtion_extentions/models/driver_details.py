@@ -9,7 +9,7 @@ class DiverDetails(models.Model):
     
     name = fields.Char(string="Name", store=True, readonly=False, tracking=True)
     partner_id = fields.Many2one('res.partner', string='Customer')
-    active = fields.Boolean('Active', related='resource_id.active', default=True, store=True, readonly=False)
+    active = fields.Boolean('Active', default=True, store=True, readonly=False)
     address_home_id = fields.Many2one(
         'res.partner', 'Address', help='Enter here the private address of the driver, not the one linked to your company.',
         tracking=True,
