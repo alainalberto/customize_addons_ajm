@@ -16,12 +16,11 @@
                 <!-- Add your modifications to the existing view -->
                 <form string="Sales Order" version="7.0">
                     <header position="inside">
-                        <field name="policy_hide_inv_button" widget="toggle_button" options="{'terminology': 'switch'}" default=True/>
+                        <field name="is_policy" widget="toggle_button" options="{'terminology': 'switch'}" default=True/>
                     </header>
                     <!-- Control the visibility of other switch-based fields -->
                     <group name="sale_order_policy_group" position="after">
                         <group attrs="{'invisible': [('is_policy', '=', False)]}">
-                            <field name="is_policy" invisible="1"/>
                             <group name="general_polycy_info" string="General">
                                 <field name="policy_number"/>
                                 <field name="policy_start_date"/>
