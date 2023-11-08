@@ -1,5 +1,15 @@
 from odoo import api, fields, models
 
+READONLY_FIELD_STATES = {
+    state: [('readonly', True)]
+    for state in {'sale', 'done', 'cancel'}
+}
+
+LOCKED_FIELD_STATES = {
+    state: [('readonly', True)]
+    for state in {'done', 'cancel'}
+}
+
 class SaleOrder(models.Model):
     """Inherits from 'sale.order' and adds custom fields and methods."""
     _inherit = 'sale.order'
