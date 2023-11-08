@@ -4,13 +4,13 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
     
     
-    type = fields.Selection(
+    premium_sent = fields.Selection(
         [('gross', 'Gross'), ('monthly', 'Monthly'), ('net', 'Net')], 
         required=True, default='net', string='Type')
     transantion_type= fields.Selection(
         [('positive', 'Add'), ('negative', 'Remove')], 
         required=True, default='positive', string='Transation Type')
-    display_type = fields.Selection(
+    type = fields.Selection(
         selection=[
             ('initial', 'Initial Base Premium'),
             ('positive_add', 'Positive Endorsement Premium'),
@@ -29,7 +29,7 @@ class SaleOrderLine(models.Model):
             ('other', 'Other')
         ],
         default = 'new',
-        store=True, readonly=False, precompute=True,
+        store=True, precompute=True,
         required=True,
     )
     down_payment = fields.Float(string='Down Payment')
