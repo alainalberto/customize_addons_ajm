@@ -11,8 +11,6 @@
               action="employee_details_action" sequence="10"/>
     <menuitem id="insurance_management_menu_configuration" name="Configuration" parent="insurance_management_menu_root"
               sequence="30"/>
-    <menuitem id="policy_details_menu_action" name="Policy" parent="insurance_management_menu_configuration"
-              action="policy_details_action" sequence="10"/>
     <menuitem id="res_partner_customer_menu_action" name="Customers" parent="insurance_management_menu_configuration"
               action="base.action_partner_customer_form" sequence="20"/>
 
