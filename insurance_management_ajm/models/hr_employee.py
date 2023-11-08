@@ -69,7 +69,6 @@ class EmployeeDetails(models.Model):
             'invoice_date': fields.Date.context_today(self),
             'partner_id': self.user_id.partner_id.id,
             'invoice_user_id': self.env.user.id,
-            'claim_id': self.id,
             'invoice_origin': self.name,
             'invoice_line_ids': [(0, 0, {
                 'name': 'Invoice For Insurance Claim',

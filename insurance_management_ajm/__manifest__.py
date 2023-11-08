@@ -34,7 +34,6 @@
     'data': [
         'security/ir.model.access.csv',
         'data/insurance_management_data.xml',
-        'views/claim_details_views.xml',
         'views/employee_details_views.xml',
         'views/insurance_details_views.xml',
         'views/sale_order_views.xml',
