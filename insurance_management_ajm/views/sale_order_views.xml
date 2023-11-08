@@ -14,12 +14,16 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <!-- Add your modifications to the existing view -->
-                <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
+                <xpath expr="//form" position="inside">
                     <header position="inside">
-                        <field name="is_policy" widget="toggle_button" options="{'terminology': 'switch'}"/>
+                       <button string="Policy" name="action_name" type="object" class="oe_highlight"/>
+                           <field name="is_policy" widget="toggle_button" options="{'terminology': 'switch'}"/>
+                        </button>
                     </header>
+                    
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
                     <!-- Control the visibility of other switch-based fields -->
-                    <group name="sale_order_policy_group" position="after">
                         <group name="general_polycy_info" string="General">
                             <field name="policy_number"/>
                             <field name="policy_start_date"/>
@@ -52,7 +56,6 @@
                         <field name="policy_down_payment"/>
                         <field name="policy_fee"/>
                         <field name="policy_commission_total"/> 
-                    </group>
                 </xpath>
                 <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
                     <attribute name="invisible">1</attribute> 
