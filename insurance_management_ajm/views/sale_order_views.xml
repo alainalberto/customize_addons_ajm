@@ -14,46 +14,45 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <!-- Add your modifications to the existing view -->
-                <form string="Sales Order" version="7.0">
+                <form string="Sales Order" version="7.0" class="o_sale_order">
                     <header position="inside">
+                        
                         <field name="is_policy" widget="toggle_button" options="{'terminology': 'switch'}" default=True/>
                     </header>
                     <!-- Control the visibility of other switch-based fields -->
                     <group name="sale_order_policy_group" position="after">
-                        <group attrs="{'invisible': [('is_policy', '=', False)]}">
-                            <group name="general_polycy_info" string="General">
-                                <field name="policy_number"/>
-                                <field name="policy_start_date"/>
-                                <field name="policy_efective_date"/>
-                                <group>
-                                    <field name="policy_exp_date"/>
-                                    <field name="policy_auto_renew"/>
-                                </group>
-                                <group>
-                                    <field name="policy_binder_id"/>
-                                    <field name="policy_bind_day"/>
-                                </group>  
-                                <field name="policy_binder_invoice"/>  
-                                <field name="policy_premium_sent"/>
-
-                            </group> 
-                            <group name="aditional_polycy_info" string="Additional"> 
-                                <field name="policy_agency_id"/>
-                                <field name="policy_general_agency_id"/>
-                                <field name="policy_carrier_id"/>
-                                <field name="policy_mga"/>
-                                <field name="policy_financial_id"/>
-                                <field name="policy_next_due"/>
-                                <field name="policy_paid_mga"/>
-                                <field name="policy_amount_financed"/>
-                                </group>
-                                
-                                <field name="policy_premium"/>
-                                <field name="policy_total"/>
-                                <field name="policy_down_payment"/>
-                                <field name="policy_fee"/>
-                                <field name="policy_commission_total"/> 
+                        <group name="general_polycy_info" string="General">
+                            <field name="policy_number"/>
+                            <field name="policy_start_date"/>
+                            <field name="policy_efective_date"/>
+                            <group>
+                                <field name="policy_exp_date"/>
+                                <field name="policy_auto_renew"/>
                             </group>
+                            <group>
+                                <field name="policy_binder_id"/>
+                                <field name="policy_bind_day"/>
+                            </group>  
+                            <field name="policy_binder_invoice"/>  
+                            <field name="policy_premium_sent"/>
+
+                        </group> 
+                        <group name="aditional_polycy_info" string="Additional"> 
+                            <field name="policy_agency_id"/>
+                            <field name="policy_general_agency_id"/>
+                            <field name="policy_carrier_id"/>
+                            <field name="policy_mga"/>
+                            <field name="policy_financial_id"/>
+                            <field name="policy_next_due"/>
+                            <field name="policy_paid_mga"/>
+                            <field name="policy_amount_financed"/>
+                        </group>
+                            
+                        <field name="policy_premium"/>
+                        <field name="policy_total"/>
+                        <field name="policy_down_payment"/>
+                        <field name="policy_fee"/>
+                        <field name="policy_commission_total"/> 
                     </group>
                 </form>
                 <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
