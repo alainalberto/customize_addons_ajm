@@ -37,7 +37,7 @@
         'views/claim_details_views.xml',
         'views/employee_details_views.xml',
         'views/insurance_details_views.xml',
-        'views/policy_details_views.xml',
+        'views/sale_order_views.xml',
         'views/insurance_management_menus.xml'
     ],
     'images': ['static/description/icon.svg'],

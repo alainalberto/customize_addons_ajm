@@ -27,20 +27,7 @@ class PolicyDetails(models.Model):
     _name = 'policy.details'
 
     name = fields.Char(string='Name', required=True)
-    policy_type_id = fields.Many2one(
-        'policy.type', string='Policy Type', required=True)
-    payment_type = fields.Selection(
-        [('fixed', 'Fixed'), ('installment', 'Installment')],
-        required=True, default='fixed')
-    currency_id = fields.Many2one(
-        'res.currency', string='Currency', required=True,
-        default=lambda self: self.env.user.company_id.currency_id.id)
-    amount = fields.Monetary(string='Amount')
-    policy_duration = fields.Integer(string='Duration in Days')
-    note_field = fields.Html(string='Comment')
+    
 
 
-class PolicyType(models.Model):
-    _name = 'policy.type'
 
-    name = fields.Char(string='Name')

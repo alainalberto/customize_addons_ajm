@@ -48,7 +48,7 @@ class EmployeeDetails(models.Model):
         if self.invoice_id:
             if self.invoice_id.state == 'draft':
                 raise UserError(_("You must validate the last payment made in "
-                                  "order to create a new payment"))
+                                "order to create a new payment"))
         amount = 0.0
         if self.base_salary == 0.0:
             raise UserError(_("Amount should be greater than zero"))
@@ -85,8 +85,27 @@ class EmployeeDetails(models.Model):
 
     @api.constrains('phone')
     def check_phone(self):
-        """ make sure phone contains only numbers"""
+        """ make sure phone contains only valid characters"""
         for rec in self:
-            if not re.match('^[0-9]*$', rec.phone):
+            if not re.match('^[0-9+\-() ]*$', rec.phone):
                 raise ValidationError(
-                    _('Only numbers are permitted in phone number'))
+                    _('Only numbers, plus sign, hyphen, parentheses and spaces are permitted in phone number'))
+
+class CommissionAgentDetails(models.Model):
+    _name = 'commission.agent.details'
+    
+    sale_id  = fields.Many2many('sale.order', required=True)
+    employee_id = fields.Many2many('hr.employee', required=True)
+    commission_rate = fields.Float()
+    periodo_start_date = fields.Date()
+    periodo_end_date = fields.Date()
+    last_payment_date = fields.Date()
+    total_commission = fields.Float()
+    
+    @api.constrains('commission_rate')
+    def _check_commission_rate(self):
+        if self.filtered(
+                lambda reward: (
+                        reward.commission_rate < 0 or reward.commission_rate > 100)):
+            raise ValidationError(
+                _('Commission Percentage should be between 1-100'))

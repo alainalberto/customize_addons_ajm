@@ -1,5 +1,5 @@
 
-from odoo import api, fields, models, _
+from odoo import api, fields, models
 
 
 
@@ -32,6 +32,30 @@ class ResPartner(models.Model):
      x_cliente_parking_address = fields.Char(string="Parking Lot Address", tracking=True)
      x_cliente_owner = fields.Char(string="Company Owner", tracking=True)
      customer_reference_id = fields.Many2one('res.partner', string='Customer Reference', required=True)
+     driver_ids = fields.One2many('driver.details', 'partner_id', string='Drivers')
+     vehicle_ids = fields.One2many('vehicle.details', 'partner_id', string='Vehicles')
+     
+     def action_create_driver(self):
+        self.ensure_one()
+        return {
+            'name': 'Create Driver',
+            'type': 'ir.actions.act_window',
+            'res_model': 'driver.details',
+            'view_mode': 'form',
+            'context': {'default_partner_id': self.id},
+            'target': 'new',
+        }
+        
+     def action_create_vehicle(self):
+        self.ensure_one()
+        return {
+            'name': 'Create Vehicle',
+            'type': 'ir.actions.act_window',
+            'res_model': 'vehicle.details',
+            'view_mode': 'form',
+            'context': {'default_partner_id': self.id},
+            'target': 'new',
+        }
 
 
 

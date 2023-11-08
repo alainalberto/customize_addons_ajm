@@ -7,14 +7,14 @@
         <field name="priority" eval="1"/>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-           
-           <xpath expr="//form[1]/sheet[1]/group[1]/group[2]" position="inside">
+            
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[2]" position="inside">
                 <field name="x_cliente_ssn" placeholder="e.g. xxx-xx-xxxx" attrs="{'invisible': [('is_company', '=', True)]}"/>
                 <field name="x_cliente_owner" placeholder="" attrs="{'invisible': [('is_company', '=', False)]}"/>
-                  
-           </xpath>
-           <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
-                 
+                    
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
+                    
                 <group name="group_left" >
                     <field name="x_cliente_mc"/>
                     <field name="x_cliente_tdmv"/>
@@ -33,10 +33,36 @@
                 <span class="o_form_label o_td_label" name="reference_contact">
                     <b>Reference Contact</b>
                     <field name="customer_reference_id"/>   
-                 </span> 
-           </xpath>
+                    </span> 
+            </xpath>
+            <page string="Drivers and Vehicles">
+                <group string="Drivers">
+                    <button name="action_create_driver" string="Add Driver" type="object" class="oe_highlight"/>
+                    <field name="driver_ids">
+                        <tree editable="bottom">
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="driving_license"/>
+                        </tree>
+                    </field>
+                </group>
+                <group string="Vehicle">
+                    <button name="action_create_vehicle" string="Add Vehicle" type="object" class="oe_highlight"/>
+                    <field name="vehicle_ids">
+                        <tree editable="bottom">
+                            <field name="type_id"/>
+                            <field name="make"/>
+                            <field name="model"/>
+                            <field name="year"/>
+                            <field name="license_plate"/>
+                            <field name="driver_id"/>
+                        </tree>
+                    </field>
+                </group>        
+            </page>
         </field>
         
     </record>
+
 
 </odoo>
