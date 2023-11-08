@@ -15,9 +15,10 @@
             <field name="arch" type="xml">
                 <!-- Add your modifications to the existing view -->
                 <xpath expr="//form[1]/sheet[1]" position="inside">
-                    <div class="oe_button_box" name="button_box" position="after">
-                        <span class="o_stat_text">Policy</span>
-                        <field name="is_policy" widget="toggle_button" options="{'terminology': 'switch'}" string="Policy"/>
+                    <div class="oe_button_box" name="button_box" position="before">
+                        <field name="is_policy" widget="toggle_button" options="{'terminology': 'switch'}" string="Policy">
+                           <span class="o_stat_text">Policy</span>
+                        </field>
                     </div> 
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
