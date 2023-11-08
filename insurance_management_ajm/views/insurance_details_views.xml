@@ -6,6 +6,7 @@
         <field name="model">sale.order</field>
         <field name="arch" type="xml">
             <tree string="Insurance Details Tree" attrs="{'invisible': [('is_policy', '=', False)]}" >
+                <field name="is_policy" invisible="1"/>
                 <field name="partner_id"/>
                 <field name="policy_number"/>
                 <field name="user_id"/>
