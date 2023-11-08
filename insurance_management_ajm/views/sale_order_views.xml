@@ -16,26 +16,44 @@
                 <!-- Add your modifications to the existing view -->
                 <xpath expr="//form/sheet/group" position="before">
                     <div class="oe_button_box" name="policy_button_box">
-                            <field name="is_policy" widget="boolean" options="{'terminology': 'switch'}" string="Policy"/>
+                        <div class="o_td_label">
+                                <label for="is_policy" string="Insurance Policy"/>
+                        </div>
+                        <field name="is_policy" widget="boolean" options="{'terminology': 'switch'}" string="Policy"/>
                     </div>
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
                     <!-- Control the visibility of other switch-based fields -->
                         <group name="general_polycy_info" string="General" attrs="{'invisible': [('is_policy', '=', False)]}">
+                            <div class="o_td_label">
+                                <label for="policy_number" string="Policy Number"/>
+                            </div>
                             <field name="policy_number"/>
+                            <div class="o_td_label">
+                                <label for="policy_start_date" string="Start Date"/>
+                            </div>
                             <field name="policy_start_date"/>
+                            <div class="o_td_label">
+                                <label for="policy_efective_date" string="Efective Date"/>
+                            </div>
                             <field name="policy_efective_date"/>
-                            <group>
+                            <div class="o_td_label">
+                                <label for="policy_binder_invoice" string="Binder Invoice"/>
+                            </div>
+                            <field name="policy_binder_invoice"/> 
+                            <div class="o_td_label">
+                                <label for="policy_premium_sent" string="Premium Sent"/>
+                            </div> 
+                            <field name="policy_premium_sent"/>
+                            <group col="2">
                                 <field name="policy_exp_date"/>
                                 <field name="policy_auto_renew"/>
                             </group>
-                            <group>
+                            <group col="2">
                                 <field name="policy_binder_id"/>
                                 <field name="policy_bind_day"/>
                             </group>  
-                            <field name="policy_binder_invoice"/>  
-                            <field name="policy_premium_sent"/>
-
+                            
                         </group> 
                         <group name="aditional_polycy_info" string="Additional" attrs="{'invisible': [('is_policy', '=', False)]}"> 
                             <field name="policy_agency_id"/>
