@@ -16,8 +16,7 @@
                 <!-- Add your modifications to the existing view -->
                 <form string="Sales Order" version="7.0" class="o_sale_order">
                     <header position="inside">
-                        
-                        <field name="is_policy" widget="toggle_button" options="{'terminology': 'switch'}" default=True/>
+                        <field name="is_policy" widget="toggle_button" options="{'terminology': 'switch'}"/>
                     </header>
                     <!-- Control the visibility of other switch-based fields -->
                     <group name="sale_order_policy_group" position="after">
