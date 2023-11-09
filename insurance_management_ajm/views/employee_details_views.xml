@@ -15,7 +15,6 @@
                     <div class="oe_title">
                         <h1>
                             <field name="name"/>
-                            <field name="image" widget="image" class="oe_left oe_avatar"/>
                         </h1>
                     </div>
                     <group>
