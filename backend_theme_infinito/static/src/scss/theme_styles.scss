@@ -747,13 +747,6 @@ background:white !important;
 border: 2px !important;
 border-color: #bd2130;
 }
-.o_input {
-  border-radius: 2px !important;
-  color: #1f1f1f;
-  background: var(--white-color) !important;
-  padding: 10px 4px !important;
-  margin-bottom: 10px !important;
-}
 
 .rounded-pill{
 border: 0;
@@ -877,7 +870,7 @@ padding:none !important;
 }
 
 .o_input {
-//     border: 1px solid var(--border-color) !important;
+    border: 1px solid var(--bg_black) !important;
     border-radius: 0px !important;
     color: #1f1f1f;
     background:var(--white-color) !important;
@@ -887,7 +880,8 @@ padding:none !important;
 
 .o_required_modifier .o_input,
 .o_required_modifier.o_input {
-//     background:var(--border-color2) !important;
+    background:var(--border-color2) !important;
+    border: 1px solid var(--sub-color-1) !important;
 
 }
 select.o_field_widget.o_input  {
