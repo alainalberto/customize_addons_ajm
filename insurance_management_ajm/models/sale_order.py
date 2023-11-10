@@ -31,7 +31,7 @@ class SaleOrder(models.Model):
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
         help="If you change the pricelist, only newly added lines will be affected.")
     currency_id = fields.Many2one(
-        'res.currency', string='Currency', required=True,
+        'res.currency', string='Currency',
         default=lambda self: self.env.user.company_id.currency_id.id,
         store=True, precompute=True, ondelete="restrict")
     # Policy fields
@@ -60,11 +60,11 @@ class SaleOrder(models.Model):
         [('new', 'New Policy'), ('renew', 'Renew Policy'), ('conciliation', 'Conciliation')], 
         required=True, default='new', string='Transaction')
     policy_agency_id = fields.Many2one(
-        'agency.details', string='Agency', required=True) 
+        'agency.details', string='Agency') 
     policy_general_agency_id = fields.Many2one(
         'general.agency.details', string='General Agency') 
     policy_carrier_id = fields.Many2one(
-        'carrier.details', string='Carrier', required=True)
+        'carrier.details', string='Carrier')
     policy_mga = fields.Many2one(
         'mga.details', string='MGA')
     policy_binder_id = fields.Char( string='Binder ID', copy=False )

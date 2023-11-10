@@ -744,10 +744,11 @@ background-color:white !important;
 // Badges
 .o_required_modifier .o_input{
 background:white !important;
-border:none !important;
+border: 2px !important;
+border-color: #bd2130;
 }
 .o_input {
-  border-radius: 0px !important;
+  border-radius: 2px !important;
   color: #1f1f1f;
   background: var(--white-color) !important;
   padding: 10px 4px !important;
@@ -805,6 +806,25 @@ font-weight: 400 !important;
   text-transform: capitalize;
   cursor: pointer;
 }
+
+.o_form_button_save {
+  background-color: var(--sc-button-bg) !important;
+  color: var(--white-color) !important;
+  border: none !important;
+  padding: 9px 20px !important;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.o_form_button_cancel {
+  background-color: var(--sub-color-1:) !important;
+  color: var(--white-color) !important;
+  border: none !important;
+  padding: 9px 20px !important;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 ::placeholder {
   opacity: 25 !important ; /* Firefox */
 }

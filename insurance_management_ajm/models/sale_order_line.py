@@ -30,7 +30,6 @@ class SaleOrderLine(models.Model):
         ],
         default = 'new',
         store=True, precompute=True,
-        required=True,
     )
     down_payment = fields.Float(string='Down Payment')
     fee = fields.Float(string='Fee')
