@@ -85,12 +85,11 @@
             </field>
         </record>
 
-        <record id="view_sale_order_policy_tree" model="ir.ui.view">
-            <field name="name">sale.order.tree.inherit</field>
+        <record id="view_sale_order_policy_tree_custom" model="ir.ui.view">
+            <field name="name">sale.order.tree.custom</field>
             <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_tree"/>
             <field name="arch" type="xml">
-               <tree string="Policies Sales" sample="1"
+                <tree string="Policies Sales" sample="1"
                     decoration-info="invoice_status == 'to invoice', is_policy == 'True'"
                     decoration-muted="state == 'cancel'">
                     <field name="message_needaction" invisible="1"/>
@@ -112,10 +111,8 @@
                         widget="badge" optional="show"/>
                     <field name="tag_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
                     <field name="state" invisible="1"/>
-              </tree> 
+                </tree>
             </field>
-                
         </record>
-
     </data>
 </odoo>
