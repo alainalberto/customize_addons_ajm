@@ -85,13 +85,37 @@
             </field>
         </record>
 
-        <!--<record id="view_sale_order_tree_inherit" model="ir.ui.view">
+        <record id="view_sale_order_policy_tree" model="ir.ui.view">
             <field name="name">sale.order.tree.inherit</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_tree"/>
             <field name="arch" type="xml">
+               <tree string="Policies Sales" sample="1"
+                    decoration-info="invoice_status == 'to invoice', is_policy == 'True'"
+                    decoration-muted="state == 'cancel'">
+                    <field name="message_needaction" invisible="1"/>
+                    <field name="policy_number" readonly="1" decoration-bf="1"/>
+                    <field name="name" string="Referen Sale" readonly="1"/>
+                    <field name="policy_exp_date" optional="hide"/>
+                    <field name="partner_id" readonly="1"/>
+                    <field name="user_id" optional="show" widget="many2one_avatar_user"/>
+                    <field name="activity_ids" widget="list_activity" optional="show"/>
+                    <field name="policy_efective_date" optional="show"/>
+                    <field name="company_id" groups="base.group_multi_company" optional="show" readonly="1"/>
+                    <field name="amount_untaxed" sum="Total Tax Excluded" widget="monetary" optional="hide"/>
+                    <field name="amount_tax" sum="Tax Total" widget="monetary" optional="hide"/>
+                    <field name="amount_total" sum="Total Tax Included" widget="monetary" decoration-bf="1" optional="show"/>
+                    <field name="invoice_status"
+                        decoration-success="invoice_status == 'invoiced'"
+                        decoration-info="invoice_status == 'to invoice'"
+                        decoration-warning="invoice_status == 'upselling'"
+                        widget="badge" optional="show"/>
+                    <field name="tag_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="state" invisible="1"/>
+              </tree> 
+            </field>
                 
-        </record>-->
+        </record>
 
     </data>
 </odoo>
