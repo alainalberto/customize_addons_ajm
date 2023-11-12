@@ -124,13 +124,6 @@
         </field>
     </record>
     
-    <record id="action_financial_details" model="ir.actions.act_window">
-        <field name="name">Financial Details</field>
-        <field name="res_model">financial.details</field>
-        <field name="view_mode">tree,form,kanban</field>
-        <field name="view_id" ref="view_financial_details_tree"/>
-        <field name="search_view_id" ref="view_financial_details_search"/>
-    </record>
     <record id="view_financial_details_search" model="ir.ui.view">
         <field name="name">financial.details.search</field>
         <field name="model">financial.details</field>
@@ -143,6 +136,12 @@
                 <field name="email"/>
             </search>
         </field>
+    </record>
+
+    <record id="action_financial_details" model="ir.actions.act_window">
+        <field name="name">Financial</field>
+        <field name="res_model">financial.details</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <!--Views AgencyDetails-->
@@ -205,14 +204,6 @@
         </field>
     </record>
 
-    <record id="action_agency_details" model="ir.actions.act_window">
-        <field name="name">Agency Details</field>
-        <field name="res_model">agency.details</field>
-        <field name="view_mode">tree,form,kanban</field>
-        <field name="view_id" ref="view_agency_details_tree"/>
-        <field name="search_view_id" ref="view_agency_details_search"/>
-    </record>
-
     <record id="view_agency_details_search" model="ir.ui.view">
         <field name="name">agency.details.search</field>
         <field name="model">agency.details</field>
@@ -226,6 +217,13 @@
             </search>
         </field>
     </record>
+
+    <record id="action_agency_details" model="ir.actions.act_window">
+        <field name="name">Agency</field>
+        <field name="res_model">agency.details</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
 
     <!--Views GeneralAgencyDetails-->
     <record id="view_general_agency_details_tree" model="ir.ui.view">
@@ -287,14 +285,6 @@
         </field>
     </record>
 
-    <record id="action_general_agency_details" model="ir.actions.act_window">
-        <field name="name">General Agency Details</field>
-        <field name="res_model">general.agency.details</field>
-        <field name="view_mode">tree,form,kanban</field>
-        <field name="view_id" ref="view_general_agency_details_tree"/>
-        <field name="search_view_id" ref="view_general_agency_details_search"/>
-    </record>
-
     <record id="view_general_agency_details_search" model="ir.ui.view">
         <field name="name">general.agency.details.search</field>
         <field name="model">general.agency.details</field>
@@ -307,6 +297,13 @@
                 <field name="email"/>
             </search>
         </field>
+    </record>
+
+    
+    <record id="action_general_agency_details" model="ir.actions.act_window">
+        <field name="name">General Agency</field>
+        <field name="res_model">general.agency.details</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <!--Views CarrierDetails-->
@@ -370,14 +367,6 @@
         </field>
     </record>
 
-    <record id="action_carrier_details" model="ir.actions.act_window">
-        <field name="name">Carrier Details</field>
-        <field name="res_model">carrier.details</field>
-        <field name="view_mode">tree,form,kanban</field>
-        <field name="view_id" ref="view_carrier_details_tree"/>
-        <field name="search_view_id" ref="view_carrier_details_search"/>
-    </record>
-
     <record id="view_carrier_details_search" model="ir.ui.view">
         <field name="name">carrier.details.search</field>
         <field name="model">carrier.details</field>
@@ -390,6 +379,12 @@
                 <field name="email"/>
             </search>
         </field>
+    </record>
+
+    <record id="action_carrier_details" model="ir.actions.act_window">
+        <field name="name">Carrier</field>
+        <field name="res_model">carrier.details</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <!--Views MGADetails-->
@@ -452,14 +447,6 @@
         </field>
     </record>
 
-    <record id="action_mga_details" model="ir.actions.act_window">
-        <field name="name">MGA Details</field>
-        <field name="res_model">mga.details</field>
-        <field name="view_mode">tree,form,kanban</field>
-        <field name="view_id" ref="view_mga_details_tree"/>
-        <field name="search_view_id" ref="view_mga_details_search"/>
-    </record>
-
     <record id="view_mga_details_search" model="ir.ui.view">
         <field name="name">mga.details.search</field>
         <field name="model">mga.details</field>
@@ -474,4 +461,9 @@
         </field>
     </record>
 
+    <record id="action_mga_details" model="ir.actions.act_window">
+        <field name="name">MGA</field>
+        <field name="res_model">mga.details</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
 </odoo>
