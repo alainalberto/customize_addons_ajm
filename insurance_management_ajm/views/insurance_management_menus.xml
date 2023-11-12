@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!--<menuitem id="insurance_management_menu_root" name="Insurance" web_icon="insurance_management_ajm,static/img/icon.png" sequence="5"/>
-    <menuitem id="insurance_management_menu_insurance_management" name="Insurance Management"
-              parent="insurance_management_menu_root" sequence="10"/>
-    <menuitem id="insurance_details_menu_action" name="Insurance" parent="insurance_management_menu_insurance_management"
-              action="insurance_details_action" sequence="10"/>
-    <menuitem id="insurance_management_menu_agent" name="Agent" parent="insurance_management_menu_root" sequence="20"/>
-    <menuitem id="employee_details_menu_action" name="Agent" parent="insurance_management_menu_agent"
-              action="employee_details_action" sequence="10"/>
-    <menuitem id="insurance_management_menu_configuration" name="Configuration" parent="insurance_management_menu_root"
-              sequence="30"/>
-    <menuitem id="res_partner_customer_menu_action" name="Customers" parent="insurance_management_menu_configuration"
-              action="base.action_partner_customer_form" sequence="20"/>-->
+    <menuitem id="menu_sale_order_policy"
+          name="Policy"
+          action="action_sale_order_policy"
+          parent="sale.sale_order_menu"
+          web_icon="insurance_management_ajm/static/src/img/icon.png"
+          sequence="10"/>
+          <menuitem
+            id="menu_management_carries"
+            name="Management Carries"
+            parent = "menu_sale_order_policy"
+            sequence="10"/>
+                <menuitem id="menu_financial_details"
+                    name="Financial"
+                    action="action_financial_details"
+                    parent="menu_management_carries"
+                    sequence="20"/>
+                <menuitem id="menu_agency_details"
+                    name="Agency"
+                    action="action_agency_details"
+                    parent="menu_management_carries"
+                    sequence="30"/>
+                <menuitem id="menu_general_agency_details"
+                    name="General Agency"
+                    action="action_general_agency_details"
+                    parent="menu_management_carries"
+                    sequence="40"/>
+                <menuitem id="menu_mga_details"
+                    name="MGA"
+                    action="action_mga_details"
+                    parent="menu_management_carries"
+                    sequence="50"/>
+                <menuitem id="menu_carrier_details"
+                    name="Carrier"
+                    action="action_carrier_details"
+                    parent="menu_management_carries"
+                    sequence="60"/>
+                
 
 </odoo>

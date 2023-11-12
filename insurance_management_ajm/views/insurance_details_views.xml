@@ -1,31 +1,476 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="insurance_details_view_tree" model="ir.ui.view">
-        <field name="name">insurance.details.view.tree</field>
+    <record id="view_sale_order_tree_policy" model="ir.ui.view">
+        <field name="name">sale.order.tree.custom</field>
         <field name="model">sale.order</field>
         <field name="arch" type="xml">
-            <tree string="Insurance Details Tree">
+            <tree string="Policies Sales" sample="1"
+                decoration-info="invoice_status == 'to invoice', is_policy == 'True'"
+                decoration-muted="state == 'cancel'">
+                <field name="message_needaction" invisible="1"/>
+                <field name="policy_number" readonly="1" decoration-bf="1"/>
+                <field name="name" string="Referen Sale" readonly="1"/>
+                <field name="policy_exp_date" optional="hide"/>
+                <field name="partner_id" readonly="1"/>
+                <field name="user_id" optional="show" widget="many2one_avatar_user"/>
+                <field name="activity_ids" widget="list_activity" optional="show"/>
+                <field name="policy_efective_date" optional="show"/>
+                <field name="policy_carrier_id" readonly="1"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show" readonly="1"/>
+                <field name="amount_untaxed" sum="Total Tax Excluded" widget="monetary" optional="hide"/>
+                <field name="amount_tax" sum="Tax Total" widget="monetary" optional="hide"/>
+                <field name="amount_total" sum="Total Tax Included" widget="monetary" decoration-bf="1" optional="show"/>
+                <field name="invoice_status"
+                    decoration-success="invoice_status == 'invoiced'"
+                    decoration-info="invoice_status == 'to invoice'"
+                    decoration-warning="invoice_status == 'upselling'"
+                    widget="badge" optional="show"/>
+                <field name="tag_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="state" invisible="1"/>
                 <field name="is_policy" invisible="1"/>
-                <field name="partner_id" attrs="{'invisible': [('is_policy', '=', False)]}"/>
-                <field name="policy_number" attrs="{'invisible': [('is_policy', '=', False)]}"/>
-                <field name="user_id" attrs="{'invisible': [('is_policy', '=', False)]}"/>
-                <field name="currency_id" invisible="1"/>
-                <field name="policy_premium" attrs="{'invisible': [('is_policy', '=', False)]}"/>
-                <field name="policy_start_date" attrs="{'invisible': [('is_policy', '=', False)]}"/>
-                <field name="state" attrs="{'invisible': [('is_policy', '=', False)]}"/>
             </tree>
         </field>
     </record>
 
-    <record id="insurance_details_action" model="ir.actions.act_window">
-        <field name="name">Insurance Management</field>
+    <record id="view_sale_order_search_policy" model="ir.ui.view">
+        <field name="name">sale.order.search.policy</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- Filtros predefinidos -->
+                <filter string="Policies" name="filter_policy_true" domain="[('is_policy', '=', True)]"/>     
+
+                <!-- Group to filter -->
+                <group expand="0" string="Group By">
+                    <filter string="Customer" name="group_by_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Date Order" name="group_by_date_order" context="{'group_by': 'date_order'}"/>
+                    <filter string="Policy Number" name="group_by_policy_number" context="{'group_by': 'policy_number'}"/>
+                </group>
+                <!--Filter by-->
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="policy_number"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_sale_order_policy" model="ir.actions.act_window">
+        <field name="name">Policy Sales</field>
         <field name="res_model">sale.order</field>
-        <field name="view_mode">tree</field>
-        <field name="help" type="html">
-            <p class="oe_view_nocontent_create">
-                You haven't created any insurance policy yet.
-            </p>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_sale_order_tree_policy"/>
+        <field name="search_view_id" ref="view_sale_order_search_policy"/>
+        <field name="domain">[('is_policy', '=', True)]</field>
+    </record>
+    
+    <!-- Views Financial Details -->
+    <record id="view_financial_details_tree" model="ir.ui.view">
+        <field name="name">financial.details.tree</field>
+        <field name="model">financial.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_financial_details_form" model="ir.ui.view">
+        <field name="name">financial.details.form</field>
+        <field name="model">financial.details</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="street"/>
+                        <field name="city"/>
+                    </group>
+                    <group>
+                        <field name="state_id"/>
+                        <field name="country_id"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_financial_details_kanban" model="ir.ui.view">
+        <field name="name">financial.details.kanban</field>
+        <field name="model">financial.details</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="street"/>
+                <field name="city"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong><field name="name"/></strong>
+                                <div><field name="phone"/></div>
+                                <div><field name="email"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    
+    <record id="action_financial_details" model="ir.actions.act_window">
+        <field name="name">Financial Details</field>
+        <field name="res_model">financial.details</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_financial_details_tree"/>
+        <field name="search_view_id" ref="view_financial_details_search"/>
+    </record>
+    <record id="view_financial_details_search" model="ir.ui.view">
+        <field name="name">financial.details.search</field>
+        <field name="model">financial.details</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="city"/>
+                <field name="state_id"/>
+                <field name="country_id"/>
+                <field name="email"/>
+            </search>
+        </field>
+    </record>
+
+    <!--Views AgencyDetails-->
+    <record id="view_agency_details_tree" model="ir.ui.view">
+        <field name="name">agency.details.tree</field>
+        <field name="model">agency.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_agency_details_form" model="ir.ui.view">
+        <field name="name">agency.details.form</field>
+        <field name="model">agency.details</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="street"/>
+                        <field name="city"/>
+                    </group>
+                    <group>
+                        <field name="state_id"/>
+                        <field name="country_id"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_agency_details_kanban" model="ir.ui.view">
+        <field name="name">agency.details.kanban</field>
+        <field name="model">agency.details</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="street"/>
+                <field name="city"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong><field name="name"/></strong>
+                                <div><field name="phone"/></div>
+                                <div><field name="email"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_agency_details" model="ir.actions.act_window">
+        <field name="name">Agency Details</field>
+        <field name="res_model">agency.details</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_agency_details_tree"/>
+        <field name="search_view_id" ref="view_agency_details_search"/>
+    </record>
+
+    <record id="view_agency_details_search" model="ir.ui.view">
+        <field name="name">agency.details.search</field>
+        <field name="model">agency.details</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="city"/>
+                <field name="state_id"/>
+                <field name="country_id"/>
+                <field name="email"/>
+            </search>
+        </field>
+    </record>
+
+    <!--Views GeneralAgencyDetails-->
+    <record id="view_general_agency_details_tree" model="ir.ui.view">
+        <field name="name">general.agency.details.tree</field>
+        <field name="model">general.agency.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_general_agency_details_form" model="ir.ui.view">
+        <field name="name">general.agency.details.form</field>
+        <field name="model">general.agency.details</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="street"/>
+                        <field name="city"/>
+                    </group>
+                    <group>
+                        <field name="state_id"/>
+                        <field name="country_id"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_general_agency_details_kanban" model="ir.ui.view">
+        <field name="name">general.agency.details.kanban</field>
+        <field name="model">general.agency.details</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="street"/>
+                <field name="city"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong><field name="name"/></strong>
+                                <div><field name="phone"/></div>
+                                <div><field name="email"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_general_agency_details" model="ir.actions.act_window">
+        <field name="name">General Agency Details</field>
+        <field name="res_model">general.agency.details</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_general_agency_details_tree"/>
+        <field name="search_view_id" ref="view_general_agency_details_search"/>
+    </record>
+
+    <record id="view_general_agency_details_search" model="ir.ui.view">
+        <field name="name">general.agency.details.search</field>
+        <field name="model">general.agency.details</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="city"/>
+                <field name="state_id"/>
+                <field name="country_id"/>
+                <field name="email"/>
+            </search>
+        </field>
+    </record>
+
+    <!--Views CarrierDetails-->
+    <record id="view_carrier_details_tree" model="ir.ui.view">
+        <field name="name">carrier.details.tree</field>
+        <field name="model">carrier.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_carrier_details_form" model="ir.ui.view">
+        <field name="name">carrier.details.form</field>
+        <field name="model">carrier.details</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="street"/>
+                        <field name="city"/>
+                    </group>
+                    <group>
+                        <field name="state_id"/>
+                        <field name="country_id"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+
+    </record>
+
+    <record id="view_carrier_details_kanban" model="ir.ui.view">
+        <field name="name">carrier.details.kanban</field>
+        <field name="model">carrier.details</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="street"/>
+                <field name="city"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong><field name="name"/></strong>
+                                <div><field name="phone"/></div>
+                                <div><field name="email"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_carrier_details" model="ir.actions.act_window">
+        <field name="name">Carrier Details</field>
+        <field name="res_model">carrier.details</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_carrier_details_tree"/>
+        <field name="search_view_id" ref="view_carrier_details_search"/>
+    </record>
+
+    <record id="view_carrier_details_search" model="ir.ui.view">
+        <field name="name">carrier.details.search</field>
+        <field name="model">carrier.details</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="city"/>
+                <field name="state_id"/>
+                <field name="country_id"/>
+                <field name="email"/>
+            </search>
+        </field>
+    </record>
+
+    <!--Views MGADetails-->
+    <record id="view_mga_details_tree" model="ir.ui.view">
+        <field name="name">mga.details.tree</field>
+        <field name="model">mga.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_mga_details_form" model="ir.ui.view">
+        <field name="name">mga.details.form</field>
+        <field name="model">mga.details</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="street"/>
+                        <field name="city"/>
+                    </group>
+                    <group>
+                        <field name="state_id"/>
+                        <field name="country_id"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mga_details_kanban" model="ir.ui.view">
+        <field name="name">mga.details.kanban</field>
+        <field name="model">mga.details</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="street"/>
+                <field name="city"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong><field name="name"/></strong>
+                                <div><field name="phone"/></div>
+                                <div><field name="email"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_mga_details" model="ir.actions.act_window">
+        <field name="name">MGA Details</field>
+        <field name="res_model">mga.details</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_mga_details_tree"/>
+        <field name="search_view_id" ref="view_mga_details_search"/>
+    </record>
+
+    <record id="view_mga_details_search" model="ir.ui.view">
+        <field name="name">mga.details.search</field>
+        <field name="model">mga.details</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="city"/>
+                <field name="state_id"/>
+                <field name="country_id"/>
+                <field name="email"/>
+            </search>
         </field>
     </record>
 
