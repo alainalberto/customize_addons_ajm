@@ -8,7 +8,7 @@
                 <xpath expr="//templates/t[1]/div[1]" position="after">
                     <div class="o_td_label">
                         <field name="is_policy" widget="boolean" options="{'terminology': 'switch'}" invisible="True"/>
-                        <field name="display_tag_ids"/>
+                        <field name="display_tag"/>
                         <t t-if="record.is_policy.raw_value">
                         <field name="policy_number"/>
                         </t>
@@ -31,7 +31,7 @@
                         <field name="is_policy" widget="boolean" options="{'terminology': 'switch'}" string="Policy"/>
                     </div>
                     <t t-if="record.is_policy.raw_value">
-                        <field name="display_tag_ids"/>
+                        <field name="display_tag"/>
                     </t>
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">

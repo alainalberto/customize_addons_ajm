@@ -78,7 +78,7 @@ class SaleOrder(models.Model):
     policy_next_due = fields.Float(string='Next Due')
     policy_amount_financed = fields.Float(string='Amount Financed')
     policy_paid_mga = fields.Float(string='Paid MGA')
-    display_tag_ids = fields.Char(compute='_compute_display_tag_ids')
+    display_tag = fields.Char(compute='_compute_display_tag')
     
     
     
@@ -94,15 +94,15 @@ class SaleOrder(models.Model):
             if records.state == 'paid':
                 raise UserError(_("All invoices must be paid"))
         
-        self.efective_date = fields.Date.context_today(self)
+        self.policy_efective_date = fields.Date.context_today(self)
 
     @api.depends('is_policy')
-    def _compute_display_tag_ids(self):
+    def _compute_display_tag(self):
         for record in self:
             if record.is_policy:
-                record.display_tag_ids = 'Policy'
+                record.display_tag = 'Policy'
             else:
-                record.display_tag_ids = 'Service'
+                record.display_tag = 'Service'
 
 class PolicyType(models.Model):
     _name = 'policy.type'
