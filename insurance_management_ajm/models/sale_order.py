@@ -78,7 +78,10 @@ class SaleOrder(models.Model):
     policy_next_due = fields.Float(string='Next Due')
     policy_amount_financed = fields.Float(string='Amount Financed')
     policy_paid_mga = fields.Float(string='Paid MGA')
-    display_tag = fields.Char(compute='_compute_display_tag')
+    display_tag = fields.Selection(
+        [('policy', 'Policy'), ('service', 'Service')], 
+        compute='_compute_display_tag', 
+        store=True readonly=True)
     
     
     
@@ -100,9 +103,9 @@ class SaleOrder(models.Model):
     def _compute_display_tag(self):
         for record in self:
             if record.is_policy:
-                record.display_tag = 'Policy'
+                record.display_tag = 'policy'
             else:
-                record.display_tag = 'Service'
+                record.display_tag = 'service'
 
 class PolicyType(models.Model):
     _name = 'policy.type'
