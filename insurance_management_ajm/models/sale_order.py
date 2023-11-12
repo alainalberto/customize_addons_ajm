@@ -36,6 +36,10 @@ class SaleOrder(models.Model):
         default=lambda self: self.env.user.company_id.currency_id.id,
         store=True, precompute=True, ondelete="restrict")
     # Policy fields
+    display_tag = fields.Selection(
+        [('policy', 'Policy'), ('service', 'Service')], 
+        compute='_compute_display_tag', 
+        store=True default='policy')
     is_policy = fields.Boolean( compute='_compute_is_policy', store=True)
     policy_start_date = fields.Date(
         string='Start Date', default=fields.Date.context_today, required=True)
@@ -78,10 +82,6 @@ class SaleOrder(models.Model):
     policy_next_due = fields.Float(string='Next Due')
     policy_amount_financed = fields.Float(string='Amount Financed')
     policy_paid_mga = fields.Float(string='Paid MGA')
-    display_tag = fields.Selection(
-        [('policy', 'Policy'), ('service', 'Service')], 
-        compute='_compute_display_tag', 
-        store=True default='policy')
     
     
     
