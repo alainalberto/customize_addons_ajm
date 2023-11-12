@@ -135,7 +135,7 @@
         <field name="name">financial.details.search</field>
         <field name="model">financial.details</field>
         <field name="arch" type="xml">
-            <search>
+            <search string="Search Financial Details">
                 <field name="name"/>
                 <field name="city"/>
                 <field name="state_id"/>
