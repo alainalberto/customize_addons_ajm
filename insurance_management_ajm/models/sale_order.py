@@ -1,5 +1,6 @@
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError, UserError
+from odoo import api, fields, models
 
 READONLY_FIELD_STATES = {
     state: [('readonly', True)]
@@ -19,28 +20,27 @@ class SaleOrder(models.Model):
         comodel_name='res.partner',
         string="Delivery Address",
         compute='_compute_partner_shipping_id',
-        store=True, readonly=False, required=False, precompute=True,
+        store=True, readonly=False, required=False,
         states=LOCKED_FIELD_STATES,
-        domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",)
+        domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",)  
     pricelist_id = fields.Many2one(
         comodel_name='product.pricelist',
         string="Pricelist",
         compute='_compute_pricelist_id',
-        store=True, readonly=False, precompute=True, check_company=True, required=False,  # Unrequired company
+        store=True, readonly=False, check_company=True, required=False,  # Unrequired company
         states=READONLY_FIELD_STATES,
         tracking=1,
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
         help="If you change the pricelist, only newly added lines will be affected.")
     currency_id = fields.Many2one(
         'res.currency', string='Currency',
-        default=lambda self: self.env.user.company_id.currency_id.id,
-        store=True, precompute=True, ondelete="restrict")
+        default=lambda self: self.env.company.currency_id.id,
+        store=True, ondelete="restrict")
     # Policy fields
     display_tag = fields.Selection(
         [('policy', 'Policy'), ('service', 'Service')], 
-        compute='_compute_display_tag', 
-        store=True default='policy')
-    is_policy = fields.Boolean( compute='_compute_is_policy', store=True)
+        store=True, default='policy')
+    is_policy = fields.Boolean(compute='_compute_is_policy', store=True)
     policy_start_date = fields.Date(
         string='Start Date', default=fields.Date.context_today, required=True)
     policy_efective_date = fields.Date(
@@ -83,7 +83,10 @@ class SaleOrder(models.Model):
     policy_amount_financed = fields.Float(string='Amount Financed')
     policy_paid_mga = fields.Float(string='Paid MGA')
     
-    
+    @api.depends('display_tag')
+    def _compute_is_policy(self):
+        for record in self:
+            record.is_policy = record.display_tag == 'policy'
     
     @api.constrains('policy_number')
     def _check_policy_number(self):
@@ -98,11 +101,7 @@ class SaleOrder(models.Model):
                 raise UserError(_("All invoices must be paid"))
         
         self.policy_efective_date = fields.Date.context_today(self)
-    
-    @api.depends('display_tag')
-    def _compute_is_policy(self):
-        for record in self:
-            record.is_policy = record.display_tag == 'policy'
+        
 
 class PolicyType(models.Model):
     _name = 'policy.type'
