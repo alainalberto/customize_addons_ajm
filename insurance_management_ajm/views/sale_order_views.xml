@@ -7,8 +7,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//templates/t[1]/div[1]" position="after">
                     <div class="o_td_label">
-                        <field name="is_policy" invisible="True"/>
-                        <t t-if="record.is_policy.raw_value">
+                        <field name="display_tag" readonly="1"/>
                         <field name="policy_number"/>
                         </t>
                     </div>
@@ -23,14 +22,13 @@
             <field name="arch" type="xml">
                 <!-- Add your modifications to the existing view -->
                 <xpath expr="//form/sheet/group" position="before">
-                    <!--<div class="oe_button_box" name="policy_button_box">
+                    <div class="oe_button_box" name="policy_button_box">
                          <field name="display_tag" default="policy" widget="radio"/>
-                    </div>-->
-                    <field name="is_policy" invisible="1"/>
+                    </div>
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
                     <!-- Control the visibility of other switch-based fields -->
-                        <group name="general_polycy_info" string="General" attrs="{'invisible': [('is_policy', '=', False)]}">
+                        <group name="general_polycy_info" string="General" attrs="{'invisible': [('display_tag', '=', 'service')]}">
                             <div class="o_td_label">
                                 <label for="policy_number" string="Policy Number"/>
                             </div>
@@ -61,7 +59,7 @@
                             </group>  
                             
                         </group> 
-                        <group name="aditional_polycy_info" string="Additional" attrs="{'invisible': [('is_policy', '=', False)]}"> 
+                        <group name="aditional_polycy_info" string="Additional" attrs="{'invisible': [('display_tag', '=', 'service')]}"> 
                             <field name="policy_agency_id"/>
                             <field name="policy_general_agency_id"/>
                             <field name="policy_carrier_id"/>
@@ -71,7 +69,7 @@
                             <field name="policy_paid_mga"/>
                             <field name="policy_amount_financed"/>
                         </group>
-                        <group class="oe_subtotal_footer oe_right" colspan="2" name="policy_total" attrs="{'invisible': [('is_policy', '=', False)]}">
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="policy_total" attrs="{'invisible': [('display_tag', '=', 'service')]}">
                             <field name="policy_premium"/>
                             <field name="policy_total"/>
                             <field name="policy_down_payment"/>

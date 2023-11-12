@@ -5,7 +5,7 @@
         <field name="model">sale.order</field>
         <field name="arch" type="xml">
             <tree string="Policies Sales" sample="1"
-                decoration-info="invoice_status == 'to invoice', is_policy == 'True'"
+                decoration-info="invoice_status == 'to invoice', display_tag == 'policy'"
                 decoration-muted="state == 'cancel'">
                 <field name="message_needaction" invisible="1"/>
                 <field name="policy_number" readonly="1" decoration-bf="1"/>
@@ -25,9 +25,8 @@
                     decoration-info="invoice_status == 'to invoice'"
                     decoration-warning="invoice_status == 'upselling'"
                     widget="badge" optional="show"/>
-                <field name="tag_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 <field name="state" invisible="1"/>
-                <field name="is_policy" invisible="1"/>
+                <field name="display_tag" readonly="1"/>
             </tree>
         </field>
     </record>
@@ -38,7 +37,7 @@
         <field name="arch" type="xml">
             <search>
                 <!-- Filtros predefinidos -->
-                <filter string="Policies" name="filter_policy_true" domain="[('is_policy', '=', True)]"/>     
+                <filter string="Policies" name="filter_policy_true" domain="[('display_tag', '=', 'policy')]"/>     
 
                 <!-- Group to filter -->
                 <group expand="0" string="Group By">
@@ -60,7 +59,7 @@
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_sale_order_tree_policy"/>
         <field name="search_view_id" ref="view_sale_order_search_policy"/>
-        <field name="domain">[('is_policy', '=', True)]</field>
+        <field name="domain">[('display_tag', '=', 'policy')]</field>
     </record>
     
     <!-- Views Financial Details -->

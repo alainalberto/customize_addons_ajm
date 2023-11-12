@@ -40,7 +40,6 @@ class SaleOrder(models.Model):
     display_tag = fields.Selection(
         [('policy', 'Policy'), ('service', 'Service')], 
         store=True, default='policy')
-    is_policy = fields.Boolean(compute='_compute_is_policy', store=True)
     policy_start_date = fields.Date(
         string='Start Date', default=fields.Date.context_today, required=True)
     policy_efective_date = fields.Date(
@@ -83,10 +82,7 @@ class SaleOrder(models.Model):
     policy_amount_financed = fields.Float(string='Amount Financed')
     policy_paid_mga = fields.Float(string='Paid MGA')
     
-    @api.depends('display_tag')
-    def _compute_is_policy(self):
-        for record in self:
-            record.is_policy = record.display_tag == 'policy'
+    
     
     @api.constrains('policy_number')
     def _check_policy_number(self):
