@@ -37,7 +37,7 @@ class SaleOrder(models.Model):
         default=lambda self: self.env.company.currency_id.id,
         store=True, ondelete="restrict")
     # Policy fields
-    display_tag = fields.Selection(
+    policy_display_tag = fields.Selection(
         [('policy', 'Policy'), ('service', 'Service')], 
         store=True, default='policy')
     policy_start_date = fields.Date(
