@@ -28,11 +28,9 @@
                         <div class="o_td_label">
                                 <label for="is_policy" string="Insurance Policy"/>
                         </div>
-                        <field name="is_policy" widget="boolean" options="{'terminology': 'switch'}" string="Policy"/>
+                         <field name="display_tag" default="policy" widget="radio"/>
                     </div>
-                    <t t-if="record.is_policy.raw_value">
-                        <field name="display_tag"/>
-                    </t>
+                    <field name="is_policy" invisible="1"/>
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
                     <!-- Control the visibility of other switch-based fields -->

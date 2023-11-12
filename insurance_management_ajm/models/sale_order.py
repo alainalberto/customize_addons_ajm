@@ -36,7 +36,7 @@ class SaleOrder(models.Model):
         default=lambda self: self.env.user.company_id.currency_id.id,
         store=True, precompute=True, ondelete="restrict")
     # Policy fields
-    is_policy = fields.Boolean(copy=False, default=True, string='Policy Insurance')
+    is_policy = fields.Boolean( compute='_compute_is_policy', store=True)
     policy_start_date = fields.Date(
         string='Start Date', default=fields.Date.context_today, required=True)
     policy_efective_date = fields.Date(
@@ -81,7 +81,7 @@ class SaleOrder(models.Model):
     display_tag = fields.Selection(
         [('policy', 'Policy'), ('service', 'Service')], 
         compute='_compute_display_tag', 
-        store=True readonly=True)
+        store=True default='policy')
     
     
     
@@ -98,14 +98,11 @@ class SaleOrder(models.Model):
                 raise UserError(_("All invoices must be paid"))
         
         self.policy_efective_date = fields.Date.context_today(self)
-
-    @api.depends('is_policy')
-    def _compute_display_tag(self):
+    
+    @api.depends('display_tag')
+    def _compute_is_policy(self):
         for record in self:
-            if record.is_policy:
-                record.display_tag = 'policy'
-            else:
-                record.display_tag = 'service'
+            record.is_policy = record.display_tag == 'policy'
 
 class PolicyType(models.Model):
     _name = 'policy.type'
