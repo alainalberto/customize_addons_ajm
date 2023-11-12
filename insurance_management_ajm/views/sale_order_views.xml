@@ -1,12 +1,22 @@
 <odoo>
     <data>
-        <!--<record id="view_sale_order_kanban_inherit" model="ir.ui.view">
+        <record id="view_sale_order_kanban_inherit" model="ir.ui.view">
             <field name="name">sale.order.kanban.inherit</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_kanban"/>
             <field name="arch" type="xml">
+                <xpath expr="//templates/t[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/field[1]" position="after">
+                    <field name="is_policy" widget="boolean" options="{'terminology': 'switch'}" invisible="True"/>
+                    <field name="display_tag_ids"/>
+                    <t t-if="record.is_policy.raw_value">
+                       <field name="policy_number"/>
+                    </t>
+                </xpath>                
+            </field>
+                       
+
                 
-        </record>-->
+        </record>
         <!-- Inherit the existing sale order form view -->
         <record id="view_sale_order_form_inherit" model="ir.ui.view">
             <field name="name">sale.order.form.inherit</field>
@@ -21,6 +31,9 @@
                         </div>
                         <field name="is_policy" widget="boolean" options="{'terminology': 'switch'}" string="Policy"/>
                     </div>
+                    <t t-if="record.is_policy.raw_value">
+                        <field name="display_tag_ids"/>
+                    </t>
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
                     <!-- Control the visibility of other switch-based fields -->

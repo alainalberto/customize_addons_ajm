@@ -4,7 +4,6 @@
     <menuitem id="menu_sale_order_policy"
           name="Policy"
           action="action_sale_order_policy"
-          parent="sale.sale_order_menu"
           web_icon="insurance_management_ajm/static/src/img/icon.png"
           sequence="10"/>
           <menuitem
