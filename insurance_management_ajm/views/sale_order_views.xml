@@ -23,9 +23,9 @@
             <field name="arch" type="xml">
                 <!-- Add your modifications to the existing view -->
                 <xpath expr="//form/sheet/group" position="before">
-                    <div class="oe_button_box" name="policy_button_box">
+                    <!--<div class="oe_button_box" name="policy_button_box">
                          <field name="display_tag" default="policy" widget="radio"/>
-                    </div>
+                    </div>-->
                     <field name="is_policy" invisible="1"/>
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
