@@ -13,7 +13,7 @@ a#closeSidebar, a#openSidebar {
     box-shadow: 0px 4px 11px 0px #d6d0d0;
     display: block;
     width: 200px;
-    overflow-y: auto important!;
+    overflow-y: auto !important;
     /*-ms-overflow-style: none;   Hide scrollbar for IE and Edge */
     z-index: 999;
 }
