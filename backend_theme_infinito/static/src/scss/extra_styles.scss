@@ -116,10 +116,10 @@
 .menu-bookmark {
     position: absolute;
     z-index: 999;
-    background-color: $bg_white;
+    background-color: #1e2230;
     display: none;
     right: 0;
-    top: 20vh;
+    top: 25vh;
     bottom: 10vh;
     min-height: 30vh;
     height: min-content;
@@ -135,7 +135,7 @@
         margin-bottom: 15px;
         .heading {
             padding: 5px 0;
-            color: #253237;
+            color: #CCCFDB;
             width: 100%;
             font-weight: 700;
             border: 1px solid;
@@ -156,7 +156,7 @@
         }
         .menu {
             padding: 5px 10px;
-            color: #181818;
+            color: #CCCFDB;
             margin-bottom:8px;
             text-decoration: none;
             position: relative;
@@ -184,7 +184,7 @@
                 opacity: 0;
             }
             &:hover {
-                background-color: #eaeaea;
+                background-color: #ffffff;
                 &::after {
                     opacity: 1;
                 }
