@@ -32,37 +32,40 @@
                         <field name="policy_transaction" string=''/>
                     </group>
                 </xpath>
-                <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
+                <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
                     <!-- Control the visibility of other switch-based fields -->
                         <group name="general_polycy_info" string="General" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}">
+                            <div class="o_td_label">
+                                    <label for="policy_number" string="Policy Number"/>
+                            </div>
                             <field name="policy_number"/>
+                            <div class="o_td_label">
+                                    <label for="policy_start_date" string="Start Date"/>
+                            </div>
                             <field name="policy_start_date"/>
-                            <group>
-                                <div class="o_td_label">
-                                    <label for="policy_efective_date" string="Efective Date"/>
-                                </div>
-                                <field name="policy_efective_date"/>
-                                <div class="o_td_label">
-                                    <label for="policy_exp_date" string="Expitation Date"/>
-                                </div>
+                            <group>  
+                                <field name="policy_efective_date"/>  
                                 <field name="policy_exp_date"/>  
                             </group>
+                            <div class="o_td_label">
+                                    <label for="policy_binder_invoice" string="Binder Invoice"/>
+                            </div>
                             <field name="policy_binder_invoice"/> 
+                            <div class="o_td_label">
+                                    <label for="policy_binder_id" string="Binder ID"/>
+                            </div>
+                            <field name="policy_binder_id"/>
+                            <div class="o_td_label">
+                                    <label for="policy_bind_day" string="Binder Day"/>
+                            </div>
+                            <field name="policy_bind_day"/>
+                            <div class="o_td_label">
+                                    <label for="policy_premium_sent" string="Premium Sent"/>
+                            </div>
                             <field name="policy_premium_sent"/>
                             <group col="2">
                                 <field name="policy_auto_renew"/>
-                            </group>
-                            <group col="2">
-                                <div class="o_td_label">
-                                    <label for="policy_binder_id" string="Binder ID"/>
-                                </div>
-                                <field name="policy_binder_id"/>
-                                <div class="o_td_label">
-                                    <label for="policy_bind_day" string="Binder Day"/>
-                                </div>
-                                <field name="policy_bind_day"/>
-                            </group>  
-                            
+                            </group> 
                         </group> 
                         <group name="aditional_polycy_info" string="Additional" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}"> 
                             <field name="policy_agency_id"/>
