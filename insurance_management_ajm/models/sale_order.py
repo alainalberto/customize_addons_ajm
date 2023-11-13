@@ -90,7 +90,6 @@ class SaleOrder(models.Model):
             raise ValidationError(
                 _('Please add the policy number'))
             
-    
     def action_active_insurance(self):
         for records in self.invoice_ids:
             if records.state == 'paid':
@@ -98,12 +97,10 @@ class SaleOrder(models.Model):
         
         self.policy_efective_date = fields.Date.context_today(self)
         
-    @api.multi
     def set_policy_tag(self):
         self.ensure_one()
         self.policy_display_tag = 'policy'
 
-    @api.multi
     def set_service_tag(self):
         self.ensure_one()
         self.policy_display_tag = 'service'
