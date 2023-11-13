@@ -61,7 +61,7 @@ class SaleOrder(models.Model):
                                         "an insurance company uses to identify"
                                         "you as a policyholder")
     policy_transaction = fields.Selection(
-        [('new', 'New Policy'), ('renew', 'Renew Policy'), ('conciliation', 'Conciliation')], 
+        [('new', 'New Policy'), ('renew', 'Renew Policy'), ('conciliation', 'Conciliation'), ('endorsement', 'Endorsement'), ('unear', 'Unear'), ('cancelation', 'Cancelation')], 
         required=True, default='new', string='Transaction')
     policy_agency_id = fields.Many2one(
         'agency.details', string='Agency') 

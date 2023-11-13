@@ -739,6 +739,10 @@ background-color:white !important;
     }
 }
 
+.oe_stat_button_active{
+    background-color: var(--t-button-bg) !important;
+}
+
 
 
 // Badges
@@ -774,7 +778,7 @@ border: none !important;
 .o_list_renderer .o_list_table thead {
   background-color: #fff !important;
 }
-.o_field_badge span, {
+.o_field_badge span {
 font-weight: 400 !important;
 }
 .o_kanban_renderer .o_kanban_record > div, .o_kanban_renderer .o_kanban_quick_create {
