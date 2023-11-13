@@ -5,7 +5,7 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_sale_order_kanban"/>
             <field name="arch" type="xml">
-                <xpath expr="//templates/t[1]/div[1]" position="before">
+                <xpath expr="//templates/t[1]/div[1]" position="after">
                     <div class="o_td_label">
                         <field name="policy_display_tag" readonly="1"/>
                         <t t-if="record.policy_display_tag.raw_value == 'service'">
@@ -22,7 +22,7 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <!-- Add your modifications to the existing view -->
-                <xpath expr="//form/sheet" position="inside">
+                <xpath expr="//form/sheet" position="before">
                     <field name="policy_display_tag" invisible="1"/>
                     <div class="oe_button_box" name="button_box">
                         <button name="set_policy_tag" string="Policy" type="object" class="oe_stat_button" icon="fa-tag"/>
