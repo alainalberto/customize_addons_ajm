@@ -5,7 +5,7 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_sale_order_kanban"/>
             <field name="arch" type="xml">
-                <xpath expr="//templates/t[1]/div[1]" position="after">
+                <xpath expr="//templates/t[1]/div[1]" position="before">
                     <div class="o_td_label">
                         <field name="policy_display_tag" readonly="1"/>
                         <t t-if="record.policy_display_tag.raw_value == 'service'">
