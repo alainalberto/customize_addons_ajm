@@ -49,7 +49,7 @@
                             </group>
                             <field name="policy_binder_invoice"/> 
                             <field name="policy_premium_sent"/>
-                            <group col="1">
+                            <group col="2">
                                 <field name="policy_auto_renew"/>
                             </group>
                             <group col="2">
