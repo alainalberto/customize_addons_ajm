@@ -98,6 +98,16 @@ class SaleOrder(models.Model):
         
         self.policy_efective_date = fields.Date.context_today(self)
         
+    @api.multi
+    def set_policy_tag(self):
+        self.ensure_one()
+        self.policy_display_tag = 'policy'
+
+    @api.multi
+    def set_service_tag(self):
+        self.ensure_one()
+        self.policy_display_tag = 'service'
+        
 
 class PolicyType(models.Model):
     _name = 'policy.type'
