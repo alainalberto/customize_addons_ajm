@@ -23,6 +23,7 @@
             <field name="arch" type="xml">
                 <!-- Add your modifications to the existing view -->
                 <xpath expr="//form/sheet" position="inside">
+                    <field name="policy_display_tag" invisible="1"/>
                     <div class="oe_button_box" name="button_box">
                         <button name="set_policy_tag" string="Policy" type="object" class="oe_stat_button" icon="fa-tag"/>
                         <button name="set_service_tag" string="Service" type="object" class="oe_stat_button" icon="fa-tag"/>
