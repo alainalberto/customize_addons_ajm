@@ -27,9 +27,9 @@
                         <button name="set_service_tag" string="Service" type="object" class="oe_stat_button, oe_stat_button" icon="fa-tag"/>
                     </div>
                 </xpath>
-                <xpath expr="//form/sheet" position="inside">
+                <xpath expr="//form/sheet/group[1]" position="before">
                     <group name="policy_transtation_group" string="Policy Transaction" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}">
-                        <field name="policy_transaction"/>
+                        <field name="policy_transaction" string=''/>
                     </group>
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
@@ -75,7 +75,7 @@
                             <field name="policy_amount_financed"/>
                         </group>
                 </xpath>
-                <xpath expr="//form/sheet" position="after">
+                <xpath expr="//form/sheet" position="inside">
                         <group class="oe_subtotal_footer oe_right" colspan="2" name="policy_total" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}">
                             <field name="policy_premium"/>
                             <field name="policy_down_payment"/>
