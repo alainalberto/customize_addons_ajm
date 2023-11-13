@@ -84,6 +84,14 @@ class SaleOrder(models.Model):
     
     
     
+    def set_policy_tag(self):
+        self.ensure_one()
+        self.policy_display_tag = 'policy'
+
+    def set_service_tag(self):
+        self.ensure_one()
+        self.policy_display_tag = 'service'
+    
     @api.constrains('policy_number')
     def _check_policy_number(self):
         if not self.policy_number:
@@ -96,14 +104,7 @@ class SaleOrder(models.Model):
                 raise UserError(_("All invoices must be paid"))
         
         self.policy_efective_date = fields.Date.context_today(self)
-        
-    def set_policy_tag(self):
-        self.ensure_one()
-        self.policy_display_tag = 'policy'
 
-    def set_service_tag(self):
-        self.ensure_one()
-        self.policy_display_tag = 'service'
         
 
 class PolicyType(models.Model):
