@@ -27,13 +27,12 @@
                         <button name="set_service_tag" string="Service" type="object" class="oe_stat_button, oe_stat_button" icon="fa-tag"/>
                     </div>
                 </xpath>
-                <xpath expr="//form/sheet/group" position="before">
-                    <group name="policy_transtation_group" string="Policy Transaction" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}">
-                        <field name="policy_transaction" string=''/>
-                    </group>
-                </xpath>
+        
                 <xpath expr="//form/sheet/group/group[2]" position="after">
                     <!-- Control the visibility of other switch-based fields -->
+                        <group name="policy_transtation_group" string="Policy Transaction" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}">
+                               <field name="policy_transaction" string=''/>
+                        </group>
                         <group name="general_polycy_info" string="General" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}">
                             <div class="o_td_label">
                                     <label for="policy_number" string="Policy Number"/>
@@ -47,10 +46,7 @@
                                 <field name="policy_efective_date"/>  
                                 <field name="policy_exp_date"/>  
                             </group>
-                            <group col="2">
-                                <field name="policy_auto_renew"/>
-                            </group>
-                             <div class="o_td_label">
+                            <div class="o_td_label">
                                     <label for="policy_binder_invoice" string="Binder Invoice"/>
                             </div>
                             <field name="policy_binder_invoice"/> 
@@ -66,7 +62,9 @@
                                     <label for="policy_premium_sent" string="Premium Sent"/>
                             </div>
                             <field name="policy_premium_sent"/>
-                            
+                            <group col="2">
+                                <field name="policy_auto_renew"/>
+                            </group> 
                         </group> 
                         <group name="aditional_polycy_info" string="Additional" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}"> 
                             <field name="policy_agency_id"/>
@@ -98,8 +96,6 @@
                     <attribute name="invisible">1</attribute>
                 </xpath>
             </field>
-        </record>
-
-        
+        </record>  
     </data>
 </odoo>
