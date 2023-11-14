@@ -46,9 +46,9 @@
                     <filter string="Policy Number" name="group_by_policy_number" context="{'group_by': 'policy_number'}"/>
                 </group>
                 <!--Filter by-->
-                <field name="name"/>
-                <field name="partner_id"/>
                 <field name="policy_number"/>
+                <field name="partner_id"/>
+                <field name="name"/>
             </search>
         </field>
     </record>
