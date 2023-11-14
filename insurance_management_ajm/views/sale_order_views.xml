@@ -27,12 +27,12 @@
                         <button name="set_service_tag" string="Service" type="object" class="oe_stat_button, oe_stat_button" icon="fa-tag"/>
                     </div>
                 </xpath>
-                <xpath expr="//form/sheet/group[1]" position="before">
+                <xpath expr="//form/sheet/group" position="before">
                     <group name="policy_transtation_group" string="Policy Transaction" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}">
                         <field name="policy_transaction" string=''/>
                     </group>
                 </xpath>
-                <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+                <xpath expr="//form/sheet/group/group" position="after">
                     <!-- Control the visibility of other switch-based fields -->
                         <group name="general_polycy_info" string="General" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}">
                             <div class="o_td_label">
