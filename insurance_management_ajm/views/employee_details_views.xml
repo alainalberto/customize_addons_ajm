@@ -75,7 +75,7 @@
             <form string="Employee Sales">
                 <header>
                     <button name="action_commissions_payment" string="Calculate Commission" type="object"
-                            attrs="{'invisible': [('user_id', '=', False)]}" class="oe_highlight"/>
+                            attrs="{'invisible': [('employee_id', '=', False)]}" class="oe_highlight"/>
                 </header>
                 <group>
                     <field name="employee_id"/>
