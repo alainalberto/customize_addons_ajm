@@ -103,7 +103,7 @@ class CommissionAgentDetails(models.Model):
         sales = self.get_sales_by_employee_and_dates(self.employee_id.id, self.date_start, self.date_end)
         total_sales = sum(sale.amount_total for sale in sales)
         # Calcula el porcentaje aquí según tu lógica de negocio
-        percentage = ...  # tu lógica de cálculo
+        # percentage = ...   tu lógica de cálculo
         
     def action_commissions_payment(self):
         # Lógica para abrir la vista de pago de comisiones
