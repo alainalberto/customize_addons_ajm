@@ -70,7 +70,7 @@ class EmployeeDetails(models.Model):
                 raise ValidationError(
                     _('Only numbers, plus sign, hyphen, parentheses and spaces are permitted in phone number'))
 
-class CommissionAgentDetails(models.Model):
+class CommissionEmployee(models.Model):
     _name = 'commission.employee'
     
     sale_id  = fields.Many2many('sale.order')
