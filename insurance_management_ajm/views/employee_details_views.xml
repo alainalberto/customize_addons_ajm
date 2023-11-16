@@ -76,6 +76,7 @@
                 <header>
                     <button name="action_calculate_commission" string="Calculate Commission" type="object"
                             attrs="{'invisible': [('user_id', '=', False)]}" class="oe_highlight"/>
+                </header>
                 <group>
                     <field name="employee_id"/>
                     <field name="date_start"/>
