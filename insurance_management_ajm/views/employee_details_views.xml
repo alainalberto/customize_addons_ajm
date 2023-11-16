@@ -79,8 +79,8 @@
                 </header>
                 <group>
                     <field name="employee_id"/>
-                    <field name="date_start"/>
-                    <field name="date_end"/>
+                    <field name="periodo_start_date"/>
+                    <field name="periodo_end_date"/>
                 </group>
                 <footer>
                     <button string="Filter Sales" type="object" name="button_filter_sales"/>
