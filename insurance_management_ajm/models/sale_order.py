@@ -39,7 +39,9 @@ class SaleOrder(models.Model):
     # Policy fields
     policy_display_tag = fields.Selection(
         [('policy', 'Policy'), ('service', 'Service')], 
-        store=True, default='policy')
+        store=True, 
+        default='policy',
+        string='Policy Display')
     policy_start_date = fields.Date(
         string='Start Date', default=fields.Date.context_today, required=True)
     policy_efective_date = fields.Date(

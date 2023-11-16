@@ -9,7 +9,6 @@
                 <header>
                    <button name="action_salary_payment" string="Salary Payment" type="object"
                             attrs="{'invisible': [('user_id', '=', False)]}" class="oe_highlight"/>
-
                 </header>
                 <sheet>
                     <div class="oe_title">
@@ -30,6 +29,7 @@
                             <field name="gender"/>
                             <field name="last_salary_date"/>
                             <field name="user_id"/>
+                            
                         </group>
                     </group>
                     <notebook>
@@ -67,5 +67,40 @@
             </p>
         </field>
     </record>
+    
+    <record id="view_commission.employee_form" model="ir.ui.view">
+        <field name="name">commission.employee.form</field>
+        <field name="model">commission.employee</field>
+        <field name="arch" type="xml">
+            <form string="Employee Sales">
+                <header>
+                    <button name="action_calculate_commission" string="Calculate Commission" type="object"
+                            attrs="{'invisible': [('user_id', '=', False)]}" class="oe_highlight"/>
+                <group>
+                    <field name="employee_id"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                </group>
+                <footer>
+                    <button string="Filter Sales" type="object" name="button_filter_sales"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_commission.employee_tree" model="ir.ui.view">
+        <field name="name">commission.employee.tree</field>
+        <field name="model">commission.employee</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Sales">
+                <field name="employee_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="total_sales"/>
+                <field name="total_commission"/>
+            </tree>
+        </field>
+    </record>
+
 
 </odoo>

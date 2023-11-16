@@ -1,27 +1,5 @@
 # -*- coding: utf-8 -*-
-#############################################################################
-#
-#    Cybrosys Technologies Pvt. Ltd.
-#
-#    Copyright (C) 2022-TODAY Cybrosys Technologies(<https://www.cybrosys.com>).
-#    Author: Cybrosys Techno Solutions(odoo@cybrosys.com)
-#
-#    You can modify it under the terms of the GNU AFFERO
-#    GENERAL PUBLIC LICENSE (AGPL v3), Version 3.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU AFFERO GENERAL PUBLIC LICENSE (AGPL v3) for more details.
-#
-#    You should have received a copy of the GNU AFFERO GENERAL PUBLIC LICENSE
-#    (AGPL v3) along with this program.
-#    If not, see <http://www.gnu.org/licenses/>.
-#
-#############################################################################
-
 import re
-
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 
@@ -91,14 +69,15 @@ class EmployeeDetails(models.Model):
                     _('Only numbers, plus sign, hyphen, parentheses and spaces are permitted in phone number'))
 
 class CommissionAgentDetails(models.Model):
-    _name = 'commission.agent.details'
+    _name = 'commission.employee'
     
     sale_id  = fields.Many2many('sale.order', required=True)
     employee_id = fields.Many2many('hr.employee', required=True)
-    commission_rate = fields.Float()
-    periodo_start_date = fields.Date()
-    periodo_end_date = fields.Date()
-    last_payment_date = fields.Date()
+    commission_rate = fields.Float(string='Commission Percentage')
+    invoice_id = fields.Many2one('account.move')
+    periodo_start_date = fields.Date(string='Start Date')
+    periodo_end_date = fields.Date(string='End Date')
+    payment_date = fields.Date()
     total_commission = fields.Float()
     
     @api.constrains('commission_rate')
@@ -108,3 +87,29 @@ class CommissionAgentDetails(models.Model):
                         reward.commission_rate < 0 or reward.commission_rate > 100)):
             raise ValidationError(
                 _('Commission Percentage should be between 1-100'))
+            
+    @api.model
+    def get_sales_by_employee_and_dates(self, employee_id, date_start, date_end):
+        sales = self.env['sale.order'].search([
+            ('employee_id', '=', employee_id),
+            ('date_order', '>=', date_start),
+            ('date_order', '<=', date_end),
+            ('state', 'in', ['sale', 'done']) # Only confirmed and paid sales
+        ])
+        return sales
+    
+    def button_filter_sales(self):
+        self.ensure_one()
+        sales = self.get_sales_by_employee_and_dates(self.employee_id.id, self.date_start, self.date_end)
+        total_sales = sum(sale.amount_total for sale in sales)
+        # Calcula el porcentaje aquí según tu lógica de negocio
+        percentage = ...  # tu lógica de cálculo
+        
+    def action_commissions_payment(self):
+        # Lógica para abrir la vista de pago de comisiones
+        action = self.env.ref('view_commission.employee_form').read()[0]
+        action['context'] = {
+            'default_employee_id': self.id,  # Asegúrate de pasar el ID del empleado actual
+            # Otras variables de contexto si son necesarias
+        }
+        return action
