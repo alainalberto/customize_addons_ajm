@@ -21,6 +21,8 @@ class EmployeeDetails(models.Model):
     note_field = fields.Html(string='Comment')
     invoice_id = fields.Many2one(
         'account.move', string='Last payment', copy=False, readonly=True)
+    commission_ids = fields.One2many(
+        'commission.employee', 'employee_id', string='Commissions')
 
     def action_salary_payment(self):
         if self.invoice_id:
@@ -71,8 +73,8 @@ class EmployeeDetails(models.Model):
 class CommissionAgentDetails(models.Model):
     _name = 'commission.employee'
     
-    sale_id  = fields.Many2many('sale.order', required=True)
-    employee_id = fields.Many2many('hr.employee', required=True)
+    sale_id  = fields.Many2many('sale.order')
+    employee_id = fields.Many2many('hr.employee')
     commission_rate = fields.Float(string='Commission Percentage')
     invoice_id = fields.Many2one('account.move')
     periodo_start_date = fields.Date(string='Start Date')
