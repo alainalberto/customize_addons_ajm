@@ -107,7 +107,7 @@ class CommissionAgentDetails(models.Model):
         
     def action_commissions_payment(self):
         # Lógica para abrir la vista de pago de comisiones
-        action = self.env.ref('view_commission.employee_form').read()[0]
+        action = self.env.ref('view_commission_employee_form').read()[0]
         action['context'] = {
             'default_employee_id': self.id,  # Asegúrate de pasar el ID del empleado actual
             # Otras variables de contexto si son necesarias

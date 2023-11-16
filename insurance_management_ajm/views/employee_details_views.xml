@@ -68,13 +68,13 @@
         </field>
     </record>
     
-    <record id="view_commission.employee_form" model="ir.ui.view">
+    <record id="view_commission_employee_form" model="ir.ui.view">
         <field name="name">commission.employee.form</field>
         <field name="model">commission.employee</field>
         <field name="arch" type="xml">
             <form string="Employee Sales">
                 <header>
-                    <button name="action_calculate_commission" string="Calculate Commission" type="object"
+                    <button name="action_commissions_payment" string="Calculate Commission" type="object"
                             attrs="{'invisible': [('user_id', '=', False)]}" class="oe_highlight"/>
                 </header>
                 <group>
@@ -89,7 +89,7 @@
         </field>
     </record>
 
-    <record id="view_commission.employee_tree" model="ir.ui.view">
+    <record id="view_commission_employee_tree" model="ir.ui.view">
         <field name="name">commission.employee.tree</field>
         <field name="model">commission.employee</field>
         <field name="arch" type="xml">
