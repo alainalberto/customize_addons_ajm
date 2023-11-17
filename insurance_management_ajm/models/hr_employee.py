@@ -80,6 +80,7 @@ class CommissionEmployee(models.Model):
     start_date = fields.Date(string='Start Date')
     end_date = fields.Date(string='End Date')
     payment_date = fields.Date()
+    total_sales = fields.Float()
     total_commission = fields.Float()
     
     @api.constrains('commission_rate')
