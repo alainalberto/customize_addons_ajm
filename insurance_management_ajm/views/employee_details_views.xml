@@ -79,8 +79,8 @@
                 </header>
                 <group>
                     <field name="employee_id"/>
-                    <field name="periodo_start_date"/>
-                    <field name="periodo_end_date"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
                 </group>
                 <footer>
                     <button string="Filter Sales" type="object" name="button_filter_sales"/>
@@ -95,8 +95,8 @@
         <field name="arch" type="xml">
             <tree string="Employee Sales">
                 <field name="employee_id"/>
-                <field name="date_start"/>
-                <field name="date_end"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
                 <field name="total_sales"/>
                 <field name="total_commission"/>
             </tree>

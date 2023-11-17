@@ -77,8 +77,8 @@ class CommissionEmployee(models.Model):
     employee_id = fields.Many2many('hr.employee')
     commission_rate = fields.Float(string='Commission Percentage')
     invoice_id = fields.Many2one('account.move')
-    periodo_start_date = fields.Date(string='Start Date')
-    periodo_end_date = fields.Date(string='End Date')
+    start_date = fields.Date(string='Start Date')
+    end_date = fields.Date(string='End Date')
     payment_date = fields.Date()
     total_commission = fields.Float()
     
@@ -91,11 +91,11 @@ class CommissionEmployee(models.Model):
                 _('Commission Percentage should be between 1-100'))
             
     @api.model
-    def get_sales_by_employee_and_dates(self, employee_id, date_start, date_end):
+    def get_sales_by_employee_and_dates(self, employee_id, start_date, end_date):
         sales = self.env['sale.order'].search([
             ('employee_id', '=', employee_id),
-            ('date_order', '>=', date_start),
-            ('date_order', '<=', date_end),
+            ('date_order', '>=', start_date),
+            ('date_order', '<=', end_date),
             ('state', 'in', ['sale', 'done']) # Only confirmed and paid sales
         ])
         return sales
