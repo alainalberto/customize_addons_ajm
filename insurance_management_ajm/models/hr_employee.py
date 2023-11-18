@@ -72,6 +72,7 @@ class EmployeeDetails(models.Model):
 
 class CommissionEmployee(models.Model):
     _name = 'commission.employee'
+    _description = 'Commission Employee'
     
     sale_id  = fields.Many2many('sale.order')
     employee_id = fields.Many2many('hr.employee')
@@ -100,6 +101,12 @@ class CommissionEmployee(models.Model):
             ('state', 'in', ['sale', 'done']) # Only confirmed and paid sales
         ])
         return sales
+    
+    @api.constrains('commission_rate')
+    def _check_commission_rate(self):
+        for record in self:
+            if not 0 <= record.commission_rate <= 100:
+                raise ValidationError(_("Commission Rate must be between 0 and 100."))
     
     def button_filter_sales(self):
         self.ensure_one()

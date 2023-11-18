@@ -8,5 +8,5 @@ access_financial_details,financial.details,model_financial_details,base.group_us
 access_sale_order,sale.order,model_sale_order,base.group_user,1,1,1,1
 access_hr_employee,hr.employee,model_hr_employee,base.group_user,1,1,1,1
 access_product_product,product.product,model_product_product,base.group_user,1,1,1,1
-access_commission_agent_details,product.commission.agent.details,model_commission_agent_details,base.group_user,1,1,1,1
+access_commission_employee,commission.employee,model_commission_employee,base.group_user,1,1,1,1
 access_sale_order_line,sale.order.line,model_sale_order_line,base.group_user,1,1,1,1

@@ -1,0 +1,21 @@
+.partner-file-list {
+    .file-entry {
+        border: 1px solid #eaeaea;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    .folder-title {
+        font-weight: bold;
+    }
+}
+
+.o_file_search {
+    margin-bottom: 10px;
+    input.o_search_input {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+}

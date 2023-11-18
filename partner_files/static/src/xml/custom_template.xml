@@ -1,0 +1,21 @@
+<templates>
+    <t t-name="MyPartnerFiles.FileListView">
+        <div class="partner-file-list">
+            <t t-foreach="folders" t-as="folder">
+                <div class="folder">
+                    <div class="folder-title">
+                        <t t-esc="folder.name"/>
+                    </div>
+                    <div class="folder-files">
+                        <t t-foreach="folder.files" t-as="file">
+                            <div class="file-entry">
+                                <span t-esc="file.name"/>
+                                <!-- Agrega aquí más detalles o acciones para cada archivo -->
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>
