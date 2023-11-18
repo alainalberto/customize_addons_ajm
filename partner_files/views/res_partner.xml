@@ -7,21 +7,18 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='internal_notes']" position="before">
                 <page string="Files">
-                    <div class="o_file_search">
-                        <input type="text" class="o_search_input" placeholder="Buscar archivo..."/>
-                    </div>
-                    <tree>
-                        <field name="name"/>
-                        <field name="file_data" filename="name"/>
-                        <field name="folder_id"/>
-                    </tree>
-                    <form>
-                        <group>
+                    <button name="action_files_partner" string="Files" type="object" class="oe_highlight"/>
+                    <button name="action_create_file" string="Add Driver" type="object" class="oe_highlight"/>
+                    <field name="file_ids">
+                        <div class="o_file_search">
+                           <input type="text" class="o_search_input" placeholder="Buscar archivo..."/>
+                        </div>
+                        <tree editable="bottom">
                             <field name="name"/>
                             <field name="file_data" filename="name"/>
                             <field name="folder_id"/>
-                        </group>
-                    </form>
+                        </tree>
+                    </field>
                 </page>
             </xpath>
         </field>

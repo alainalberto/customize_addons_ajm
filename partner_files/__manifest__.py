@@ -9,7 +9,8 @@
     'depends': ['base', 'contacts'],
     'data': [
         'security/ir.model.access.csv',
-        'views/views.xml',
+        'views/files_partner_views.xml',
+        'views/res_partner.xml',
     ],
     'qweb': [
         'static/src/xml/custom_template.xml',

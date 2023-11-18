@@ -1,6 +1,13 @@
 # partner_files/models/models.py
 from odoo import models, fields
 
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+    file_ids = fields.One2many('partner.file', 'partner_id', string='Files')
+    folder_ids = fields.One2many('partner.folder', 'partner_id', string='Folders')
+
+
 class PartnerFile(models.Model):
     _name = 'partner.file'
     _description = 'Client Related File'
