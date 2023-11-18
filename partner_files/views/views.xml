@@ -22,7 +22,6 @@
                             <field name="folder_id"/>
                         </group>
                     </form>
-                    </field>
                 </page>
             </xpath>
         </field>
