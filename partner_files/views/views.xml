@@ -10,7 +10,6 @@
                     <div class="o_file_search">
                         <input type="text" class="o_search_input" placeholder="Buscar archivo..."/>
                     </div>
-                    <field name="partner_file_ids" widget="file_list_widget"/>
                     <tree>
                         <field name="name"/>
                         <field name="file_data" filename="name"/>
