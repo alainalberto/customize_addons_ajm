@@ -1,4 +1,4 @@
-<!-- partner_files/views/views.xml -->
+
 <odoo>
     <record id="view_partner_form_inherit" model="ir.ui.view">
         <field name="name">res.partner.form.inherit</field>
@@ -11,7 +11,7 @@
                     <button name="action_create_file" string="Add Driver" type="object" class="oe_highlight"/>
                     <field name="file_ids">
                         <div class="o_file_search">
-                           <input type="text" class="o_search_input" placeholder="Buscar archivo..."/>
+                           <input type="text" class="o_search_input" placeholder="Seach file..."/>
                         </div>
                         <tree editable="bottom">
                             <field name="name"/>
