@@ -1,4 +1,3 @@
-# partner_files/security/ir.model.access.csv
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_partner_file,partner.file,model_partner_file,,1,1,1,0
 access_partner_folder,partner.folder,model_partner_folder,,1,1,1,1
