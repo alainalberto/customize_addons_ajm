@@ -37,79 +37,15 @@ class SaleOrder(models.Model):
         default=lambda self: self.env.company.currency_id.id,
         store=True, ondelete="restrict")
     # Policy fields
-    policy_display_tag = fields.Selection(
-        [('policy', 'Policy'), ('service', 'Service')], 
-        store=True, 
-        default='policy',
-        string='Policy Display')
-    policy_start_date = fields.Date(
-        string='Start Date', default=fields.Date.context_today, required=True)
-    policy_efective_date = fields.Date(
-        string='Efective Date')
-    policy_auto_renew = fields.Boolean(copy=False)
-    policy_bind_day = fields.Date(
-        string='Bind Date', default=fields.Date.context_today)
-    policy_exp_date = fields.Date(string='Expiration Date')
-    policy_type_id = fields.Many2one(
-        'policy.type', string='Policy Type', required=True)
-    policy_duration = fields.Integer(string='Duration in Days')
-    policy_premium = fields.Float(string='Premium')
-    policy_total = fields.Float(string='Policy Total')
-    policy_down_payment = fields.Float(string='Down Payment')
-    policy_fee = fields.Float(string='Fee')
-    policy_commission_total = fields.Float(string='Commission Total')
-    policy_number = fields.Char(string="Policy Number",
-                                   help="Policy number is a unique number that"
-                                        "an insurance company uses to identify"
-                                        "you as a policyholder")
-    policy_transaction = fields.Selection(
-        [('new', 'New Policy'), ('renew', 'Renew Policy'), ('conciliation', 'Conciliation'), ('endorsement', 'Endorsement'), ('unear', 'Unear'), ('cancelation', 'Cancelation')], 
-        required=True, default='new', string='Transaction')
-    policy_agency_id = fields.Many2one(
-        'agency.details', string='Agency') 
-    policy_general_agency_id = fields.Many2one(
-        'general.agency.details', string='General Agency') 
-    policy_carrier_id = fields.Many2one(
-        'carrier.details', string='Carrier')
-    policy_mga = fields.Many2one(
-        'mga.details', string='MGA')
-    policy_binder_id = fields.Char( string='Binder ID', copy=False )
-    policy_premium_sent = fields.Selection(
-        [('gross', 'Gross'), ('monthly', 'Monthly'), ('net', 'Net')], 
-        required=True, default='gross', string='Transaction')
-    policy_binder_invoice = fields.Char(string="Carrier Invoice Number" )
-    policy_financial_id = fields.Many2one(
-        'financial.details', string='Financial')
-    policy_next_due = fields.Float(string='Next Due')
-    policy_amount_financed = fields.Float(string='Amount Financed')
-    policy_paid_mga = fields.Float(string='Paid MGA')
+    policy_ids = fields.One2many('policy.details', 'sale_order_id', string='Policy')
     
-    
-    
-    def set_policy_tag(self):
+    def open_policy_details(self):
         self.ensure_one()
-        self.policy_display_tag = 'policy'
-
-    def set_service_tag(self):
-        self.ensure_one()
-        self.policy_display_tag = 'service'
-    
-    @api.constrains('policy_number')
-    def _check_policy_number(self):
-        if not self.policy_number:
-            raise ValidationError(
-                _('Please add the policy number'))
-            
-    def action_active_insurance(self):
-        for records in self.invoice_ids:
-            if records.state == 'paid':
-                raise UserError(_("All invoices must be paid"))
-        
-        self.policy_efective_date = fields.Date.context_today(self)
-
-        
-
-class PolicyType(models.Model):
-    _name = 'policy.type'
-
-    name = fields.Char(string='Name')
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Policy Details',
+            'view_mode': 'form',
+            'res_model': 'policy.details',
+            'res_id': self.policy_ids.id,  # assuming the many2one
+            'target': 'current',
+        }

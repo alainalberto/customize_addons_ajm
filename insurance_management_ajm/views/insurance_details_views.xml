@@ -1,79 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_sale_order_tree_policy" model="ir.ui.view">
-        <field name="name">sale.order.tree.custom</field>
-        <field name="model">sale.order</field>
+    <!-- Views Policy -->
+    
+    <record id="view_policy_details_form" model="ir.ui.view">
+        <field name="name">policy.details.form</field>
+        <field name="model">policy.details</field>
         <field name="arch" type="xml">
-            <tree string="Policies Sales" sample="1"
-                decoration-info="invoice_status == 'to invoice', policy_display_tag == 'policy'"
-                decoration-muted="state == 'cancel'">
-                <field name="message_needaction" invisible="1"/>
-                <field name="policy_number" readonly="1" decoration-bf="1"/>
-                <field name="name" string="Referen Sale" readonly="1"/>
-                <field name="policy_exp_date" optional="hide"/>
-                <field name="partner_id" readonly="1"/>
-                <field name="user_id" optional="show" widget="many2one_avatar_user"/>
-                <field name="activity_ids" widget="list_activity" optional="show"/>
-                <field name="policy_efective_date" optional="show"/>
-                <field name="policy_carrier_id" readonly="1"/>
-                <field name="company_id" groups="base.group_multi_company" optional="show" readonly="1"/>
-                <field name="amount_untaxed" sum="Total Tax Excluded" widget="monetary" optional="hide"/>
-                <field name="amount_tax" sum="Tax Total" widget="monetary" optional="hide"/>
-                <field name="amount_total" sum="Total Tax Included" widget="monetary" decoration-bf="1" optional="show"/>
-                <field name="invoice_status"
-                    decoration-success="invoice_status == 'invoiced'"
-                    decoration-info="invoice_status == 'to invoice'"
-                    decoration-warning="invoice_status == 'upselling'"
-                    widget="badge" optional="show"/>
-                <field name="state" invisible="1"/>
-                <field name="policy_display_tag" readonly="1"/>
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" statusbar_visible="quotation,confirm,active" attrs="{'invisible': [('status', '=', 'cancel'), ('status', '=', 'expire')]}"/>
+
+                </header>
+                <sheet>
+                    <group>
+                       <group name="partner_details">
+                            <field name="partner_id"/>
+                            <field name="user_id"/>
+                       </group>
+                       <group name="policy_details">
+                            <group name="general_polycy_info" string="General">
+                                <field name="transaction"/>
+                                <field name="policy_number"/>
+                                <field name="type_id"/>
+                                <group col="2">
+                                    <field name="start_date"/>
+                                </group>
+                                <group col="2">
+                                    <field name="duration"/>
+                                </group>
+                                <group col="2">  
+                                    <field name="exp_date"/>  
+                                </group>
+                                <group col="2">
+                                    <field name="auto_renew"/>
+                                </group>  
+                                <field name="policy_binder_invoice"/> 
+                                <field name="binder_id"/>
+                                <field name="bind_day"/>         
+                            </group> 
+                            <group name="aditional_polycy_info" string="Additional"> 
+                                <field name="agency_id"/>
+                                <field name="general_agency_id"/>
+                                <field name="carrier_id"/>
+                                <field name="mga"/>
+                                <field name="financial_id"/>
+                                <field name="policy_next_due"/>
+                                <field name="policy_paid_mga"/>
+                                <field name="policy_amount_financed"/>
+                            </group>
+                        </group>
+                        <notebook>
+                           <page string="Coverages" name="coverage_lines">
+                                <field name="coverage_ids" widget="one2many_list">
+                                    <tree string="Coverages Lines" editable="bottom">
+                                        <control>
+                                            <create name="add_product_control" string="Add a coverage"/>
+                                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                        </control>
+                                        <field name="product_id"/>
+                                        <field name="coverage_type"/>
+                                        <field name="deductible"/>
+                                        <field name="coverage_amount"/>
+                                        <field name="premium"/>
+                                        <field name="policy_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Endorsement/Fee" name="endorsement_fee">
+                                <field name="endorsement_ids" widget="one2many_list">
+                                    <tree string="Endorsement Lines" editable="bottom">
+                                        <control>
+                                            <create name="add_product_control" string="Add a endo"/>
+                                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                        </control>
+                                        <field name="policy_id" invisible="1"/>
+                                        <field name="type"/>
+                                        <field name="user_id"/>
+                                        <field name="endorsement_amount"/>
+                                        <field name="down_payment"/>
+                                        <field name="fee"/>
+                                        <field name="billing_status"/>
+                                    </tree>
+                                </field>
+                        </notebook>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="policy_total">
+                            <field name="premium"/>
+                            <field name="down_payment"/>
+                            <field name="fee"/>
+                            <field name="commission_total"/>
+                            <field name="policy_total"/>  
+                        </group>
+                    <group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_policy_details_tree" model="ir.ui.view">
+        <field name="name">policy.details.tree</field>
+        <field name="model">policy.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="policy_number"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="status"/>
+                <field name="transaction"/>
+                <field name="start_date"/>
+                <field name="exp_date"/>
+                <field name="premium"/>
+                <field name="policy_total"/>
             </tree>
         </field>
     </record>
 
-    <record id="view_sale_order_search_policy" model="ir.ui.view">
-        <field name="name">sale.order.search.policy</field>
-        <field name="model">sale.order</field>
+    <record id="view_policy_details_kanban" model="ir.ui.view">
+        <field name="name">policy.details.kanban</field>
+        <field name="model">policy.details</field>
         <field name="arch" type="xml">
-            <search>
-                <!-- Filtros predefinidos -->
-                <filter string="Policies" name="filter_policy_true" domain="[('policy_display_tag', '=', 'policy')]"/>     
-
-                <!-- Group to filter -->
-                <group expand="0" string="Group By">
-                    <filter string="Customer" name="group_by_partner" context="{'group_by': 'partner_id'}"/>
-                    <filter string="Date Order" name="group_by_date_order" context="{'group_by': 'date_order'}"/>
-                    <filter string="Policy Number" name="group_by_policy_number" context="{'group_by': 'policy_number'}"/>
-                </group>
-                <!--Filter by-->
+            <kanban>
                 <field name="policy_number"/>
                 <field name="partner_id"/>
-                <field name="name"/>
+                <field name="user_id"/>
+                <field name="status"/>
+                <field name="transaction"/>
+                <field name="start_date"/>
+                <field name="exp_date"/>
+                <field name="premium"/>
+                <field name="policy_total"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong><field name="policy_number"/></strong>
+                                <div><field name="partner_id"/></div>
+                                <div><field name="user_id"/></div>
+                                <div><field name="status"/></div>
+                                <div><field name="transaction"/></div>
+                                <div><field name="start_date"/></div>
+                                <div><field name="exp_date"/></div>
+                                <div><field name="premium"/></div>
+                                <div><field name="policy_total"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_policy_details_search" model="ir.ui.view">
+        <field name="name">policy.details.search</field>
+        <field name="model">policy.details</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="policy_number"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="status"/>
+                <field name="transaction"/>
+                <field name="start_date"/>
+                <field name="exp_date"/>
             </search>
         </field>
     </record>
-
-    <record id="action_sale_order_policy" model="ir.actions.act_window">
-        <field name="name">Policy Sales</field>
-        <field name="res_model">sale.order</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_sale_order_tree_policy"/>
-        <field name="search_view_id" ref="view_sale_order_search_policy"/>
-        <field name="domain">[('policy_display_tag', '=', 'policy')]</field>
-    </record>
     
-    <!-- Views Financial Details -->
-    <record id="view_financial_details_tree" model="ir.ui.view">
-        <field name="name">financial.details.tree</field>
-        <field name="model">financial.details</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="email"/>
-                <field name="phone"/>
-            </tree>
-        </field>
+    <record id="action_policy_details" model="ir.actions.act_window">
+        <field name="name">Policy</field>
+        <field name="res_model">policy.details</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
+
+    
+    
+    <!--Views FinancialDetails-->
     
     <record id="view_financial_details_form" model="ir.ui.view">
         <field name="name">financial.details.form</field>
@@ -85,15 +187,23 @@
                         <field name="name"/>
                         <field name="street"/>
                         <field name="city"/>
-                    </group>
-                    <group>
-                        <field name="state_id"/>
-                        <field name="country_id"/>
                         <field name="email"/>
                         <field name="phone"/>
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="view_financial_details_tree" model="ir.ui.view">
+        <field name="name">financial.details.tree</field>
+        <field name="model">financial.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </tree>
         </field>
     </record>
 
