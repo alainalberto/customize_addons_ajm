@@ -16,7 +16,7 @@
                             <field name="partner_id"/>
                             <field name="user_id"/>
                        </group>
-                       <group name="policy_details">
+                        <group name="policy_details">
                             <group name="general_polycy_info" string="General">
                                 <field name="transaction"/>
                                 <field name="policy_number"/>
@@ -49,7 +49,7 @@
                             </group>
                         </group>
                         <notebook>
-                           <page string="Coverages" name="coverage_lines">
+                            <page string="Coverages" name="coverage_lines">
                                 <field name="coverage_ids" widget="one2many_list">
                                     <tree string="Coverages Lines" editable="bottom">
                                         <control>
@@ -92,7 +92,7 @@
                             <field name="commission_total"/>
                             <field name="policy_total"/>  
                         </group>
-                    <group>
+                    </group>
                 </sheet>
             </form>
         </field>
