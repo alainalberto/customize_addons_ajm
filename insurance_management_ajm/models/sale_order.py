@@ -39,13 +39,9 @@ class SaleOrder(models.Model):
     # Policy fields
     is_policy = fields.Boolean(
         string='Is Policy',
-        compute='_compute_is_policy',
         store=True, readonly=False, required=False,
         states=LOCKED_FIELD_STATES)
     
-    def _compute_is_policy(self):
-        for order in self:
-            order.is_policy = order.order_line.mapped('is_policy')
     
     def open_policy_details(self):
         self.ensure_one()
