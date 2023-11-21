@@ -7,10 +7,10 @@
             <field name="arch" type="xml">
                 <xpath expr="//templates/t[1]/div[1]" position="after">
                     <div class="o_td_label">
-                        <label for="policy_ids" string="Policy Insurance" attrs="{'invisible': [('policy_ids', '=', 'policy_ids')]}"/>
-                        <field name="policy_ids" invisible='1'/>
+                        <label for="policy_ids" string="Policy Insurance"/>
+                        <field name="policy_ids"/>
                     </div>
-                </xpath>                
+                </xpath>              
             </field>    
         </record>
         <!-- Inherit the existing sale order form view -->
@@ -23,68 +23,8 @@
                 <xpath expr="//form/sheet" position="before">
                     <field name="policy_ids" invisible='1'/>
                     <div class="oe_button_box" name="button_box">
-                        <button name="open_policy_details" string="Policy Details" string="Policy" type="object" class="oe_stat_button, oe_stat_button" icon="fa-tag" attrs="{'invisible': [('policy_ids', '=', 'policy_ids')]}"/>
+                        <button name="open_policy_details" string="Policy Details" type="object" class="oe_stat_button" icon="fa-tag" attrs="{'invisible': [('policy_ids', '=', False)]}"/>
                     </div>
-                </xpath>
-        
-                <xpath expr="//form/sheet/group/group[2]" position="after">
-                    <!-- Control the visibility of other switch-based fields -->
-                        <group name="general_polycy_info" string="General" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}">
-                            <div class="o_td_label">
-                                    <label for="policy_transaction" string="Policy Transaction"/>
-                            </div>
-                            <field name="policy_transaction"/>
-                            <div class="o_td_label">
-                                    <label for="policy_number" string="Policy Number"/>
-                            </div>
-                            <field name="policy_number"/>
-                            <div class="o_td_label">
-                                    <label for="policy_start_date" string="Start Date"/>
-                            </div>
-                            <field name="policy_start_date"/>
-                            <group col="2">  
-                                <field name="policy_efective_date"/>  
-                                <field name="policy_exp_date"/>  
-                            </group>
-                            <group col="2">
-                                <field name="policy_auto_renew"/>
-                            </group>  
-                            <div class="o_td_label">
-                                    <label for="policy_binder_invoice" string="Binder Invoice"/>
-                            </div>
-                            <field name="policy_binder_invoice"/> 
-                            <div class="o_td_label">
-                                    <label for="policy_binder_id" string="Binder ID"/>
-                            </div>
-                            <field name="policy_binder_id"/>
-                            <div class="o_td_label">
-                                    <label for="policy_bind_day" string="Binder Day"/>
-                            </div>
-                            <field name="policy_bind_day"/>
-                            <div class="o_td_label">
-                                    <label for="policy_premium_sent" string="Premium Sent"/>
-                            </div>
-                            <field name="policy_premium_sent"/>          
-                        </group> 
-                        <group name="aditional_polycy_info" string="Additional" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}"> 
-                            <field name="policy_agency_id"/>
-                            <field name="policy_general_agency_id"/>
-                            <field name="policy_carrier_id"/>
-                            <field name="policy_mga"/>
-                            <field name="policy_financial_id"/>
-                            <field name="policy_next_due"/>
-                            <field name="policy_paid_mga"/>
-                            <field name="policy_amount_financed"/>
-                        </group>
-                </xpath>
-                <xpath expr="//form/sheet" position="inside">
-                        <group class="oe_subtotal_footer oe_right" colspan="2" name="policy_total" attrs="{'invisible': [('policy_display_tag', '=', 'service')]}">
-                            <field name="policy_premium"/>
-                            <field name="policy_down_payment"/>
-                            <field name="policy_fee"/>
-                            <field name="policy_commission_total"/>
-                            <field name="policy_total"/>  
-                        </group>
                 </xpath>
                 <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
                     <attribute name="invisible">1</attribute> 

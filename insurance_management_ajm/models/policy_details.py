@@ -46,7 +46,7 @@ class PolicyDetails(models.Model):
         'financial.details', string='Financial')
     status = fields.Selection(
         [('quotation', 'Quotation'), ('confirm', 'Confirm'), ('active', 'Active'), ('cancel', 'Cancel'), ('expire', 'Expire')], 
-        required=True, default='gross', string='Transaction')
+        required=True, default='quotation', string='Transaction')
     start_date = fields.Date(string='Start Date')
     exp_date = fields.Date(string='Expiration Date')
     auto_renew = fields.Boolean(copy=False)
@@ -69,7 +69,41 @@ class PolicyDetails(models.Model):
     policy_paid_mga = fields.Float(string='Paid MGA')
     
     
+    @api.model
+    def create(self, vals):
+        # Llamar al método original create
+        record = super(PolicyDetails, self).create(vals)
 
+        # Si el estado es 'quotation', crear un pedido de venta relacionado
+        if record.status == 'quotation':
+            
+            policy_tag = self.env['crm.tag'].search([('name', '=', 'Policy')], limit=1)
+            if not policy_tag:
+                policy_tag = self.env['crm.tag'].create({'name': 'Policy'})
+            
+            sale_order = self.env['sale.order'].create({
+                'partner_id': record.partner_id.id,
+                'state': 'draft',  # Asumiendo que el estado inicial es 'draft'
+                'tag_ids': [(6, 0, [policy_tag.id])],
+                'amount_total': record.premium,
+                'user_id': record.user_id.id if record.user_id else False,
+                'team_id': record.team_id.id if record.team_id else False,
+            
+            })
+
+            # Guardar la referencia del pedido de venta en la póliza
+            record.sale_id = sale_order.id
+
+            # Crear líneas de pedido de venta para cada cobertura
+            for coverage in record.coverage_ids:
+                self.env['sale.order.line'].create({
+                    'order_id': sale_order.id,
+                    'product_id': coverage.product_id.id,
+                    'product_uom_qty': 1,
+                    'price_unit': coverage.premium,
+                    # Otros campos necesarios para 'sale.order.line'
+                })
+        
     
     @api.constrains('policy_number')
     def _check_policy_number(self):
@@ -85,17 +119,16 @@ class PolicyDetails(models.Model):
         self.efective_date = fields.Date.context_today(self)
         self.state = 'active'
     
+    @api.depends('sale_id')
     def _compute_user_id(self):
-        
-        sale_order = self.env['sale.order']
         for record in self:
-            record.user_id = sale_order._compute_user_id()
+            record.user_id = record.sale_id.user_id if record.sale_id else False
 
+    
+    @api.depends('sale_id')
     def _compute_team_id(self):
-        
-        sale_order = self.env['sale.order']
         for record in self:
-            record.user_id = sale_order._compute_team_id()
+            record.team_id = record.sale_id.team_id if record.sale_id else False
 
         
 

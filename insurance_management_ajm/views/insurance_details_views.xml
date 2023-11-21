@@ -8,8 +8,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <field name="status" widget="statusbar" statusbar_visible="quotation,confirm,active" attrs="{'invisible': [('status', '=', 'cancel'), ('status', '=', 'expire')]}"/>
-
+                    <field name="status" widget="statusbar" statusbar_visible="quotation,confirm,active"/>
                 </header>
                 <sheet>
                     <group>

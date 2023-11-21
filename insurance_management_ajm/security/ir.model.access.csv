@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_policy_details,policy.details,model_policy_details,base.group_user,1,1,1,1
 access_policy_type,policy.type,model_policy_type,base.group_user,1,1,1,1
 access_agency_details,agency.details,model_agency_details,base.group_user,1,1,1,1
 access_general_agency_details,general.agency.details,model_general_agency_details,base.group_user,1,1,1,1

@@ -37,15 +37,16 @@ class SaleOrder(models.Model):
         default=lambda self: self.env.company.currency_id.id,
         store=True, ondelete="restrict")
     # Policy fields
-    policy_ids = fields.One2many('policy.details', 'sale_id', string='Policy')
+    policy_ids = fields.One2many('policy.details','sale_id', string='Policy')
     
     def open_policy_details(self):
         self.ensure_one()
+        policy = self.policy_ids[:1]
         return {
             'type': 'ir.actions.act_window',
             'name': 'Policy Details',
             'view_mode': 'form',
             'res_model': 'policy.details',
-            'res_id': self.policy_ids.id,  # assuming the many2one
+            'res_id': policy.id if policy else False,
             'target': 'current',
         }
