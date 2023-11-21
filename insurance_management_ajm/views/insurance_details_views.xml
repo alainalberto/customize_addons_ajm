@@ -83,6 +83,7 @@
                                         <field name="billing_status"/>
                                     </tree>
                                 </field>
+                            </page>
                         </notebook>
                         <group class="oe_subtotal_footer oe_right" colspan="2" name="policy_total">
                             <field name="premium"/>
