@@ -1,5 +1,5 @@
 
-from odoo import models, fields
+from odoo import models, fields, api, _
 
 class PolicyDetails(models.Model):
     _name = 'policy.details'
