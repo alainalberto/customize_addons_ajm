@@ -119,16 +119,15 @@ class PolicyDetails(models.Model):
         self.efective_date = fields.Date.context_today(self)
         self.state = 'active'
     
-    @api.depends('sale_id')
+    @api.depends('sale_ids')
     def _compute_user_id(self):
         for record in self:
-            record.user_id = record.sale_id.user_id if record.sale_id else False
+            record.user_id = record.sale_ids[0].user_id if record.sale_ids else False
 
-    
-    @api.depends('sale_id')
+    @api.depends('sale_ids')
     def _compute_team_id(self):
         for record in self:
-            record.team_id = record.sale_id.team_id if record.sale_id else False
+            record.team_id = record.sale_ids[0].team_id if record.sale_ids else False
 
         
 
