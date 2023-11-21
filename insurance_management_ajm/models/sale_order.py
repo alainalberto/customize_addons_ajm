@@ -37,7 +37,7 @@ class SaleOrder(models.Model):
         default=lambda self: self.env.company.currency_id.id,
         store=True, ondelete="restrict")
     # Policy fields
-    policy_ids = fields.One2many('policy.details', 'sale_order_id', string='Policy')
+    policy_ids = fields.One2many('policy.details', 'sale_id', string='Policy')
     
     def open_policy_details(self):
         self.ensure_one()
