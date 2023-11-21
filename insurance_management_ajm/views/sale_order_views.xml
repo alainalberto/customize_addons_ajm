@@ -7,8 +7,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//templates/t[1]/div[1]" position="after">
                     <div class="o_td_label">
-                        <label for="policy_ids" string="Policy Insurance"/>
-                        <field name="policy_ids"/>
+                        <label for="policy_id" string="Policy Insurance"/>
+                        <field name="policy_id"/>
                     </div>
                 </xpath>              
             </field>    
@@ -21,9 +21,9 @@
             <field name="arch" type="xml">
                 <!-- Add your modifications to the existing view -->
                 <xpath expr="//form/sheet" position="before">
-                    <field name="policy_ids" invisible='1'/>
+                    <field name="policy_id" invisible='1'/>
                     <div class="oe_button_box" name="button_box">
-                        <button name="open_policy_details" string="Policy Details" type="object" class="oe_stat_button" icon="fa-tag" attrs="{'invisible': [('policy_ids', '=', False)]}"/>
+                        <button name="open_policy_details" string="Policy Details" type="object" class="oe_stat_button" icon="fa-tag" attrs="{'invisible': [('policy_id', '=', False)]}"/>
                     </div>
                 </xpath>
                 <xpath expr="//field[@name='partner_shipping_id']" position="attributes">

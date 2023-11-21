@@ -13,7 +13,7 @@ class PolicyDetails(models.Model):
     type_id = fields.Many2one(
         'policy.type', string='Policy Type', required=True)
     partner_id = fields.Many2one('res.partner', string='Customer')
-    sale_id = fields.Many2one('sale.order', string='Sale Order')
+    sale_ids = fields.One2many('sale.order', 'policy_id', string='Sale Orders')
     user_id = fields.Many2one(
         comodel_name='res.users',
         string="Salesperson",
@@ -33,7 +33,7 @@ class PolicyDetails(models.Model):
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]")
     coverage_ids = fields.One2many('coverage.details', 'policy_id', string='Coverage')  
     endorsement_ids = fields.One2many('endorsement.details', 'policy_id', string='Endorsement')  
-    invoice_id = fields.One2many(acount.move, string='Invoice')
+    invoice_id = fields.Many2one('acount.move', string='Invoice')
     agency_id = fields.Many2one(
         'agency.details', string='Agency') 
     general_agency_id = fields.Many2one(

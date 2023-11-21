@@ -37,19 +37,16 @@ class SaleOrder(models.Model):
         default=lambda self: self.env.company.currency_id.id,
         store=True, ondelete="restrict")
     # Policy fields
-    is_policy = fields.Boolean(
-        string='Is Policy',
-        store=True, readonly=False, required=False,
-        states=LOCKED_FIELD_STATES)
-    
+    policy_id = fields.Many2one('policy.details', string='Policy')
     
     def open_policy_details(self):
         self.ensure_one()
+        policy = self.policy_ids[:1]
         return {
             'type': 'ir.actions.act_window',
             'name': 'Policy Details',
-            'view_mode': 'tree',
+            'view_mode': 'form',
             'res_model': 'policy.details',
-            'domain': [('sale_id', '=', self.id)],
+            'res_id': policy.id if policy else False,
             'target': 'current',
         }
