@@ -6,7 +6,7 @@ from odoo.exceptions import ValidationError
 
 
 
-class ProductProduct(models.Model):
-    _inherit = "product.product"
+class ProductTemplate(models.Model):
+    _inherit = "product.template"
 
     is_policy_pruduct = fields.Boolean(copy=False , string='Is Policy Product')
