@@ -3,7 +3,7 @@
 
     <menuitem id="menu_sale_order_policy"
           name="Policy"
-          action="action_sale_order_policy"
+          action="action_policy_details"
           web_icon="insurance_management_ajm,static/src/img/icon.png"
           sequence="10"/>
           <menuitem
