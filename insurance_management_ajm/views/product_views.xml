@@ -11,3 +11,7 @@
                             <label for="is_policy_pruduct"/>
                     </span>
                 </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
