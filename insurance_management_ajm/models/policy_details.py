@@ -46,7 +46,7 @@ class PolicyDetails(models.Model):
         'financial.details', string='Financial')
     status = fields.Selection(
         [('quotation', 'Quotation'), ('confirm', 'Confirm'), ('active', 'Active'), ('cancel', 'Cancel'), ('expire', 'Expire')], 
-        required=True, default='quotation', string='Transaction')
+        required=True, default='quotation', string='Status')
     start_date = fields.Date(string='Start Date')
     exp_date = fields.Date(string='Expiration Date')
     auto_renew = fields.Boolean(copy=False)
