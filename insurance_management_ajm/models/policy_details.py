@@ -220,13 +220,12 @@ class EndorsemntDetails(models.Model):
         compute='_compute_user_id',
         store=True, readonly=False, precompute=True, index=True,
         tracking=2,
-        domain=lambda self: "[('groups_id', '=', {}), ('share', '=', False), ('company_ids', '=', company_id)]".format(
+        domain=lambda self: "[('groups_id', '=', {}), ('share', '=', False)]".format(
             self.env.ref("sales_team.group_sale_salesman").id
         ))
     
+    @api.depends('policy_id')
     def _compute_user_id(self):
-        
-        sale_order = self.env['sale.order']
         for record in self:
-            record.user_id = sale_order._compute_user_id()
+            record.user_id = record.policy_id.sale_ids[0].user_id if record.policy_id.sale_ids else False
         
