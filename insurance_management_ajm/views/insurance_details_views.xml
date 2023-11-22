@@ -11,42 +11,47 @@
                     <field name="status" widget="statusbar" statusbar_visible="quotation,confirm,active"/>
                 </header>
                 <sheet>
-                    <group>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="transaction" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group name="policy_header">
                        <group name="partner_details">
-                            <field name="partner_id"/>
-                            <field name="user_id"/>
+                            <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}" options='{"always_reload": True}'/> 
                        </group>
-                        <group name="policy_details">
-                            <group name="general_polycy_info" string="General">
-                                <field name="transaction"/>
-                                <field name="policy_number"/>
-                                <field name="type_id"/>
-                                <group col="2">
-                                    <field name="start_date"/>
-                                </group>
-                                <group col="2">
-                                    <field name="duration"/>
-                                </group>
-                                <group col="2">  
-                                    <field name="exp_date"/>  
-                                </group>
-                                <group col="2">
-                                    <field name="auto_renew"/>
-                                </group>  
-                                <field name="policy_binder_invoice"/> 
-                                <field name="binder_id"/>
-                                <field name="bind_day"/>         
-                            </group> 
-                            <group name="aditional_polycy_info" string="Additional"> 
-                                <field name="agency_id"/>
-                                <field name="general_agency_id"/>
-                                <field name="carrier_id"/>
-                                <field name="mga"/>
-                                <field name="financial_id"/>
-                                <field name="policy_next_due"/>
-                                <field name="policy_paid_mga"/>
-                                <field name="policy_amount_financed"/>
+                       <group name="sallerman_details">
+                            <field name="user_id"/>
+                        </group>
+                        <group name="general_polycy_info" string="General">
+                            <field name="transaction"/>
+                            <field name="policy_number"/>
+                            <field name="type_id"/>
+                            <group col="2">
+                                <field name="start_date"/>
                             </group>
+                            <group col="2">
+                                <field name="duration"/>
+                            </group>
+                            <group col="2">  
+                                <field name="exp_date"/>  
+                            </group>
+                            <group col="2">
+                                <field name="auto_renew"/>
+                            </group>  
+                            <field name="policy_binder_invoice"/> 
+                            <field name="binder_id"/>
+                            <field name="bind_day"/>         
+                        </group> 
+                        <group name="aditional_polycy_info" string="Additional"> 
+                            <field name="agency_id"/>
+                            <field name="general_agency_id"/>
+                            <field name="carrier_id"/>
+                            <field name="mga"/>
+                            <field name="financial_id"/>
+                            <field name="policy_next_due"/>
+                            <field name="policy_paid_mga"/>
+                            <field name="policy_amount_financed"/>
                         </group>
                         <notebook>
                             <page string="Coverages" name="coverage_lines">

@@ -145,7 +145,7 @@ class CoverageDetails(models.Model):
         comodel_name='product.product',
         string="Policy Product",
         change_default=True, ondelete='restrict', check_company=True, index='btree_not_null',
-        domain="[('sale_ok', '=', True), '|', ('is_policy_pruduct', '=', True)]")
+        domain="[('sale_ok', '=', True), ('is_policy_pruduct', '=', True)]")
     coverage_type = fields.Selection(
         [('gross', 'Gross'), ('net', 'Net')], 
         required=True, default='gross', string='Coverage Type')
