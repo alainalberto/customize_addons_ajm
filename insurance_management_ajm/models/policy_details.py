@@ -93,7 +93,7 @@ class PolicyDetails(models.Model):
             sale_order = self.env['sale.order'].create(sale_order_vals)
 
             # Guardar la referencia del pedido de venta en la póliza
-            record.sale_id = sale_order.id
+            record.sale_ids = [sale_order.id]
 
             # Crear líneas de pedido de venta para cada cobertura
             for coverage in record.coverage_ids:
