@@ -93,7 +93,7 @@ class PolicyDetails(models.Model):
             })
 
             # Guardar la referencia del pedido de venta en la póliza
-            record.sale_id = sale_order.id
+            record.sale_ids = sale_order.id
 
             # Crear líneas de pedido de venta para cada cobertura
             for coverage in record.coverage_ids:
@@ -108,9 +108,11 @@ class PolicyDetails(models.Model):
     
     @api.constrains('policy_number')
     def _check_policy_number(self):
-        if not self.policy_number:
-            raise ValidationError(
-                _('Please add the policy number'))
+        if self.transaction != 'new':   
+            if not self.policy_number:
+                raise ValidationError(
+                    _('Please add the policy number'))
+                
             
     def action_active_insurance(self):
         for records in self.invoice_ids:
