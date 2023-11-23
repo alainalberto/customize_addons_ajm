@@ -76,35 +76,40 @@ class PolicyDetails(models.Model):
 
         # Si el estado es 'quotation', crear un pedido de venta relacionado
         if record.status == 'quotation':
-            
+            # Buscar o crear el tag 'Policy'
             policy_tag = self.env['crm.tag'].search([('name', '=', 'Policy')], limit=1)
             if not policy_tag:
                 policy_tag = self.env['crm.tag'].create({'name': 'Policy'})
-            
-            sale_order = self.env['sale.order'].create({
-                'name' :'New',
+
+            # Crear un pedido de venta y asignar el tag
+            sale_order_vals = {
                 'partner_id': record.partner_id.id,
-                'state': 'draft',  # Asumiendo que el estado inicial es 'draft'
+                'state': 'draft',
                 'tag_ids': [(6, 0, [policy_tag.id])],
-                'amount_total': record.premium,
                 'user_id': record.user_id.id if record.user_id else False,
                 'team_id': record.team_id.id if record.team_id else False,
-            
-            })
+            }
+
+            sale_order = self.env['sale.order'].create(sale_order_vals)
 
             # Guardar la referencia del pedido de venta en la póliza
-            record.sale_ids = [sale_order.id]
+            record.sale_id = sale_order.id
 
             # Crear líneas de pedido de venta para cada cobertura
             for coverage in record.coverage_ids:
-                self.env['sale.order.line'].create({
+                line_vals = {
                     'order_id': sale_order.id,
                     'product_id': coverage.product_id.id,
                     'product_uom_qty': 1,
                     'price_unit': coverage.premium,
-                    # Otros campos necesarios para 'sale.order.line'
-                })
-        
+                    'name': coverage.product_id.name,  # Descripción basada en el nombre del producto
+                    'product_uom': coverage.product_id.uom_id.id,  # UoM del producto
+                    
+                }
+
+                self.env['sale.order.line'].create(line_vals)
+
+        return record
     
     @api.constrains('policy_number')
     def _check_policy_number(self):
