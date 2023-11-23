@@ -5,12 +5,12 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//form/sheet/div[2]" position="inside">
+                <div name='options' position="inside">
                     <span class="d-inline-block">
                         <field name="is_policy_product"/>
                         <label for="is_policy_product"/>
                     </span>
-                </xpath>
+                </div>
             </field>
         </record>
     </data>
