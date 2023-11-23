@@ -82,6 +82,7 @@ class PolicyDetails(models.Model):
                 policy_tag = self.env['crm.tag'].create({'name': 'Policy'})
             
             sale_order = self.env['sale.order'].create({
+                'name' :'New',
                 'partner_id': record.partner_id.id,
                 'state': 'draft',  # Asumiendo que el estado inicial es 'draft'
                 'tag_ids': [(6, 0, [policy_tag.id])],
