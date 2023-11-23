@@ -24,8 +24,17 @@
                             <field name="user_id"/>
                         </group>
                         <group name="general_polycy_info" string="General">
+                            <div class="o_td_label">
+                                <label for="transaction" string="Transaction Policy"/>
+                            </div>
                             <field name="transaction"/>
+                            <div class="o_td_label">
+                                <label for="policy_number" string="Policy Number"/>
+                            </div>
                             <field name="policy_number"/>
+                            <div class="o_td_label">
+                                <label for="type_id" string="Policy Type"/>
+                            </div>
                             <field name="type_id"/>
                             <group col="2">
                                 <field name="start_date"/>
@@ -38,9 +47,18 @@
                             </group>
                             <group col="2">
                                 <field name="auto_renew"/>
-                            </group>  
+                            </group> 
+                            <div class="o_td_label">
+                                <label for="policy_binder_invoice" string="Binder Invoice"/>
+                            </div> 
                             <field name="policy_binder_invoice"/> 
+                            <div class="o_td_label">
+                                <label for="binder_id" string="Binder ID"/>
+                            </div> 
                             <field name="binder_id"/>
+                            <div class="o_td_label">
+                                <label for="bind_day" string="Binder Day"/>
+                            </div> 
                             <field name="bind_day"/>         
                         </group> 
                         <group name="aditional_polycy_info" string="Additional"> 
