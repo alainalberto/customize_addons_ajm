@@ -93,7 +93,7 @@ class PolicyDetails(models.Model):
             })
 
             # Guardar la referencia del pedido de venta en la póliza
-            record.sale_ids = sale_order.id
+            record.sale_ids = [sale_order.id]
 
             # Crear líneas de pedido de venta para cada cobertura
             for coverage in record.coverage_ids:
