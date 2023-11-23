@@ -9,4 +9,4 @@ from odoo.exceptions import ValidationError
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    is_policy_pruduct = fields.Boolean(copy=False , string='Is Policy Product')
+    is_policy_product = fields.Boolean(copy=False , string='Is Policy Product', default=True)
