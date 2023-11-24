@@ -41,7 +41,7 @@ class SaleOrder(models.Model):
     
     def open_policy_details(self):
         self.ensure_one()
-        policy = self.policy_ids[:1]
+        policy = self.policy_id[:1]
         return {
             'type': 'ir.actions.act_window',
             'name': 'Policy Details',

@@ -20,11 +20,18 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <!-- Add your modifications to the existing view -->
-                <xpath expr="//form/sheet" position="before">
+                <xpath expr="//form/sheet/div[1]" position="inside">
                     <field name="policy_id" invisible='1'/>
-                    <div class="oe_button_box" name="button_box">
-                        <button name="open_policy_details" string="Policy Details" type="object" class="oe_stat_button" icon="fa-tag" attrs="{'invisible': [('policy_id', '=', False)]}"/>
-                    </div>
+                    <button name="open_policy_details"  
+                         type="object" 
+                         class="oe_stat_button" 
+                         icon="fa-id-card-o icon" 
+                         attrs="{'invisible': [('policy_id', '=', False)]}">
+                         <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">Policy</span>
+                            <span class="o_stat_text">Details</span>
+                        </div>
+                    </button>
                 </xpath>
                 <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
                     <attribute name="invisible">1</attribute> 
