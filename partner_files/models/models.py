@@ -16,6 +16,8 @@ class PartnerFile(models.Model):
     file_data = fields.Binary('File', attachment=True)
     folder_id = fields.Many2one('partner.folder', string='Folder')
     partner_id = fields.Many2one('res.partner', string='Customer')
+    
+    
 
 class PartnerFolder(models.Model):
     _name = 'partner.folder'

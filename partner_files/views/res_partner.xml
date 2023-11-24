@@ -7,8 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='internal_notes']" position="before">
                 <page string="Files">
-                    <button name="action_files_partner" string="Files" type="object" class="oe_highlight"/>
-                    <button name="action_create_file" string="Add Driver" type="object" class="oe_highlight"/>
+                    <!--<button name="action_create_file" string="Add File" type="object" class="oe_highlight"/>-->
                     <field name="file_ids">
                         <div class="o_file_search">
                            <input type="text" class="o_search_input" placeholder="Seach file..."/>
