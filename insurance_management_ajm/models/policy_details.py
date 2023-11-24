@@ -6,6 +6,9 @@ class PolicyDetails(models.Model):
     _description = 'Policy Details'
 
     
+    name = fields.Char(
+        string='Name', required=True, copy=False, readonly=True, index=True,
+        default=lambda self: _('New'))
     policy_number = fields.Char(string="Policy Number",
                                    help="Policy number is a unique number that"
                                         "an insurance company uses to identify"
