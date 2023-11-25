@@ -26,10 +26,10 @@
     </record>
 
     <menuitem id="partner_folder_menu_config"
-            name="Folders"
-            parent="base.menu_contacts"
-            groups="base.group_system"
-            sequence="2"/>
+          name="Folders"
+          parent="base.menu_base_partner"
+          groups="base.group_system"
+          sequence="2"/>
 
         <menuitem id="partner_folder_menu"
             name="Folders"
