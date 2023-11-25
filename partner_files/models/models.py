@@ -16,7 +16,7 @@ class PartnerFile(models.Model):
     file_data = fields.Binary('File', attachment=True)
     folder_id = fields.Many2one('partner.folder', string='Folder')
     partner_id = fields.Many2one('res.partner', string='Customer')
-    
+    file_type = fields.Selection([('pdf', 'PDF'), ('doc', 'DOC'), ('xls', 'XLS')], string='File Type')    
     
 
 class PartnerFolder(models.Model):
