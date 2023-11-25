@@ -27,7 +27,7 @@
 
     <menuitem id="partner_folder_menu_config"
             name="Folders"
-            parent="menu_contacts"
+            parent="base.menu_contacts"
             groups="base.group_system"
             sequence="2"/>
 
