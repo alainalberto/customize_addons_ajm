@@ -27,3 +27,13 @@ class DiverDetails(models.Model):
     medical_card_file = fields.Binary(string="Medical Card")
     notes = fields.Text('Notes')
     
+    def action_open_driver(self):
+        self.ensure_one()
+        return {
+            'name': 'Open Driver',
+            'type': 'ir.actions.act_window',
+            'res_model': 'driver.details',
+            'res_id': self.id,
+            'view_mode': 'form',
+            'target': 'current',
+        }

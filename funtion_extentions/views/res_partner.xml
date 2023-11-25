@@ -43,7 +43,10 @@
                             <tree editable="bottom">
                                 <field name="name"/>
                                 <field name="phone"/>
-                                <field name="driving_license"/>
+                                <field name="driver_lic_number_1"/>
+                                <field name="driver_lic_state_1"/>
+                                <field name="driver_lic_expiration_1"/>
+                                <button name="action_open_driver" string="View" type="object" class="oe_highlight"/>
                             </tree>
                         </field>
                   
@@ -65,6 +68,6 @@
         </field>
         
     </record>
-
+    
 
 </odoo>
