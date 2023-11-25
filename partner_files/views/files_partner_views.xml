@@ -112,7 +112,6 @@
         <record id="view_partner_folder_tree" model="ir.ui.view">
             <field name="name">partner.folder.list</field>
             <field name="model">partner.folder</field>
-            <field name="priority">1</field>
             <field name="arch" type="xml">
                 <tree string= "Flders Customers">
                     <field name="name" string="Flders Customers"/>
