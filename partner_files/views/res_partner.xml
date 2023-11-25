@@ -24,4 +24,16 @@
             </xpath>
         </field>
     </record>
+
+    <menuitem id="partner_folder_menu_config"
+            name="Folders"
+            parent="menu_contacts"
+            groups="base.group_system"
+            sequence="2"/>
+
+        <menuitem id="partner_folder_menu"
+            name="Folders"
+            parent="partner_folder_menu_config"
+            action="action_partner_folder"
+            sequence="1"/>
 </odoo>
