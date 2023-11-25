@@ -6,6 +6,17 @@ class ResPartner(models.Model):
 
     file_ids = fields.One2many('partner.file', 'partner_id', string='Files')
     
+    def action_create_file(self):
+        self.ensure_one()
+        return {
+            'name': 'Add File',
+            'type': 'ir.actions.act_window',
+            'res_model': 'partner.file',
+            'view_mode': 'form',
+            'context': {'default_partner_id': self.id},
+            'target': 'new',
+        }
+    
 
 class PartnerFile(models.Model):
     _name = 'partner.file'
@@ -17,16 +28,6 @@ class PartnerFile(models.Model):
     partner_id = fields.Many2one('res.partner', string='Customer')
     file_type = fields.Selection([('pdf', 'PDF'), ('doc', 'DOC'), ('xls', 'XLS')], string='File Type')  
     
-    def action_create_file(self):
-        self.ensure_one()
-        return {
-            'name': 'Add File',
-            'type': 'ir.actions.act_window',
-            'res_model': 'partner.file',
-            'view_mode': 'form',
-            'context': {'default_partner_id': self.id},
-            'target': 'new',
-        }
     
 
 class PartnerFolder(models.Model):
