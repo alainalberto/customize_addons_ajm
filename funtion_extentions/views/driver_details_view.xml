@@ -6,13 +6,29 @@
             <form>
                 <sheet>
                     <group>
-                        <group>
+                        <group string='General Information'>
                             <field name="name"/>
                             <field name="phone"/>
-                        </group>
-                        <group>
-                            <field name="driving_license"/>
                             <field name="address_home_id"/>
+                        </group>
+                        <group string='Driver License Primary'>
+                            <field name="driver_lic_number_1"/>
+                            <field name="driver_lic_state_1"/>
+                            <field name="driver_lic_expiration_1"/>
+                            <field name="driver_lic_front_1"/>
+                            <field name="driver_lic_back_1"/>
+                        </group>
+                        <group string='Medical Card'>
+                            <field name="medical_card_number"/>
+                            <field name="medical_card_expiration"/>
+                            <field name="medical_card_file"/>
+                        </group>
+                        <group string='Driver License Secundary'>
+                            <field name="driver_lic_number_2"/>
+                            <field name="driver_lic_state_2"/>
+                            <field name="driver_lic_expiration_2"/>
+                            <field name="driver_lic_front_2"/>
+                            <field name="driver_lic_back_2"/>
                         </group>
                     </group>
                     <field name="active"/>

@@ -7,11 +7,13 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='internal_notes']" position="before">
                 <page string="Files">
-                    <!--<button name="action_create_file" string="Add File" type="object" class="oe_highlight"/>-->
                     <field name="file_ids">
-                        <div class="o_file_search">
-                           <input type="text" class="o_search_input" placeholder="Seach file..."/>
-                        </div>
+                        <header>
+                           <button name="action_create_file" string="Add File" type="object" class="oe_highlight"/>
+                           <div class="o_file_search">
+                              <input type="text" class="o_search_input" placeholder="Seach file..."/>
+                           </div>
+                        </header>
                         <tree editable="bottom">
                             <field name="name"/>
                             <field name="file_data" filename="name"/>

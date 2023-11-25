@@ -5,8 +5,7 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     file_ids = fields.One2many('partner.file', 'partner_id', string='Files')
-    folder_ids = fields.One2many('partner.folder', 'partner_id', string='Folders')
-
+    
 
 class PartnerFile(models.Model):
     _name = 'partner.file'
@@ -16,7 +15,18 @@ class PartnerFile(models.Model):
     file_data = fields.Binary('File', attachment=True)
     folder_id = fields.Many2one('partner.folder', string='Folder')
     partner_id = fields.Many2one('res.partner', string='Customer')
-    file_type = fields.Selection([('pdf', 'PDF'), ('doc', 'DOC'), ('xls', 'XLS')], string='File Type')    
+    file_type = fields.Selection([('pdf', 'PDF'), ('doc', 'DOC'), ('xls', 'XLS')], string='File Type')  
+    
+    def action_create_file(self):
+        self.ensure_one()
+        return {
+            'name': 'Add File',
+            'type': 'ir.actions.act_window',
+            'res_model': 'partner.file',
+            'view_mode': 'form',
+            'context': {'default_partner_id': self.id},
+            'target': 'new',
+        }
     
 
 class PartnerFolder(models.Model):
@@ -24,5 +34,5 @@ class PartnerFolder(models.Model):
     _description = 'Client Related Folder'
 
     name = fields.Char('Folder Name')
-    partner_id = fields.Many2one('res.partner', string='Customer')
-    file_ids = fields.One2many('partner.file', 'folder_id', string='Files')
+    folder_father = fields.Many2one('partner.folder', string='Folder Father')
+    
