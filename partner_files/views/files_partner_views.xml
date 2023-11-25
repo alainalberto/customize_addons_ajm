@@ -142,10 +142,11 @@
             <field name="name">partner.folder.search</field>
             <field name="model">partner.folder</field>
             <field name="arch" type="xml">
-                <search>
-                    <field name="name" string="Name"/>
+                <search string="Search Customer Folder">
+                    <field name="name" string="Folder Name"/>
+                    <field name="folder_father" string="Folder Father"/>
                 </search>
-            </field>        
+            </field>
         </record>
     </data>
 </odoo>
