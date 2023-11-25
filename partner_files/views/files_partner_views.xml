@@ -133,8 +133,6 @@
             <field name="name">Folders</field>
             <field name="res_model">partner.folder</field>
             <field name="view_mode">tree,form</field>
-            <field name="search_view_id" ref="view_partner_file_search"/>
-            <field name="view_id" ref="view_partner_folder_tree"/>
         </record>
 
         <!-- View: Partner Folder Search -->
