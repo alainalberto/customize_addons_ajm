@@ -97,8 +97,12 @@
             <field name="arch" type="xml">
                 <form>
                     <group>
-                        <field name="name"/>
-                        <field name="folder_father"/>
+                         <group>
+                            <field name="name"/>
+                         </group>
+                         <group>
+                            <field name="folder_father"/>
+                        </group>
                     </group>
                 </form>
             </field>
@@ -108,9 +112,10 @@
         <record id="view_partner_folder_tree" model="ir.ui.view">
             <field name="name">partner.folder.list</field>
             <field name="model">partner.folder</field>
+            <field name="priority">1</field>
             <field name="arch" type="xml">
                 <tree string= "Flders Customers">
-                    <field name="name" string="Flders Customers" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="name" string="Flders Customers"/>
                 </tree>
             </field>
         </record>
@@ -129,6 +134,8 @@
             <field name="name">Folders</field>
             <field name="res_model">partner.folder</field>
             <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_partner_file_search"/>
+            <field name="view_id" ref="view_partner_folder_tree"/>
         </record>
 
         <!-- View: Partner Folder Search -->
