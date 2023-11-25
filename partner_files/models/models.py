@@ -36,6 +36,6 @@ class PartnerFolder(models.Model):
 
     name = fields.Char('Folder Name')
     folder_child = fields.One2many('partner.folder', 'folder_father', 'Folder Child')
-    folder_father = fields.Many2one('partner.folder', 'Folder Father', index=True, ondelete='cascade')
+    folder_father = fields.Many2one('partner.folder', 'Folder Father', ondelete='cascade')
    
     

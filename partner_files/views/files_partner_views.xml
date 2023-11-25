@@ -114,7 +114,7 @@
             <field name="model">partner.folder</field>
             <field name="arch" type="xml">
                 <tree string= "Flders Customers">
-                    <field name="name" string="Flders Customers"/>
+                    <field name="name" string="Folders Customers"/>
                 </tree>
             </field>
         </record>
