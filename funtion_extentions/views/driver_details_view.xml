@@ -44,7 +44,11 @@
             <tree>
                 <field name="name"/>
                 <field name="phone"/>
-                <field name="driving_license"/>
+                <field name="driver_lic_number_1"/>
+                <field name="driver_lic_state_1"/>
+                <field name="driver_lic_expiration_1"/>
+                <field name="medical_card_number"/>
+                <field name="medical_card_expiration"/>
             </tree>
         </field>
     </record>
