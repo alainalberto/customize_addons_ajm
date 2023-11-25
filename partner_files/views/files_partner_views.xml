@@ -136,7 +136,7 @@
         </record>
 
         <!-- View: Partner Folder Search -->
-        <!--<record id="view_partner_folder_search" model="ir.ui.view">
+        <record id="view_partner_folder_search" model="ir.ui.view">
             <field name="name">partner.folder.search</field>
             <field name="model">partner.folder</field>
             <field name="arch" type="xml">
@@ -145,7 +145,7 @@
                     <field name="folder_father" string="Folder Father"/>
                 </search>
             </field>
-        </record>-->
+        </record>
     </data>
 </odoo>
 
