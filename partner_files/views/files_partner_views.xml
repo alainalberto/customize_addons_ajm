@@ -109,7 +109,7 @@
         </record>
 
         <!-- View: Tree -->
-        <record id="view_partner_folder_tree" model="ir.ui.view">
+        <record id="view_partner_folder_list" model="ir.ui.view">
             <field name="name">partner.folder.list</field>
             <field name="model">partner.folder</field>
             <field name="arch" type="xml">
@@ -132,7 +132,7 @@
         <record id="action_partner_folder" model="ir.actions.act_window">
             <field name="name">Folders</field>
             <field name="res_model">partner.folder</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
         </record>
 
         <!-- View: Partner Folder Search -->
