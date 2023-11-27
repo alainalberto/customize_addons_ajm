@@ -142,7 +142,6 @@
             <field name="arch" type="xml">
                 <search string="Search Customer Folder">
                     <field name="name" string="Folder Name"/>
-                    <field name="folder_father" string="Folder Father"/>
                 </search>
             </field>
         </record>
