@@ -91,7 +91,11 @@ class IrHttp(models.AbstractModel):
             list_bookmark = []
             for bookmark in menu_bookmark:
                 bkm = bookmark.read(['action_id', 'url', 'name'])[0]
-                bkm['short_name'] = bkm['name'][:2].upper()
+                if isinstance(bkm['name'], str):
+                    bkm['short_name'] = bkm['name'][:2].upper()
+                else:
+                    # Manejar el caso en que no es una cadena
+                    bkm['short_name'] = 'Default'  # O algún valor predeterminado
                 list_bookmark.append(bkm)
             res['infinitoBookmarks'] = menu_bookmark.action_id.ids
             res['infinitoMenuBookmarks'] = list_bookmark
