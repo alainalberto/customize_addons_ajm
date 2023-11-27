@@ -140,8 +140,9 @@
             <field name="name">partner.folder.search</field>
             <field name="model">partner.folder</field>
             <field name="arch" type="xml">
-                <search string="Search Customer Folder">
-                    <field name="name" string="Folder Name"/>
+                <search>
+                    <field name="name"/>
+                    <field name="folder_father"/>
                 </search>
             </field>
         </record>
