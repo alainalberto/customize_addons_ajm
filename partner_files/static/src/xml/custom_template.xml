@@ -1,26 +1,24 @@
-<odoo>
-    <data>
-        <templates>
-            <t t-name="PartnerFiles.FileListView">
-                <div class="partner-file-list">
-                    <t t-foreach="record.get_files_by_folder()" t-as="folder">
-                        <div class="folder">
-                            <div class="folder-title">
-                                <i class="fa fa-folder-open-o fa-3x" aria-hidden="true"/>
-                                <t t-esc="folder"/>
+
+<templates>
+    <t t-name="PartnerFiles.FileListView">
+        <div class="partner-file-list">
+            <t t-foreach="record.get_files_by_folder()" t-as="folder">
+                <div class="folder">
+                    <div class="folder-title">
+                        <i class="fa fa-folder-open-o fa-3x" aria-hidden="true"/>
+                        <t t-esc="folder"/>
+                    </div>
+                    <div class="folder-files">
+                        <t t-foreach="record.get_files_by_folder()[folder]" t-as="file">
+                            <div class="file-entry">
+                                <i class="fa fa-file fa-2x" aria-hidden="true"/>
+                                <span t-esc="file.name"/>
                             </div>
-                            <div class="folder-files">
-                                <t t-foreach="record.get_files_by_folder()[folder]" t-as="file">
-                                    <div class="file-entry">
-                                        <i class="fa fa-file fa-2x" aria-hidden="true"/>
-                                        <span t-esc="file.name"/>
-                                    </div>
-                                </t>
-                            </div>
-                        </div>
-                    </t>
+                        </t>
+                    </div>
                 </div>
             </t>
-        </templates>
-    </data>
-</odoo>
+        </div>
+    </t>
+</templates>
+    
