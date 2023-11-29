@@ -13,9 +13,9 @@
                             <input type="text" class="o_search_input" placeholder="Seach file..."/>
                         </div>
                     </header>
-                    <di>
+                    <div>
                         <t t-call="PartnerFiles.FileListView"/>
-                    </di>
+                    </div>
                 </page>
             </xpath>
         </field>
