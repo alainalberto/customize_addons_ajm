@@ -138,6 +138,6 @@ class CarrierDetails(models.Model):
         help='Format email address "Name <email@domain>"')
     phone = fields.Char(unaccent=False)
     mobile = fields.Char(unaccent=False)  
-    naic_numbrer = fields.Interger(string='NAIC Number')
+    naic_numbrer = fields.Integer(string='NAIC Number')
     
     
