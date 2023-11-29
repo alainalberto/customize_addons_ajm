@@ -65,7 +65,7 @@
                         </group>
                         <notebook>
                             <page string="Coverages" name="coverage_lines">
-                                <field name="coverage_ids" widget="one2many_list" a>
+                                <field name="coverage_ids" widget="one2many_list">
                                     <tree string="Coverages Lines" editable="bottom">
                                         <control>
                                             <create name="add_product_control" string="Add a coverage"/>
@@ -97,6 +97,15 @@
                                     </tree>
                                 </field>
                             </page>
+                            <page string="Files" name="files">
+                                <field name="files_ids" widget="one2many_list">
+                                    <tree string="Files Lines" editable="bottom">
+                                        <field name="name"/>
+                                        <field name="file_data"/>
+                                        <field name="ile_type"/>
+                                        <field name="policy_id" invisible="1"/>
+                                    </tree>
+                                </field>
                         </notebook>
                         <group class="oe_subtotal_footer oe_right" colspan="2" name="policy_total">
                             <field name="premium" sum="coverage_ids.premium"/>
