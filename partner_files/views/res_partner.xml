@@ -13,9 +13,7 @@
                             <input type="text" class="o_search_input" placeholder="Seach file..."/>
                         </div>
                     </header>
-                    <field name="file_ids">
-                        <t t-call="PartnerFiles.FileListView"/>
-                    </field>
+                    <field name="file_ids" widget="qweb" options="{'template': 'PartnerFiles.FileListView'}"/>
                 </page>
             </xpath>
         </field>
