@@ -19,6 +19,7 @@
         </record>
 
         <!-- View: Tree -->
+
         <record id="view_files_partner_tree" model="ir.ui.view">
             <field name="name">partner.file.tree</field>
             <field name="model">partner.file</field>

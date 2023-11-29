@@ -13,7 +13,7 @@
                             <input type="text" class="o_search_input" placeholder="Seach file..."/>
                         </div>
                     </header>
-                    <field name="file_ids" widget="one2many_list" options="{'template': 'PartnerFiles.FileListView'}"/>
+                    <field name="file_ids" widget="html" options="{'template': 'PartnerFiles.FileListView'}"/>
                 </page>
             </xpath>
         </field>
