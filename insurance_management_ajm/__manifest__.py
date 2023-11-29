@@ -9,7 +9,7 @@
     'company': 'Simply Tech Solution',
     'website': 'https://www.cybrosys.com',
     'category': 'Industries',
-    'depends': ['account', 'base', 'sale', 'hr'],
+    'depends': ['account', 'base', 'sale', 'hr', 'partner_files'],
     'license': 'AGPL-3',
     'data': [
         'security/ir.model.access.csv',

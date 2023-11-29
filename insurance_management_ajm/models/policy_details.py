@@ -1,5 +1,6 @@
 
 from odoo import models, fields, api, _
+from odoo import models
 
 class PolicyDetails(models.Model):
     _name = 'policy.details'
@@ -50,16 +51,18 @@ class PolicyDetails(models.Model):
     status = fields.Selection(
         [('quotation', 'Quotation'), ('confirm', 'Confirm'), ('active', 'Active'), ('cancel', 'Cancel'), ('expire', 'Expire')], 
         required=True, default='quotation', string='Status')
+    tag_display = fields.Char(string='Tags', value='INSURANCE' readonly=True)
     start_date = fields.Date(string='Start Date')
     exp_date = fields.Date(string='Expiration Date')
     auto_renew = fields.Boolean(copy=False)
     bind_day = fields.Date(
         string='Bind Date', default=fields.Date.context_today)
     duration = fields.Integer(string='Duration in Days')
-    premium = fields.Float(string='Premium')
+    premium = fields.Float(string='Premium Base')
+    premium_emdorsement = fields.Float(string='Premium Endorsement')
     policy_total = fields.Float(string='Policy Total')
     down_payment = fields.Float(string='Down Payment')
-    fee = fields.Float(string='Fee')
+    fee = fields.Float(string='Agency Fee')
     commission_total = fields.Float(string='Commission Total')
     transaction = fields.Selection(
         [('new', 'New Policy'), ('renew', 'Renew Policy'), ('conciliation', 'Conciliation'), ('endorsement', 'Endorsement'), ('unear', 'Unear'), ('cancelation', 'Cancelation')], 
@@ -76,43 +79,159 @@ class PolicyDetails(models.Model):
     def create(self, vals):
         # Llamar al método original create
         record = super(PolicyDetails, self).create(vals)
-
+        
+        # Buscar o crear el tag 'Policy'
+        policy_tag = self.env['crm.tag'].search([('name', '=', record.tag_display)], limit=1)
+        if not policy_tag:
+            policy_tag = self.env['crm.tag'].create({'name': record.tag_display})
         # Si el estado es 'quotation', crear un pedido de venta relacionado
+        
         if record.status == 'quotation':
-            # Buscar o crear el tag 'Policy'
-            policy_tag = self.env['crm.tag'].search([('name', '=', 'Policy')], limit=1)
-            if not policy_tag:
-                policy_tag = self.env['crm.tag'].create({'name': 'Policy'})
+            status = 'draft'
+        elif record.status == 'confirm':
+            status = 'sent'
+        elif record.status == 'active':
+            status = 'sale'
+            
 
-            # Crear un pedido de venta y asignar el tag
-            sale_order_vals = {
-                'partner_id': record.partner_id.id,
-                'state': 'draft',
-                'tag_ids': [(6, 0, [policy_tag.id])],
-                'user_id': record.user_id.id if record.user_id else False,
-                'team_id': record.team_id.id if record.team_id else False,
+        # Crear un pedido de venta y asignar el tag
+        sale_order_vals = {
+            'partner_id': record.partner_id.id,
+            'state': status,
+            'tag_ids': [(6, 0, [policy_tag.id])],
+            'user_id': record.user_id.id if record.user_id else False,
+            'team_id': record.team_id.id if record.team_id else False,
+        }
+
+        sale_order = self.env['sale.order'].create(sale_order_vals)
+
+        # Guardar la referencia del pedido de venta en la póliza
+        record.sale_ids = [sale_order.id]
+
+        # Crear líneas de pedido de venta para cada cobertura
+        for coverage in record.coverage_ids:
+            line_vals = {
+                'order_id': sale_order.id,
+                'product_id': coverage.product_id.id,
+                'product_uom_qty': 1,
+                'price_unit': coverage.premium,
+                'name': coverage.product_id.name,  # Descripción basada en el nombre del producto
+                'product_uom': coverage.product_id.uom_id.id,  # UoM del producto
+                
             }
 
-            sale_order = self.env['sale.order'].create(sale_order_vals)
-
-            # Guardar la referencia del pedido de venta en la póliza
-            record.sale_ids = [sale_order.id]
-
-            # Crear líneas de pedido de venta para cada cobertura
-            for coverage in record.coverage_ids:
+            self.env['sale.order.line'].create(line_vals)
+        
+        # Crear líneas de pedido de venta para cada endoso
+        if record.endorsement_ids:
+            
+            for endorsement in record.endorsement_ids:
                 line_vals = {
                     'order_id': sale_order.id,
-                    'product_id': coverage.product_id.id,
+                    'product_id': endorsement.product_id.id,
                     'product_uom_qty': 1,
-                    'price_unit': coverage.premium,
-                    'name': coverage.product_id.name,  # Descripción basada en el nombre del producto
-                    'product_uom': coverage.product_id.uom_id.id,  # UoM del producto
+                    'price_unit': endorsement.endorsement_amount,
+                    'name': endorsement.product_id.name,  # Descripción basada en el nombre del producto
+                    'product_uom': endorsement.product_id.uom_id.id,  # UoM del producto
                     
                 }
 
                 self.env['sale.order.line'].create(line_vals)
-
+        
         return record
+    
+    @api.model
+    def update(self, vals):
+        # Llamar al método original create
+        record = super(PolicyDetails, self).update(vals)
+        
+        # Buscar o crear el tag 'Policy'
+        policy_tag = self.env['crm.tag'].search([('name', '=', record.tag_display)], limit=1)
+        if not policy_tag:
+            policy_tag = self.env['crm.tag'].create({'name': record.tag_display})
+        # Si el estado es 'quotation', crear un pedido de venta relacionado
+        
+        if record.status == 'quotation':
+            status = 'draft'
+        elif record.status == 'confirm':
+            status = 'sent'
+            
+
+        # Crear un pedido de venta y asignar el tag
+        sale_orders = self.env['sale.order'].search([('policy_id', '=', record.id)])
+        sale_order_line = self.env['sale.order.line'].search([('order_id', '=', sale_orders.id)])
+            
+        if sale_order:
+            sale_order_vals = {
+                'partner_id': record.partner_id.id,
+                'state': status,
+                'tag_ids': [(6, 0, [policy_tag.id])],
+                'user_id': record.user_id.id if record.user_id else False,
+                'team_id': record.team_id.id if record.team_id else False,
+            }
+            sale_orders.write(sale_order_vals)
+            for sale_order in sale_orders:
+                if  record.coverage_ids:
+                    for coverage in record.coverage_ids:
+                        line_vals = {
+                            'order_id': sale_order.id,
+                            'product_id': coverage.product_id.id,
+                            'product_uom_qty': 1,
+                            'price_unit': coverage.premium,
+                            'name': coverage.product_id.name,  # Descripción basada en el nombre del producto
+                            'product_uom': coverage.product_id.uom_id.id,  # UoM del producto
+                            
+                        }
+                        sale_order_line.write(line_vals)
+                if record.endorsement_ids:        
+                    for endorsement in record.endorsement_ids:
+                        line = self.env['sale.order.line'].search([('order_id', '=', sale_order.id), ('product_id', '=', endorsement.product_id.id)])
+                        if line:
+                            line_vals = {
+                                'order_id': sale_order.id,
+                                'product_id': endorsement.product_id.id,
+                                'product_uom_qty': 1,
+                                'price_unit': endorsement.endorsement_amount,
+                                'name': endorsement.product_id.name,  # Descripción basada en el nombre del producto
+                                'product_uom': endorsement.product_id.uom_id.id,  # UoM del producto
+                            }
+                            sale_order_line.write(line_vals)
+                        else:
+                            policy_tag = self.env['crm.tag'].search([('name', '=', record.tag_display)], limit=1)
+                            if not policy_tag:
+                                policy_tag = self.env['crm.tag'].create({'name': record.tag_display})
+                            if record.status == 'quotation':
+                                status = 'draft'
+                            elif record.status == 'confirm':
+                                status = 'sent'
+                            elif record.status == 'active':
+                                status = 'sale'
+                            sale_order_vals = {
+                                'partner_id': record.partner_id.id,
+                                'state': status,
+                                'tag_ids': [(6, 0, [policy_tag.id])],
+                                'user_id': record.user_id.id if record.user_id else False,
+                                'team_id': record.team_id.id if record.team_id else False,
+                            }
+
+                            sale_order = self.env['sale.order'].create(sale_order_vals)
+                            
+                            for endorsement in record.endorsement_ids:
+                                line_vals = {
+                                    'order_id': sale_order.id,
+                                    'product_id': endorsement.product_id.id,
+                                    'product_uom_qty': 1,
+                                    'price_unit': endorsement.endorsement_amount,
+                                    'name': endorsement.product_id.name,  # Descripción basada en el nombre del producto
+                                    'product_uom': endorsement.product_id.uom_id.id,  # UoM del producto
+                                    
+                                }
+
+                                self.env['sale.order.line'].create(line_vals)
+                            
+            
+        return record
+    
     
     @api.constrains('policy_number')
     def _check_policy_number(self):
@@ -125,6 +244,7 @@ class PolicyDetails(models.Model):
     def action_active_insurance(self):
         for records in self.invoice_ids:
             if records.state == 'paid':
+                self.state = 'active'
                 raise UserError(_("All invoices must be paid"))
         
         self.efective_date = fields.Date.context_today(self)
@@ -159,7 +279,7 @@ class CoverageDetails(models.Model):
         domain="[('sale_ok', '=', True), ('is_policy_product', '=', True)]")
     coverage_type = fields.Selection(
         [('gross', 'Gross'), ('net', 'Net')], 
-        required=True, default='gross', string='Coverage Type')
+        default='gross', string='Coverage Type')
     coverage_amount = fields.Float(string='Coverage Amount')
     deductible = fields.Float(string='Deductible')
     premium = fields.Float(string='Premium')
@@ -210,6 +330,11 @@ class EndorsemntDetails(models.Model):
         default = 'new',
         store=True, precompute=True,
         string='Type')
+    product_id = fields.Many2one(
+        comodel_name='product.product',
+        string="Policy Product",
+        change_default=True, ondelete='restrict', check_company=True, index='btree_not_null',
+        domain="[('sale_ok', '=', True), ('is_policy_product', '=', True)]")
     endorsement_amount = fields.Float(string='Amount')
     down_payment = fields.Float(string='Down Payment')
     fee = fields.Float(string='Endorsement Fee')

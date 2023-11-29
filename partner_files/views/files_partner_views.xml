@@ -109,7 +109,7 @@
         </record>
 
         <!-- View: Tree -->
-        <record id="view_partner_folder_list" model="ir.ui.view">
+        <record id="view_partner_folder_tree" model="ir.ui.view">
             <field name="name">partner.folder.tree</field>
             <field name="model">partner.folder</field>
             <field name="arch" type="xml">
@@ -117,22 +117,6 @@
                     <field name="name" string="Folders Customers"/>
                 </tree>
             </field>
-        </record>
-
-        <!-- Action: Create Folder -->
-
-        <record id="action_create_folder" model="ir.actions.act_window">
-            <field name="name">Create Folder</field>
-            <field name="res_model">partner.folder</field>
-            <field name="view_mode">form</field>
-            <field name="target">new</field>
-        </record>
-
-        <!-- Action: Partner Folder -->
-        <record id="action_partner_folder" model="ir.actions.act_window">
-            <field name="name">Folders</field>
-            <field name="res_model">partner.folder</field>
-            <field name="view_mode">tree,form</field>
         </record>
 
         <!-- View: Partner Folder Search -->
@@ -146,6 +130,22 @@
                 </search>
             </field>
         </record>
+        
+        <!-- Action: Create Folder -->
+        <record id="action_create_folder" model="ir.actions.act_window">
+            <field name="name">Create Folder</field>
+            <field name="res_model">partner.folder</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Action: Partner Folder -->
+        <record id="action_partner_folder" model="ir.actions.act_window">
+            <field name="name">Folders</field>
+            <field name="res_model">partner.folder</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
     </data>
 </odoo>
 
