@@ -11,6 +11,7 @@
         'security/ir.model.access.csv',
         'views/files_partner_views.xml',
         'views/res_partner.xml',
+        'static/src/xml/custom_template.xml'
     ],
     'qweb': [
         'static/src/xml/custom_template.xml',

@@ -13,13 +13,9 @@
                             <input type="text" class="o_search_input" placeholder="Seach file..."/>
                         </div>
                     </header>
-                    <field name="file_ids">
-                        <tree editable="bottom">
-                            <field name="name"/>
-                            <field name="file_data" filename="name"/>
-                            <field name="folder_id"/>
-                        </tree>
-                    </field>
+                    <di>
+                        <t t-call="PartnerFiles.FileListView"/>
+                    </di>
                 </page>
             </xpath>
         </field>

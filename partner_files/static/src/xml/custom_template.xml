@@ -1,21 +1,24 @@
-<templates>
-    <t t-name="MyPartnerFiles.FileListView">
-        <div class="partner-file-list">
-            <t t-foreach="folders" t-as="folder">
-                <div class="folder">
-                    <div class="folder-title">
-                        <t t-esc="folder.name"/>
+<odoo>
+    <templates>
+        <t t-name="PartnerFiles.FileListView">
+            <div class="partner-file-list">
+                <t t-foreach="record.get_files_by_folder()" t-as="folder">
+                    <div class="folder">
+                        <div class="folder-title">
+                            <i class="fa fa-folder-open-o fa-3x" aria-hidden="true"/>
+                            <t t-esc="folder"/>
+                        </div>
+                        <div class="folder-files">
+                            <t t-foreach="record.get_files_by_folder()[folder]" t-as="file">
+                                <div class="file-entry">
+                                    <i class="fa fa-file fa-2x" aria-hidden="true"/>
+                                    <span t-esc="file.name"/>
+                                </div>
+                            </t>
+                        </div>
                     </div>
-                    <div class="folder-files">
-                        <t t-foreach="folder.files" t-as="file">
-                            <div class="file-entry">
-                                <span t-esc="file.name"/>
-                                <!-- Agrega aquí más detalles o acciones para cada archivo -->
-                            </div>
-                        </t>
-                    </div>
-                </div>
-            </t>
-        </div>
-    </t>
-</templates>
+                </t>
+            </div>
+        </t>
+    </templates>
+</odoo>

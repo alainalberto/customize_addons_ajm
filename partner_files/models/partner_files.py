@@ -17,6 +17,15 @@ class ResPartner(models.Model):
             'target': 'new',
         }
     
+    def get_files_by_folder(self):
+        folders = {}
+        for file in self.file_ids:
+            folder_name = file.folder_id.name if file.folder_id else 'Unclassified'
+            if folder_name not in folders:
+                folders[folder_name] = []
+            folders[folder_name].append(file)
+        return folders
+    
 
 class PartnerFile(models.Model):
     _name = 'partner.file'
