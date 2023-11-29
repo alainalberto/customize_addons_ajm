@@ -11,6 +11,7 @@ from odoo.exceptions import UserError, ValidationError
 
 class FinancialDetails(models.Model):
     _name = 'financial.details'
+    _description = 'Financial Details'
     
     
     name = fields.Char(
@@ -36,6 +37,7 @@ class FinancialDetails(models.Model):
 
 class AgencyDetails(models.Model):
     _name = 'agency.details'
+    _description = 'Agency Details'
     
     
     name = fields.Char(
@@ -61,6 +63,7 @@ class AgencyDetails(models.Model):
     
 class GeneralAgencyDetails(models.Model):
     _name = 'general.agency.details'
+    __description__ = 'General Agency Details'
     
     
     name = fields.Char(
@@ -88,6 +91,7 @@ class GeneralAgencyDetails(models.Model):
 
 class MGADetails(models.Model):
     _name = 'mga.details'
+    _description = 'MGA Details'
     
     
     name = fields.Char(
@@ -116,6 +120,7 @@ class MGADetails(models.Model):
 
 class CarrierDetails(models.Model):
     _name = 'carrier.details'
+    _description = 'Carrier Details'
     
     
     name = fields.Char(

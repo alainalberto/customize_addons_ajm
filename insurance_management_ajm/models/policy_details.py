@@ -265,11 +265,13 @@ class PolicyDetails(models.Model):
 
 class PolicyType(models.Model):
     _name = 'policy.type'
+    _description = 'Policy Type'
 
     name = fields.Char(string='Name')
 
 class CoverageDetails(models.Model):
     _name = 'coverage.details'
+    _description = 'Coverage Details'
 
     name = fields.Char(string='Name')
     policy_id = fields.Many2one('policy.details', string='Policy')
@@ -307,6 +309,7 @@ class CoverageDetails(models.Model):
     
 class EndorsemntDetails(models.Model):
     _name = 'endorsement.details'
+    _description = 'Endorsement Details'
 
     name = fields.Char(string='Name')
     policy_id = fields.Many2one('policy.details', string='Policy')

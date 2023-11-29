@@ -13,3 +13,4 @@ access_hr_employee,hr.employee,model_hr_employee,base.group_user,1,1,1,1
 access_product_template,product.template,model_product_template,base.group_user,1,1,1,1
 access_commission_employee,commission.employee,model_commission_employee,base.group_user,1,1,1,1
 access_sale_order_line,sale.order.line,model_sale_order_line,base.group_user,1,1,1,1
+access_partner_file,partner.file.line,model_partner_file,base.group_user,1,1,1,1

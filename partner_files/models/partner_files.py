@@ -45,6 +45,7 @@ class PartnerFolder(models.Model):
     _description = 'Client Related Folder'
 
     name = fields.Char('Folder Name')
+    description = fields.Text('Description')
     folder_father = fields.Many2one('partner.folder', string='Folder Father')
    
     
