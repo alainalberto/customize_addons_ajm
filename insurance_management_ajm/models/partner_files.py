@@ -1,8 +1,8 @@
 
 from odoo import models, fields, api
 
-class CustomPartnerFiles(models.Model):
-    _inherit = 'partner_files'
+class PartnerFiles(models.Model):
+    _inherit = 'partner_file'
 
     policy_id = fields.Many2one('policy.details', string='Policy', delete='cascade')
 
@@ -37,5 +37,5 @@ class CustomPartnerFiles(models.Model):
                     'folder_id': insurance_folder.id,
                 })
 
-        return super(CustomPartnerFiles, self).create(vals)
+        return super(PartnerFiles, self).create(vals)
     

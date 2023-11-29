@@ -73,7 +73,7 @@ class PolicyDetails(models.Model):
     policy_next_due = fields.Float(string='Next Due')
     policy_amount_financed = fields.Float(string='Amount Financed')
     policy_paid_mga = fields.Float(string='Paid MGA')
-    files_ids = fields.One2many('partner.files', 'policy_id', string='Files')
+    files_ids = fields.One2many('partner.file', 'policy_id', string='Files')
     
     
     @api.model
