@@ -12,7 +12,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'static/src/xml/custom_template.xml'
+        'static/src/xml/custom_template.xml',
         'views/files_partner_views.xml',
         'views/res_partner.xml',
         
