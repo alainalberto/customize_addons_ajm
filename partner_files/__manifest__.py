@@ -7,19 +7,19 @@
     'author': 'Alain Alberto',
     'website': 'http://www.simplytechsolution.com',
     'depends': ['base', 'contacts'],
-    'qweb': [
-        'static/src/xml/custom_template.xml',
-    ],
+    'license': 'AGPL-3',
+   
     'data': [
         'security/ir.model.access.csv',
-        'static/src/xml/custom_template.xml',
         'views/files_partner_views.xml',
         'views/res_partner.xml',
         
     ],
     'assets': {
         'web.assets_backend': [
-            'my_partner_files/static/src/js/custom_script.js',
+            'partner_files/static/src/js/custom_script.js',
+            'partner_files/static/src/scss/custom_style.scss',
+            'partner_files/static/src/xml/custom_template.xml',
         ],
     },
     'demo': [],

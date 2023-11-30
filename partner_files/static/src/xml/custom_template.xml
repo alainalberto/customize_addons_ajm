@@ -1,6 +1,7 @@
 
-<templates>
-    <t t-name="FileListView">
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="partner_files.FileListView">
         <div class="partner-file-list">
             <div class="o_file_search">
                 <input type="text" class="o_search_input" placeholder="Seach file..."/>
