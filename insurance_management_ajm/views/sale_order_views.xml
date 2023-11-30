@@ -51,18 +51,6 @@
             <field name="inherit_id" ref="sale.view_order_tree"/>
             <field name="arch" type="xml">
                 <!-- Add your modifications to the existing view -->
-                <xpath expr="//tree/field[@name='policy_id']" position="after">
-                    <field name="policy_id" invisible='1'/>
-                    <button name="open_policy_details"  
-                         type="object" 
-                         class="oe_stat_button" 
-                         icon="fa-id-card-o icon" 
-                         attrs="{'invisible': [('policy_id', '=', False)]}">
-                         <div class="o_field_widget o_stat_info">
-                            <span class="o_stat_text">View More</span>
-                        </div>
-                    </button>
-                </xpath>
                 <xpath expr="//field[@name='tag_ids']" position="attributes">
                     <attribute name="optional">show</attribute>
                     <attribute name="invisible">1</attribute>
