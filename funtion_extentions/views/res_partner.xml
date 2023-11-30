@@ -9,20 +9,19 @@
         <field name="arch" type="xml">
             
             <xpath expr="//form[1]/sheet[1]/group[1]/group[2]" position="inside">
-                <field name="x_cliente_ssn" placeholder="e.g. xxx-xx-xxxx" attrs="{'invisible': [('is_company', '=', True)]}"/>
-                <field name="x_cliente_owner" placeholder="" attrs="{'invisible': [('is_company', '=', False)]}"/>
-                    
+                <field name="x_cliente_ssn" placeholder="e.g. xxx-xx-xxxx" attrs="{'invisible': [('is_company', '=', True), ('customer_rank', '=', 0)]}"/>
+                <field name="x_cliente_owner" placeholder="" attrs="{'invisible': [('is_company', '=', False), ('customer_rank', '=', 0)]}"/>
             </xpath>
+            
             <xpath expr="//form[1]/sheet[1]/group[1]" position="inside">
-                    
-                <group name="group_left" >
+                <group name="group_left" attrs="{'invisible': [('customer_rank', '=', 0)]}">
                     <field name="x_cliente_mc"/>
                     <field name="x_cliente_tdmv"/>
                     <field name="x_cliente_login"/>
                     <field name="x_cliente_pass"/>
                     <field name="x_cliente_uin"/>
                 </group>
-                <group name="group_rigth" >
+                <group name="group_right" attrs="{'invisible': [('customer_rank', '=', 0)]}">
                     <field name="x_cliente_ein"/>
                     <field name="x_cliente_usdot"/>
                     <field name="x_cliente_pin"/>
@@ -30,44 +29,38 @@
                     <field name="x_cliente_pasw"/>
                     <field name="x_cliente_parking_address"/>
                 </group>
-                <span class="o_form_label o_td_label" name="reference_contact">
+                <span class="o_form_label o_td_label" name="reference_contact" attrs="{'invisible': [('customer_rank', '=', 0)]}">
                     <b>Reference Contact</b>
                     <field name="customer_reference_id"/>   
-                    </span> 
+                </span> 
             </xpath>
+            
             <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]" position="after">
-                <page string="Drivers and Vehicles" attrs="{'invisible': [('is_company', '=', False)]}">
-                    
-                        <button name="action_create_driver" string="Add Driver" type="object" class="oe_highlight"/>
-                        <field name="driver_ids">
-                            <tree editable="bottom">
-                                <field name="name"/>
-                                <field name="phone"/>
-                                <field name="driver_lic_number_1"/>
-                                <field name="driver_lic_state_1"/>
-                                <field name="driver_lic_expiration_1"/>
-                                <button name="action_open_driver" string="View" type="object" class="oe_highlight"/>
-                            </tree>
-                        </field>
-                  
-                    
-                        <button name="action_create_vehicle" string="Add Vehicle" type="object" class="oe_highlight"/>
-                        <field name="vehicle_ids">
-                            <tree editable="bottom">
-                                <field name="type_id"/>
-                                <field name="make"/>
-                                <field name="model"/>
-                                <field name="year"/>
-                                <field name="license_plate"/>
-                                <field name="driver_id"/>
-                            </tree>
-                        </field>
-                       
+                <page string="Drivers and Vehicles" attrs="{'invisible': [('is_company', '=', False), ('customer_rank', '=', 0)]}">
+                    <button name="action_create_driver" string="Add Driver" type="object" class="oe_highlight"/>
+                    <field name="driver_ids">
+                        <tree editable="bottom">
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="driver_lic_number_1"/>
+                            <field name="driver_lic_state_1"/>
+                            <field name="driver_lic_expiration_1"/>
+                            <button name="action_open_driver" string="View" type="object" class="oe_highlight"/>
+                        </tree>
+                    </field>
+                    <button name="action_create_vehicle" string="Add Vehicle" type="object" class="oe_highlight"/>
+                    <field name="vehicle_ids">
+                        <tree editable="bottom">
+                            <field name="type_id"/>
+                            <field name="make"/>
+                            <field name="model"/>
+                            <field name="year"/>
+                            <field name="license_plate"/>
+                            <field name="driver_id"/>
+                        </tree>
+                    </field>
                 </page>
             </xpath>
         </field>
-        
     </record>
-    
-
 </odoo>

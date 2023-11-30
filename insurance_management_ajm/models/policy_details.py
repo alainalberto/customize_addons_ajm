@@ -4,7 +4,9 @@ from odoo import models
 
 class PolicyDetails(models.Model):
     _name = 'policy.details'
+    _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin', 'utm.mixin']
     _description = 'Policy Details'
+    
 
     
     name = fields.Char(
@@ -32,7 +34,7 @@ class PolicyDetails(models.Model):
         string="Sales Team",
         compute='_compute_team_id',
         store=True, readonly=False, precompute=True, ondelete="set null",
-        change_default=True, check_company=True,  # Unrequired company
+        change_default=True, check_company=True, 
         tracking=True,
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]")
     coverage_ids = fields.One2many('coverage.details', 'policy_id', string='Coverage')  
@@ -53,15 +55,16 @@ class PolicyDetails(models.Model):
         required=True, default='quotation', string='Status')
     tag_display = fields.Char(string='Tags', value='INSURANCE', readonly=True)
     start_date = fields.Date(string='Start Date')
-    exp_date = fields.Date(string='Expiration Date')
+    exp_date = fields.Date(string='Expiration Date', compute='_compute_expiration_day', store=True)
     auto_renew = fields.Boolean(copy=False)
     bind_day = fields.Date(
         string='Bind Date', default=fields.Date.context_today)
-    duration = fields.Integer(string='Duration in Days')
+    duration = fields.Integer(string='Duration in Days' default=365)
     premium = fields.Float(string='Premium Base')
     premium_emdorsement = fields.Float(string='Premium Endorsement')
     policy_total = fields.Float(string='Policy Total')
     down_payment = fields.Float(string='Down Payment')
+    tax_carrier = fields.Float(string='Tax and Fee Carrier')
     fee = fields.Float(string='Agency Fee')
     commission_total = fields.Float(string='Commission Total')
     transaction = fields.Selection(
@@ -82,11 +85,12 @@ class PolicyDetails(models.Model):
         record = super(PolicyDetails, self).create(vals)
         
         # Buscar o crear el tag 'Policy'
-        policy_tag = self.env['crm.tag'].search([('name', '=', record.tag_display)], limit=1)
-        if not policy_tag:
-            policy_tag = self.env['crm.tag'].create({'name': record.tag_display})
-        # Si el estado es 'quotation', crear un pedido de venta relacionado
+        if record.tag_display:
+            policy_tag = self.env['crm.tag'].search([('name', '=', record.tag_display)], limit=1)
+            if not policy_tag:
+                policy_tag = self.env['crm.tag'].create({'name': record.tag_display})
         
+        # Si el estado es 'quotation', crear un pedido de venta relacionado
         if record.status == 'quotation':
             status = 'draft'
         elif record.status == 'confirm':
@@ -110,18 +114,22 @@ class PolicyDetails(models.Model):
         record.sale_ids = [sale_order.id]
 
         # Crear líneas de pedido de venta para cada cobertura
-        for coverage in record.coverage_ids:
-            line_vals = {
-                'order_id': sale_order.id,
-                'product_id': coverage.product_id.id,
-                'product_uom_qty': 1,
-                'price_unit': coverage.premium,
-                'name': coverage.product_id.name,  # Descripción basada en el nombre del producto
-                'product_uom': coverage.product_id.uom_id.id,  # UoM del producto
-                
-            }
+        if record.coverage_ids:
+            for coverage in record.coverage_ids:
+                line_vals = {
+                    'order_id': sale_order.id,
+                    'product_id': coverage.product_id.id,
+                    'product_uom_qty': 1,
+                    'price_unit': coverage.premium,
+                    'name': coverage.product_id.name,  # Descripción basada en el nombre del producto
+                    'product_uom': coverage.product_id.uom_id.id,  # UoM del producto
+                    
+                }
 
-            self.env['sale.order.line'].create(line_vals)
+                self.env['sale.order.line'].create(line_vals)
+        else:
+            raise ValidationError(
+                _('Please add the coverage to the policy'))
         
         # Crear líneas de pedido de venta para cada endoso
         if record.endorsement_ids:
@@ -260,6 +268,15 @@ class PolicyDetails(models.Model):
     def _compute_team_id(self):
         for record in self:
             record.team_id = record.sale_ids[0].team_id if record.sale_ids else False
+    
+    @api.depends('start_day', 'duration')
+    def _compute_expiration_day(self):
+        for record in self:
+            if record.start_day and record.duration:
+                # Calculates the termination date by adding the duration to the activation date
+                record.exp_date = record.start_day + timedelta(days=record.duration)
+            else:
+                record.exp_date = False
 
         
 
