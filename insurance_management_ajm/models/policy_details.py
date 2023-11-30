@@ -59,7 +59,7 @@ class PolicyDetails(models.Model):
     auto_renew = fields.Boolean(copy=False)
     bind_day = fields.Date(
         string='Bind Date', default=fields.Date.context_today)
-    duration = fields.Integer(string='Duration in Days' default=365)
+    duration = fields.Integer(string='Duration in Days', default=365)
     premium = fields.Float(string='Premium Base')
     premium_emdorsement = fields.Float(string='Premium Endorsement')
     policy_total = fields.Float(string='Policy Total')
