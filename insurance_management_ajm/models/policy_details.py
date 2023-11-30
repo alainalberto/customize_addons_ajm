@@ -86,9 +86,9 @@ class PolicyDetails(models.Model):
         
         # Buscar o crear el tag 'Policy'
         if record.tag_display:
-            policy_tag = self.env['crm.tag'].search([('name', '=', record.tag_display)], limit=1)
+            policy_tag = self.env['crm.tag'].search([('name', '=', str(record.tag_display))], limit=1)
             if not policy_tag:
-                policy_tag = self.env['crm.tag'].create({'name': record.tag_display})
+                policy_tag = self.env['crm.tag'].create({'name': str(record.tag_display)})
         
         # Si el estado es 'quotation', crear un pedido de venta relacionado
         if record.status == 'quotation':
