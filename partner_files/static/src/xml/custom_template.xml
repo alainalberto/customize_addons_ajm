@@ -1,6 +1,6 @@
 
 <templates>
-    <t t-name="PartnerFiles.FileListView">
+    <t t-name="FileListView">
         <div class="partner-file-list">
             <div class="o_file_search">
                 <input type="text" class="o_search_input" placeholder="Seach file..."/>

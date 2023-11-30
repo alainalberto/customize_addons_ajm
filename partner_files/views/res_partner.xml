@@ -7,10 +7,9 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='internal_notes']" position="before">
                 <page string="Files">
-                    <header>
-                        <button name="action_create_file" string="Add File" type="object" class="oe_highlight"/> 
-                    </header>
-                    <field name="file_ids" />
+                   <div>
+                        <t t-call="FileListView"/>
+                    </div>
                 </page>
             </xpath>
         </field>
