@@ -25,7 +25,7 @@
             <field name="model">partner.file</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name" widget="url" options="{'url': 'web/content/?model=partner.file&id=record_id&filename_field=name&field=file_data&download=true'}"/>
+                    <field name="name" widget="url" options="{'url': 'web/content/?model=partner.file&amp;id=record_id&amp;filename_field=name&amp;field=file_data&amp;download=true'}"/>
                     <field name="file_data"/>
                     <field name="folder_id"/>
                     <field name="partner_id" />
