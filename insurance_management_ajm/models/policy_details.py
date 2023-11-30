@@ -85,6 +85,7 @@ class PolicyDetails(models.Model):
         record = super(PolicyDetails, self).create(vals)
         
         # Buscar o crear el tag 'Policy'
+        policy_tag = None
         if record.tag_display:
             policy_tag = self.env['crm.tag'].search([('name', '=', str(record.tag_display))], limit=1)
             if not policy_tag:

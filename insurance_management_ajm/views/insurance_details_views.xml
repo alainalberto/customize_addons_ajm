@@ -30,7 +30,7 @@
                     <div class="oe_title">
                         <h1>
                             <field name="transaction" readonly="1"/>
-                            <field name="tag_display" invisible="1"/>
+                            <field name="tag_display" invisible="1" default="INSURANCE"/>
                         </h1>
                     </div>
                     <group name="policy_header">
