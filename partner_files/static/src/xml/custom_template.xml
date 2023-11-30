@@ -1,6 +1,6 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
-<templates xml:space="preserve">
+<templates xml:space="preserve" id='file_customer_view'>
     <t t-name="FileListView">
         <div class="partner-file-list">
             <div class="o_file_search">

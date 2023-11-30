@@ -8,7 +8,7 @@
             <xpath expr="//page[@name='internal_notes']" position="before">
                 <page string="Files">
                    <div>
-                        <t t-call="partner_files.FileListView"/>
+                        <t t-call="file_customer_view"/>
                     </div>
                 </page>
             </xpath>
