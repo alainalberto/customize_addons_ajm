@@ -7,9 +7,10 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='internal_notes']" position="before">
                 <page string="Files">
-                   <div>
+                   <!--<div>
                         <t t-call="partner_files.file_customer_view"/>
-                    </div>
+                    </div>-->
+                    <field name="file_ids"/>
                 </page>
             </xpath>
         </field>
