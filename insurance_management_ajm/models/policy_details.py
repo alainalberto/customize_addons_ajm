@@ -269,12 +269,12 @@ class PolicyDetails(models.Model):
         for record in self:
             record.team_id = record.sale_ids[0].team_id if record.sale_ids else False
     
-    @api.depends('start_day', 'duration')
+    @api.depends('start_date', 'duration')
     def _compute_expiration_day(self):
         for record in self:
-            if record.start_day and record.duration:
+            if record.start_date and record.duration:
                 # Calculates the termination date by adding the duration to the activation date
-                record.exp_date = record.start_day + timedelta(days=record.duration)
+                record.exp_date = record.start_date + timedelta(days=record.duration)
             else:
                 record.exp_date = False
 
