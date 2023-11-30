@@ -15,6 +15,9 @@
         'views/files_partner_views.xml',
         'views/res_partner.xml',   
     ],
+    'qweb': [
+        'partner_files/static/src/xml/custom_template.xml'
+    ],
     'assets': {
         'web.assets_backend': [
             'partner_files/static/src/js/custom_script.js',
