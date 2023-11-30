@@ -8,12 +8,9 @@
             <xpath expr="//page[@name='internal_notes']" position="before">
                 <page string="Files">
                     <header>
-                        <button name="action_create_file" string="Add File" type="object" class="oe_highlight"/>
-                        <div class="o_file_search">
-                            <input type="text" class="o_search_input" placeholder="Seach file..."/>
-                        </div>
+                        <button name="action_create_file" string="Add File" type="object" class="oe_highlight"/> 
                     </header>
-                    <field name="file_ids" widget="html" options="{'template': 'PartnerFiles.FileListView'}"/>
+                    <field name="file_ids" widget="one2many_list"/>
                 </page>
             </xpath>
         </field>

@@ -2,6 +2,9 @@
 <templates>
     <t t-name="PartnerFiles.FileListView">
         <div class="partner-file-list">
+            <div class="o_file_search">
+                <input type="text" class="o_search_input" placeholder="Seach file..."/>
+            </div>
             <t t-foreach="record.get_files_by_folder()" t-as="folder">
                 <div class="folder">
                     <div class="folder-title">
