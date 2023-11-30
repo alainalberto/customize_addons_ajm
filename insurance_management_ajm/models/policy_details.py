@@ -55,7 +55,7 @@ class PolicyDetails(models.Model):
     status = fields.Selection(
         [('quotation', 'Quotation'), ('confirm', 'Confirm'), ('active', 'Active'), ('cancel', 'Cancel'), ('expire', 'Expire')], 
         required=True, default='quotation', string='Status')
-    tag_display = fields.Char(string='Tags', default='INSURANCE', readonly=True)
+    tag_display = fields.Char(string='Tags', default='Policy', readonly=True)
     start_date = fields.Date(string='Start Date')
     exp_date = fields.Date(string='Expiration Date', compute='_compute_expiration_day', store=True)
     auto_renew = fields.Boolean(copy=False)
