@@ -32,7 +32,7 @@ class PartnerFile(models.Model):
     _description = 'Client Related File'
 
     name = fields.Char('File Name')
-    file_data = fields.Binary('File', attachment=True, filename="name")
+    file_data = fields.Binary('File', attachment=True)
     folder_id = fields.Many2one('partner.folder', string='Folder')
     partner_id = fields.Many2one('res.partner', string='Customer')
     use_id = fields.Many2one('res.users', string='User')
