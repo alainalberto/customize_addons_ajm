@@ -63,7 +63,7 @@ class PolicyDetails(models.Model):
         string='Bind Date', default=fields.Date.context_today)
     duration = fields.Integer(string='Duration in Days', default=365)
     premium = fields.Float(string='Premium Base', compute='_compute_policy_values', store=True)
-    premium_emdorsement = fields.Float(string='Premium Endorsement', compute='_compute_policy_values', store=True)
+    premium_endorsement = fields.Float(string='Premium Endorsement', compute='_compute_policy_values', store=True)
     premium_total = fields.Float(string='Premium Total', compute='_compute_policy_values', store=True)
     policy_total = fields.Float(string='Policy Total')
     down_payment = fields.Float(string='Down Payment')
