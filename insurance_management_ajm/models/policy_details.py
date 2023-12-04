@@ -62,8 +62,9 @@ class PolicyDetails(models.Model):
     bind_day = fields.Date(
         string='Bind Date', default=fields.Date.context_today)
     duration = fields.Integer(string='Duration in Days', default=365)
-    premium = fields.Float(string='Premium Base')
-    premium_emdorsement = fields.Float(string='Premium Endorsement')
+    premium = fields.Float(string='Premium Base', compute='_compute_policy_values', store=True)
+    premium_emdorsement = fields.Float(string='Premium Endorsement', compute='_compute_policy_values', store=True)
+    premium_total = fields.Float(string='Premium Total', compute='_compute_policy_values', store=True)
     policy_total = fields.Float(string='Policy Total')
     down_payment = fields.Float(string='Down Payment')
     tax_carrier = fields.Float(string='Tax and Fee Carrier')
@@ -75,9 +76,9 @@ class PolicyDetails(models.Model):
     binder_id = fields.Char( string='Binder ID', copy=False )
     policy_binder_invoice = fields.Char(string="Carrier Invoice Number" )
     
-    policy_next_due = fields.Float(string='Next Due')
-    policy_amount_financed = fields.Float(string='Amount Financed')
-    policy_paid_mga = fields.Float(string='Paid MGA')
+    policy_next_due = fields.Float(string='Next Due', compute='_compute_policy_values', store=True)
+    policy_amount_financed = fields.Float(string='Amount Financed', compute='_compute_policy_values', store=True)
+    policy_paid_mga = fields.Float(string='Paid MGA', compute='_compute_policy_values', store=True)
     files_ids = fields.One2many('partner.file', 'policy_id', string='Files')
     
     
@@ -280,6 +281,25 @@ class PolicyDetails(models.Model):
                 record.exp_date = record.start_date + timedelta(days=record.duration)
             else:
                 record.exp_date = False
+   
+    @api.depends('coverage_ids', 'endorsement_ids', 'commission_total', 'down_payment', 'policy_total')
+    def _compute_policy_values(self):
+        for record in self:
+            # Calculate premium and premium endorsement
+            record.premium = sum(coverage.premium for coverage in record.coverage_ids)
+            record.premium_endorsement = sum(endorsement.endorsement_amount for endorsement in record.endorsement_ids)
+
+            # Calculate premium_total
+            record.premium_total = record.premium + record.premium_endorsement
+
+            # Calculate policy_next_due
+            record.policy_next_due = record.policy_total - record.commission_total
+
+            # Calculate policy_amount_financed
+            record.policy_amount_financed = record.policy_total - record.down_payment
+
+            # Calculate policy_paid_mga
+            record.policy_paid_mga = record.policy_amount_financed - record.commission_total
 
         
 
