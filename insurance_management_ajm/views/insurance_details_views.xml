@@ -130,7 +130,7 @@
                         </group>
                         <group class="oe_subtotal_footer oe_right" colspan="2" name="policy_total">
                             <field name="premium"/>
-                            <field name="premium_emdorsement"/>
+                            <field name="premium_endorsement"/>
                             <field name="premium_total"/>
                             <field name="commission_total"/>
                             <field name="policy_next_due"/>
